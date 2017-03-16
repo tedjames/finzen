@@ -55,11 +55,12 @@ class SaveButton extends Component {
     this.handleFail = this.handleFail.bind(this);
   }
   componentWillReceiveProps(nextProps) {
+    const { offset } = this.props;
     if (nextProps.loading) {
       this.refs.spinner.transitionTo({ opacity: 0.75 }, 2000 )
       this.refs.buttonTextContainer.transitionTo({ bottom: 122 }, 1)
       this.refs.buttonText.transitionTo({ shadowColor: '#000', shadowOpacity: 0.2, shadowRadius: 4, opacity: 1, transform: [{ scale: 1.05 }] }, 6500)
-      this.refs.saveButton.transitionTo({ width: 400, height: 700, borderRadius: 0, marginTop: 0, bottom: 150 }, 300, "ease-in-out")
+      this.refs.saveButton.transitionTo({ width: 400, height: 700, borderRadius: 0, marginTop: 0, bottom: offset ? offset : 150 }, 300, "ease-in-out")
     }
     if (nextProps.success) {
       this.handleSuccess()
