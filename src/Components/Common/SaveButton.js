@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableOpacity } from 'react-native'
+import { TouchableOpacity, View } from 'react-native'
 import Spinner from 'react-native-spinkit'
 import * as Animatable from 'react-native-animatable'
 import LinearGradient from 'react-native-linear-gradient'
@@ -55,8 +55,8 @@ class SaveButton extends Component {
     this.handleFail = this.handleFail.bind(this);
   }
   componentWillReceiveProps(nextProps) {
-    const { offset } = this.props;
-    if (nextProps.loading) {
+    const { offset, disableAnimation } = this.props;
+    if (nextProps.loading && !disableAnimation) {
       this.refs.spinner.transitionTo({ opacity: 0.75 }, 2000 )
       this.refs.buttonTextContainer.transitionTo({ bottom: 122 }, 1)
       this.refs.buttonText.transitionTo({ shadowColor: '#000', shadowOpacity: 0.2, shadowRadius: 4, opacity: 1, transform: [{ scale: 1.05 }] }, 6500)
@@ -72,7 +72,8 @@ class SaveButton extends Component {
   }
 
   renderSpinner() {
-    if (this.props.loading) {
+    const { loading, disableAnimation } = this.props;
+    if (loading && !disableAnimation) {
       return (
         <Spinner isVisible={true} type="Arc" size={250} color="#3ee8ff" />
       );
@@ -110,7 +111,7 @@ class SaveButton extends Component {
   }
 
   render() {
-    const width = this.props.width;
+    const { width, disableAnimation } = this.props;
     const saveButtonContainer = {
       flex: 1,
       flexDirection: "row",
@@ -121,27 +122,51 @@ class SaveButton extends Component {
       position: "relative",
       zIndex: 5
     }
-    return (
-      <Animatable.View ref="saveButton" animation="fadeInUp" style={saveButtonContainer} >
-        <TouchableOpacity disabled={this.props.disabled} activeOpacity={0.6} onPress={this.props.onPress}>
-          <LinearGradient
-            start={{x: 0.1, y: 0.25}}
-            end={{x: 1.6, y: 1.5}}
-            colors={['#7e41ff', '#5AFFFB']}
-            style={styles.saveButton}
-            >
-            <Animatable.View ref="spinner" style={styles.spinner}>
-              {this.renderSpinner()}
-            </Animatable.View>
+    if (disableAnimation) {
+      return (
+        <Animatable.View animation="fadeInUp" style={saveButtonContainer} >
+          <TouchableOpacity disabled={this.props.disabled} activeOpacity={0.6} onPress={this.props.onPress}>
+            <LinearGradient
+              start={{x: 0.1, y: 0.25}}
+              end={{x: 1.6, y: 1.5}}
+              colors={['#7e41ff', '#5AFFFB']}
+              style={styles.saveButton}
+              >
+              <View ref="spinner" style={styles.spinner}>
+                {this.renderSpinner()}
+              </View>
 
-            <Animatable.View ref="buttonTextContainer" style={{ position: "relative", bottom: 0 }}>
-              <Animatable.Text ref="buttonText" style={styles.buttonText}>{this.props.text}</Animatable.Text>
-            </Animatable.View>
+              <View ref="buttonTextContainer" style={{ position: "relative", bottom: 0 }}>
+                <Animatable.Text ref="buttonText" style={styles.buttonText}>{this.props.text}</Animatable.Text>
+              </View>
 
-          </LinearGradient>
-        </TouchableOpacity>
-      </Animatable.View>
-    );
+            </LinearGradient>
+          </TouchableOpacity>
+        </Animatable.View>
+      );
+    } else {
+      return (
+        <Animatable.View ref="saveButton" animation="fadeInUp" style={saveButtonContainer} >
+          <TouchableOpacity disabled={this.props.disabled} activeOpacity={0.6} onPress={this.props.onPress}>
+            <LinearGradient
+              start={{x: 0.1, y: 0.25}}
+              end={{x: 1.6, y: 1.5}}
+              colors={['#7e41ff', '#5AFFFB']}
+              style={styles.saveButton}
+              >
+              <Animatable.View ref="spinner" style={styles.spinner}>
+                {this.renderSpinner()}
+              </Animatable.View>
+
+              <Animatable.View ref="buttonTextContainer" style={{ position: "relative", bottom: 0 }}>
+                <Animatable.Text ref="buttonText" style={styles.buttonText}>{this.props.text}</Animatable.Text>
+              </Animatable.View>
+
+            </LinearGradient>
+          </TouchableOpacity>
+        </Animatable.View>
+      );
+    }
   }
 }
 

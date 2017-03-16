@@ -80,6 +80,7 @@ class FormSwitch extends Component {
           <Switch
             onValueChange={(value) => this.setState({ switchOn: value })}
             value={this.state.switchOn}
+            disabled={this.props.disabled}
           />
         </View>
       </View>

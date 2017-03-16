@@ -13,51 +13,47 @@ export default class Notifications extends Component {
   constructor(props) {
     super(props);
 
-    this.handleSave = this.handleSave.bind(this);
+    this.handleToggle = this.handleToggle.bind(this);
 
     this.state = ({
       buttonText: "DISABLE NOTIFICATIONS",
+      scrollEnabled: true,
       disableButtons: false,
+      disableSwitches: false,
       loading: false,
       success: false,
       fail: false
     })
   }
 
-  handleSave() {
-    // TODO: DISABLE THE MAIN SCROLLVIEW HERE
-    this.setState({ buttonText: "DISABLING NOTIFICATIONS", disableButtons: true, loading: true })
-    // Insert API calls here
-    setTimeout(() => {
-      this.setState({ success: true })
-    }, 3000);
+  handleToggle() {
+    // TODO: Insert API calls here
+    const enable = "ENABLE NOTIFICATIONS"
+    const disable = "DISABLE NOTIFICATIONS"
+    const { buttonText, disableSwitches } = this.state;
+    this.setState({ buttonText: buttonText === enable ? disable : enable, disableSwitches: !disableSwitches })
   }
 
   render() {
-    const { loading, disableButtons, buttonText, success, fail } = this.state;
+    const { loading, disableButtons, disableSwitches, buttonText, success, fail } = this.state;
 
     return (
       <LinearGradient colors={['#fff', '#f5f5f8']} style={{ flex: 1 }}>
-        <ScrollView scrollEnabled={false}>
+        <ScrollView scrollEnabled={this.state.scrollEnabled}>
           <View>
             <BackButton loading={loading} />
             <Header text="NOTIFICATIONS" loading={loading} />
           </View>
 
-          <Form loading={loading} switchForm>
-            <ScrollView>
-              <View style={{ height: 50 }} />
-              <FormSwitch label="New Expenses" />
-              <FormSwitch label="New Deposits" />
-              <FormSwitch label="Upcoming Bills" />
-              <FormSwitch label="Budget Reminders" />
-              <FormSwitch label="Safe Spending" />
-              <View style={{ height: 20 }} />
-            </ScrollView>
+          <Form loading={loading}>
+            <FormSwitch disabled={disableSwitches} label="New Expenses" />
+            <FormSwitch disabled={disableSwitches} label="New Deposits" />
+            <FormSwitch disabled={disableSwitches} label="Upcoming Bills" />
+            <FormSwitch disabled={disableSwitches} label="Budget Reminders" />
+            <FormSwitch disabled={disableSwitches} label="Safe Spending" />
           </Form>
 
-          <SaveButton text={buttonText} width={300} onPress={this.handleSave} loading={loading} disabled={disableButtons} success={success} fail={fail} offset={100}/>
-
+          <SaveButton text={buttonText} width={300} onPress={this.handleToggle} loading={loading} disabled={disableButtons} offset={100} disableAnimation/>
         </ScrollView>
       </LinearGradient>
     );
