@@ -10,7 +10,7 @@ class Form extends Component {
   }
 
   render() {
-    const height = this.props.height;
+    const { height, switchForm } = this.props;
     const mainCard = {
       backgroundColor: "#fff",
       marginLeft: 5,
@@ -29,7 +29,7 @@ class Form extends Component {
       shadowOpacity: 0.28,
       shadowRadius: 18,
       elevation: 2,
-      paddingTop: 50
+      paddingTop: switchForm ? 0 : 50
     }
     return (
       <Animatable.View ref="mainCard" animation="fadeInUp" duration={900} style={mainCard}>
