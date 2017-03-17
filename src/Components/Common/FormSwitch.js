@@ -23,22 +23,17 @@ class FormSwitch extends Component {
   }
 
   render() {
+    const { placeholder, label, returnKeyType, value, disabled, keyboardType, maxLength, autoCapitalize, bottom } = this.props;
+
     const styles = {
       container: {
         flexDirection: "row",
         marginLeft: 25,
-        borderBottomWidth: this.props.bottom ? 0 : 1,
+        borderBottomWidth: bottom ? 0 : 1,
         paddingBottom: 10,
         marginRight: 25,
         marginTop: 20,
         borderColor: "#f5f5f5"
-      },
-      basketIcon: {
-        color: "#a6a6a6",
-        paddingLeft: 20,
-        paddingRight: 5,
-        alignSelf: "center",
-        flex: 1
       },
       infoContainer: {
         flex: 8,
@@ -69,7 +64,6 @@ class FormSwitch extends Component {
         height: 20
       },
     }
-    const { placeholder, label, returnKeyType, value, disabled, keyboardType, maxLength, autoCapitalize } = this.props;
 
     return (
       <View style={styles.container}>
