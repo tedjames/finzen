@@ -34,7 +34,7 @@ export default class Security extends Component {
             <FormButton disabled={disableSwitches} label="Change Password" />
             <FormButton disabled={disableSwitches} label="Passcode and Touch ID" />
             <FormButton disabled={disableSwitches} label="Security Questions" bottom />
-            <FormButton disabled={disableSwitches} label="Delete Account" offset={45} centered danger bottom />
+            <FormButton disabled={disableSwitches} label="Delete Account" offset={50} centered danger bottom />
           </Form>
 
           <SaveButton text={buttonText} width={275} onPress={this.handleToggle} loading={loading} disabled={true} offset={100} disableAnimation/>
