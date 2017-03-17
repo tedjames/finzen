@@ -50,7 +50,7 @@ export default class UserAccount extends Component {
             <FormField disabled={disableButtons} label="Phone Number" value="7322775096" placeholder="123-456-7890" type="phone" />
           </Form>
 
-          <SaveButton text={buttonText} onPress={this.handleSave} loading={loading} disabled={disableButtons} success={success} fail={fail} />
+          <SaveButton width={250} text={buttonText} onPress={this.handleSave} loading={loading} disabled={disableButtons} success={success} fail={fail} />
 
         </ScrollView>
       </LinearGradient>
