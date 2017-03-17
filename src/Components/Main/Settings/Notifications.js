@@ -3,7 +3,7 @@ import { Text, View, TouchableOpacity, ScrollView } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import Icon from "react-native-vector-icons/Ionicons"
 import { Actions } from 'react-native-router-flux'
-import { ActionForm, Form, FormField, FormSwitch, FormLabel, BackButton, SaveButton } from '../../Common'
+import { ActionForm, Form, FormField, FormSwitch, FormLabel, FormButton, BackButton, SaveButton } from '../../Common'
 import Header from './Header'
 import * as Animatable from 'react-native-animatable'
 
