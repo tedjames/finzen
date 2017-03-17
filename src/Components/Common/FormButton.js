@@ -4,7 +4,7 @@ import FaIcon from 'react-native-vector-icons/FontAwesome'
 
 class FormButton extends Component {
   render() {
-    const { label, bottom } = this.props;
+    const { label, bottom, danger, centered, offset, hideArrow, topBorder } = this.props;
 
     const styles = {
       container: {
@@ -13,27 +13,32 @@ class FormButton extends Component {
         justifyContent: "center",
         marginLeft: 25,
         borderBottomWidth: bottom ? 0 : 1,
-        paddingBottom: 15,
+        borderTopWidth: topBorder ? 1 : 0,
+        paddingBottom: 17,
+        paddingTop: topBorder ? 17 : 0,
         marginRight: 25,
-        marginTop: 20,
+        marginTop: offset ? offset + 20 : 20,
         borderColor: "#f5f5f5"
       },
       infoContainer: {
         flex: 8,
       },
+      centeredInfoContainer: {
+        flex: 8,
+        alignItems: "center",
+      },
       arrowIcon: {
         alignSelf: "center",
-        color: "#8b8b8b",
+        color: danger ? "#fb5d5d" : "#8b8b8b",
         flex: 0.5,
-        opacity: 1,
+        opacity: hideArrow ? 0 : 1,
         backgroundColor: "transparent"
       },
       label: {
         fontFamily: "Open Sans",
         fontSize: 15,
         letterSpacing: 0.25,
-        color: "#252525",
-        marginBottom: 2,
+        color: danger ? "#f91f1f" : "#252525",
         backgroundColor: "transparent",
       },
     }
@@ -44,11 +49,11 @@ class FormButton extends Component {
         style={styles.container}
         disabled={this.props.disabled}
       >
-        <View style={styles.infoContainer}>
+        <View style={centered ? styles.centeredInfoContainer : styles.infoContainer}>
           <Text style={styles.label}>{label}</Text>
         </View>
 
-        <FaIcon name="angle-right" size={19} style={styles.arrowIcon} />
+        { centered ? null : <FaIcon name="angle-right" size={19} style={styles.arrowIcon} /> }
       </TouchableOpacity>
     );
   }
