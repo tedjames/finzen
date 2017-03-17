@@ -50,16 +50,25 @@ class FormField extends Component {
   constructor(props) {
     super(props);
 
+    this.convert = this.convert.bind(this);
+
     this.state = ({
       text: '',
       placeholder: 'Placeholder',
     });
+
+  }
+
+  convert(number) {
+    if (this.props.type === "phone") {
+      return number.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
+    } return number;
   }
 
   componentWillMount() {
     const { value, placeholder } = this.props;
     if (value) {
-      this.setState({ text: value })
+      this.setState({ text: this.convert(value) })
     }
     if (placeholder) {
       this.setState({ placeholder })
@@ -76,7 +85,7 @@ class FormField extends Component {
           <Text style={styles.label}>{newLabel}</Text>
           <TextInput
             style={styles.field}
-            onChangeText={(text) => this.setState({text})}
+            onChangeText={(text) => this.setState({ text: this.convert(text) })}
             value={this.state.text}
             placeholder={placeholder}
             returnKeyType={returnKeyType ? returnKeyType : 'done' }
