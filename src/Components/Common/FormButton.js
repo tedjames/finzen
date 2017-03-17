@@ -38,7 +38,7 @@ class FormButton extends Component {
         fontFamily: "Open Sans",
         fontSize: 15,
         letterSpacing: 0.25,
-        color: danger ? "#f91f1f" : "#252525",
+        color: danger ? "rgba(255, 82, 82, 1)" : "#252525",
         backgroundColor: "transparent",
       },
     }
