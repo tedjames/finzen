@@ -5,7 +5,7 @@ import TransactionScreen from './Components/Common/TransactionScreen'
 import AccountScreen from './Components/Main/Overview/AccountScreen'
 import UserAccount from './Components/Main/Settings/UserAccount'
 import Notifications from './Components/Main/Settings/Notifications'
-import Preferences from './Components/Main/Settings/Preferences'
+import Widgets from './Components/Main/Settings/Widgets'
 import Security from './Components/Main/Settings/Security'
 import Support from './Components/Main/Settings/Support'
 import Feedback from './Components/Main/Settings/Feedback'
@@ -20,7 +20,7 @@ export default class RouterComponent extends Component {
           <Scene key="act" component={AccountScreen} />
           <Scene key="userAct" component={UserAccount} />
           <Scene key="notif" component={Notifications} />
-          <Scene key="pref" component={Preferences} />
+          <Scene key="widgets" component={Widgets} />
           <Scene key="sec" component={Security} />
           <Scene key="sup" component={Support} />
           <Scene key="feed" component={Feedback} />
