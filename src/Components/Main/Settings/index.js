@@ -31,7 +31,7 @@ export default class Settings extends Component {
     Actions.notif();
   }
   handlePreferences() {
-    Actions.pref();
+    Actions.widgets();
   }
   handleSecurity() {
     Actions.sec();
