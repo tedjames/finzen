@@ -8,7 +8,7 @@ const FormLabel = (props) => {
     label: {
       fontFamily: "Montserrat",
       fontSize: 10,
-      letterSpacing: 1.4,
+      letterSpacing: 1.75,
       color: "#879099",
       alignSelf: "center",
       backgroundColor: "transparent"
