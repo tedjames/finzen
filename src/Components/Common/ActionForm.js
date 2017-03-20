@@ -102,7 +102,6 @@ class ActionForm extends Component {
         onPress={() => AlertIOS.prompt(label, null, this.saveResponse, undefined, value)}
         disabled={disabled}
       >
-        {/* <FaIcon name="shopping-basket" size={18} style={styles.basketIcon} /> */}
         <View style={styles.infoContainer}>
           <Text style={styles.label}>{newLabel}</Text>
           { value === "" || !value ? <Text style={styles.placeholder}>{placeholder}</Text> : <Text style={styles.value}>{value}</Text> }
