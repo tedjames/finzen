@@ -42,7 +42,7 @@ const styles = {
     fontSize: 16,
     color: "#252525",
     marginTop: 3,
-    height: 20
+    height: 250
   },
 }
 
@@ -76,7 +76,7 @@ class FormField extends Component {
   }
 
   render() {
-    const { placeholder, label, returnKeyType, value, disabled, keyboardType, maxLength, autoCapitalize } = this.props;
+    const { placeholder, label, returnKeyType, value, disabled, keyboardType, maxLength, autoCapitalize, lines, multiline } = this.props;
     const newLabel = label.toUpperCase();
 
     return (
@@ -93,6 +93,8 @@ class FormField extends Component {
             maxLength={maxLength}
             editable={!disabled}
             autoCapitalize={autoCapitalize ? autoCapitalize : 'none'}
+            numberOfLines={lines ? lines : 1}
+            multiline={multiline ? true : false}
           />
         </View>
       </View>

@@ -45,7 +45,7 @@ export default class Support extends Component {
 
           <Form height={450} loading={loading}>
             <ActionForm disabled={disableButtons} label="Problem Type" value="" placeholder="Please choose one..." dropdown/>
-            <FormField disabled={disableButtons} label="Description" value="" placeholder="Doe" />
+            <FormField disabled={disableButtons} label="Description" value="" placeholder="Doe" lines={5} multiline/>
           </Form>
 
           <SaveButton width={250} text={buttonText} onPress={this.handleSave} loading={loading} disabled={disableButtons} success={success} fail={fail} />
