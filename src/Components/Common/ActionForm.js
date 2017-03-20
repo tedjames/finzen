@@ -19,16 +19,28 @@ const styles = {
     alignSelf: "center",
     flex: 1
   },
-  infoContainer: {
-    flex: 8
-  },
-  arrowIcon: {
+  icon: {
     alignSelf: "center",
     color: "#8b8b8b",
     flex: 0.5,
     marginTop: 12,
     opacity: 1,
     backgroundColor: "transparent"
+  },
+  rotatedIcon: {
+    alignSelf: "center",
+    color: "#8b8b8b",
+    flex: 0.5,
+    marginTop: 12,
+    opacity: 1,
+    backgroundColor: "transparent",
+    transform: [{ rotate: '90deg'}],
+    position: "relative",
+    top: 8,
+    right: 6
+  },
+  infoContainer: {
+    flex: 8
   },
   label: {
     fontFamily: "Montserrat",
@@ -51,44 +63,45 @@ class ActionForm extends Component {
   constructor(props) {
     super(props);
     this.saveResponse = this.saveResponse.bind(this);
+    this.renderArrow = this.renderArrow.bind(this);
 
     this.state = ({
       promptValue: "",
     });
   }
-  renderArrow(hideArrow) {
+  renderArrow() {
+    const { hideArrow, dropdown } = this.props;
+
     if (hideArrow) {
       return null;
+    } else if (dropdown) {
+      return <FaIcon name="angle-right" size={19} style={styles.rotatedIcon} />;
     } else {
-      return <FaIcon name="angle-right" size={19} style={styles.arrowIcon} />;
+      return <FaIcon name="angle-right" size={19} style={styles.icon} />;
     }
   }
   saveResponse(promptValue) {
     this.setState({ promptValue: JSON.stringify(promptValue) });
   }
-  capitalize(str) {
-    const newStr = str.toLowerCase().replace(/\b[a-z]/g, function(letter) {
-      return letter.toUpperCase();
-    });
-    return newStr;
-  }
+
   render() {
-    const label = this.props.label;
-    const newLabel = this.capitalize(label);
+    const { label, hideArrow, value, disabled } = this.props;
+    const newLabel = this.props.label.toUpperCase();
+
     return (
       <TouchableOpacity
-        activeOpacity={this.props.hideArrow ? 1 : 0.4}
+        activeOpacity={hideArrow ? 1 : 0.4}
         style={styles.container}
-        onPress={() => AlertIOS.prompt(newLabel, null, this.saveResponse, undefined, this.props.value)}
-        disabled={this.props.disabled}
+        onPress={() => AlertIOS.prompt(label, null, this.saveResponse, undefined, value)}
+        disabled={disabled}
       >
         {/* <FaIcon name="shopping-basket" size={18} style={styles.basketIcon} /> */}
         <View style={styles.infoContainer}>
-          <Text style={styles.label}>{this.props.label}</Text>
-          <Text style={styles.value}>{this.props.value}</Text>
+          <Text style={styles.label}>{newLabel}</Text>
+          <Text style={styles.value}>{value}</Text>
         </View>
 
-        {this.renderArrow(this.props.hideArrow)}
+        {this.renderArrow(hideArrow)}
       </TouchableOpacity>
     );
   }
