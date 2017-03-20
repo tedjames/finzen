@@ -15,3 +15,6 @@ export const PASSWORD_MISMATCH = 'password_mismatch';
 
 // Main Router
 export const REDIRECT = 'redirect';
+
+// Common
+export const SUPPORT_MODAL = 'support_modal';
