@@ -6,6 +6,7 @@ import { Actions } from 'react-native-router-flux'
 import { ActionForm, Form, FormField, BackButton, SaveButton } from '../../Common'
 import Header from './Header'
 import * as Animatable from 'react-native-animatable'
+import Modal from 'react-native-simple-modal';
 
 
 export default class Support extends Component {
@@ -51,6 +52,26 @@ export default class Support extends Component {
           <SaveButton width={250} text={buttonText} onPress={this.handleSave} loading={loading} disabled={disableButtons} success={success} fail={fail} />
 
         </ScrollView>
+        <Modal
+        	open={this.props.modalOpen}
+        	offset={0}
+        	overlayBackground={'rgba(0, 0, 0, 0.75)'}
+        	animationDuration={200}
+        	animationTension={40}
+        	modalDidOpen={() => undefined}
+        	modalDidClose={() => this.setState({ modalOpen: false })}
+        	closeOnTouchOutside={true}
+        	containerStyle={{
+        	   justifyContent: 'center'
+        	}}
+        	modalStyle={{
+        	   borderRadius: 2,
+        	   margin: 20,
+        	   padding: 10,
+        	   backgroundColor: '#F5F5F5',
+             height: 300
+        	}}>
+        </Modal>
       </LinearGradient>
     );
   }
