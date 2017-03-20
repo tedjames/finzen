@@ -57,6 +57,13 @@ const styles = {
     marginTop: 2,
     backgroundColor: "transparent"
   },
+  placeholder: {
+    fontFamily: "Open Sans",
+    fontSize: 16,
+    color: "#c6c6cc",
+    marginTop: 2,
+    backgroundColor: "transparent"
+  },
 }
 
 class ActionForm extends Component {
@@ -85,7 +92,7 @@ class ActionForm extends Component {
   }
 
   render() {
-    const { label, hideArrow, value, disabled } = this.props;
+    const { label, hideArrow, value, placeholder, disabled } = this.props;
     const newLabel = this.props.label.toUpperCase();
 
     return (
@@ -98,7 +105,7 @@ class ActionForm extends Component {
         {/* <FaIcon name="shopping-basket" size={18} style={styles.basketIcon} /> */}
         <View style={styles.infoContainer}>
           <Text style={styles.label}>{newLabel}</Text>
-          <Text style={styles.value}>{value}</Text>
+          { value === "" || !value ? <Text style={styles.placeholder}>{placeholder}</Text> : <Text style={styles.value}>{value}</Text> }
         </View>
 
         {this.renderArrow(hideArrow)}
