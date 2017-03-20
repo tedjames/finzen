@@ -3074,6 +3074,10 @@ react-native-share@^1.0.19:
   version "1.0.19"
   resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-1.0.19.tgz#82c210efb156175d67ee271efee29ed9cf8e1449"
 
+react-native-simple-modal@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-simple-modal/-/react-native-simple-modal-5.0.0.tgz#c1c6bbf122d5a2310f15f44c1a46854a3da4c5f1"
+
 react-native-snackbar@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/react-native-snackbar/-/react-native-snackbar-0.3.1.tgz#d2d778473262cff359a2260b7090cf178d8b7579"
