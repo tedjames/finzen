@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, TouchableOpacity, ScrollView } from 'react-native'
+import { Text, View, TouchableOpacity, ScrollView, AlertIOS, Alert } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import Icon from "react-native-vector-icons/Ionicons"
 import { Actions } from 'react-native-router-flux'
@@ -20,7 +20,17 @@ export default class Security extends Component {
   }
 
   confirmDelete() {
-    console.log("meh");
+    Alert.alert(
+      'Confirm Deletion',
+      'Are you sure you want to delete your account?',
+      [
+        {text: 'Cancel', onPress: () => console.log('Cancel Pressed!')},
+        {text: 'OK', onPress: this.handleDelete}
+      ]);
+  }
+
+  handleDelete() {
+    console.log("Account Deleted");
   }
 
   render() {
