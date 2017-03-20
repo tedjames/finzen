@@ -50,7 +50,7 @@ export default class Notifications extends Component {
             <FormSwitch disabled={disableSwitches} label="New Deposits" />
             <FormSwitch disabled={disableSwitches} label="Upcoming Bills" />
             <FormSwitch disabled={disableSwitches} label="Budget Reminders" />
-            <FormSwitch disabled={disableSwitches} label="Safe Spending" bottom/>
+            <FormSwitch disabled={disableSwitches} label="Safe Spending" disableDivider/>
           </Form>
 
           <SaveButton text={buttonText} width={300} onPress={this.handleToggle} loading={loading} disabled={disableButtons} offset={100} disableAnimation/>
