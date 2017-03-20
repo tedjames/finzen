@@ -92,7 +92,7 @@ class ActionForm extends Component {
   }
 
   render() {
-    const { label, hideArrow, value, placeholder, disabled } = this.props;
+    const { label, hideArrow, value, placeholder, disabled, dropdown } = this.props;
     const newLabel = this.props.label.toUpperCase();
 
     return (
