@@ -23,13 +23,13 @@ class FormSwitch extends Component {
   }
 
   render() {
-    const { placeholder, label, returnKeyType, value, disabled, keyboardType, maxLength, autoCapitalize, bottom } = this.props;
+    const { placeholder, label, returnKeyType, value, disabled, keyboardType, maxLength, autoCapitalize, disableDivider } = this.props;
 
     const styles = {
       container: {
         flexDirection: "row",
         marginLeft: 25,
-        borderBottomWidth: bottom ? 0 : 1,
+        borderBottomWidth: disableDivider ? 0 : 1,
         paddingBottom: 10,
         marginRight: 25,
         marginTop: 20,
