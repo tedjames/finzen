@@ -1,4 +1,4 @@
-import { REDIRECT } from '../Actions/types'
+import { REDIRECT } from '../Actions/types';
 
 export const redirect = (route) => {
   return {

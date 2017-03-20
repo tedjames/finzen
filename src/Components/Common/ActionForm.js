@@ -1,41 +1,41 @@
 import React, { Component } from 'react';
-import { View, TouchableOpacity, Text, AlertIOS } from 'react-native'
-import FaIcon from 'react-native-vector-icons/FontAwesome'
+import { View, TouchableOpacity, Text, AlertIOS } from 'react-native';
+import FaIcon from 'react-native-vector-icons/FontAwesome';
 
 const styles = {
   container: {
-    flexDirection: "row",
+    flexDirection: 'row',
     marginLeft: 25,
     borderBottomWidth: 1,
     paddingBottom: 10,
     marginRight: 25,
     marginTop: 20,
-    borderColor: "#dfdfdf"
+    borderColor: '#dfdfdf'
   },
   basketIcon: {
-    color: "#a6a6a6",
+    color: '#a6a6a6',
     paddingLeft: 20,
     paddingRight: 5,
-    alignSelf: "center",
+    alignSelf: 'center',
     flex: 1
   },
   icon: {
-    alignSelf: "center",
-    color: "#8b8b8b",
+    alignSelf: 'center',
+    color: '#8b8b8b',
     flex: 0.5,
     marginTop: 12,
     opacity: 1,
-    backgroundColor: "transparent"
+    backgroundColor: 'transparent'
   },
   rotatedIcon: {
-    alignSelf: "center",
-    color: "#8b8b8b",
+    alignSelf: 'center',
+    color: '#8b8b8b',
     flex: 0.5,
     marginTop: 12,
     opacity: 1,
-    backgroundColor: "transparent",
-    transform: [{ rotate: '90deg'}],
-    position: "relative",
+    backgroundColor: 'transparent',
+    transform: [{ rotate: '90deg' }],
+    position: 'relative',
     top: 8,
     right: 6
   },
@@ -43,28 +43,28 @@ const styles = {
     flex: 8
   },
   label: {
-    fontFamily: "Montserrat",
+    fontFamily: 'Montserrat',
     fontSize: 10,
     letterSpacing: 1.4,
-    color: "#879099",
+    color: '#879099',
     marginBottom: 2,
-    backgroundColor: "transparent"
+    backgroundColor: 'transparent'
   },
   value: {
-    fontFamily: "Open Sans",
+    fontFamily: 'Open Sans',
     fontSize: 16,
-    color: "#252525",
+    color: '#252525',
     marginTop: 2,
-    backgroundColor: "transparent"
+    backgroundColor: 'transparent'
   },
   placeholder: {
-    fontFamily: "Open Sans",
+    fontFamily: 'Open Sans',
     fontSize: 16,
-    color: "#c6c6cc",
+    color: '#c6c6cc',
     marginTop: 2,
-    backgroundColor: "transparent"
+    backgroundColor: 'transparent'
   },
-}
+};
 
 class ActionForm extends Component {
   constructor(props) {
@@ -73,9 +73,14 @@ class ActionForm extends Component {
     this.renderArrow = this.renderArrow.bind(this);
 
     this.state = ({
-      promptValue: "",
+      promptValue: '',
     });
   }
+
+  saveResponse(promptValue) {
+    this.setState({ promptValue: JSON.stringify(promptValue) });
+  }
+
   renderArrow() {
     const { hideArrow, dropdown } = this.props;
 
@@ -83,12 +88,7 @@ class ActionForm extends Component {
       return null;
     } else if (dropdown) {
       return <FaIcon name="angle-right" size={19} style={styles.rotatedIcon} />;
-    } else {
-      return <FaIcon name="angle-right" size={19} style={styles.icon} />;
-    }
-  }
-  saveResponse(promptValue) {
-    this.setState({ promptValue: JSON.stringify(promptValue) });
+    } return <FaIcon name="angle-right" size={19} style={styles.icon} />;
   }
 
   render() {
@@ -104,7 +104,7 @@ class ActionForm extends Component {
       >
         <View style={styles.infoContainer}>
           <Text style={styles.label}>{newLabel}</Text>
-          { value === "" || !value ? <Text style={styles.placeholder}>{placeholder}</Text> : <Text style={styles.value}>{value}</Text> }
+          { value === '' || !value ? <Text style={styles.placeholder}>{placeholder}</Text> : <Text style={styles.value}>{value}</Text> }
         </View>
 
         {this.renderArrow(hideArrow)}

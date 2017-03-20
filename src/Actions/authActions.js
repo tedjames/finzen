@@ -11,6 +11,7 @@ import {
   REGISTER_USER_SUCCESS,
   REGISTER_USER,
   RESET_AUTH_FORM,
+  SHOW_REGISTER,
   HIDE_REGISTER,
   SET_AUTH_ROUTE,
   RESET_AUTH_ERROR,
@@ -45,7 +46,7 @@ export const resetAuthError = () => {
 export const showRegister = () => {
   return {
     type: SHOW_REGISTER
-  }
+  };
 };
 
 export const hideRegister = () => {
@@ -77,19 +78,19 @@ export const confirmPasswordChanged = (text) => {
 
 export const loginUser = ({ email, password }) => {
   return (dispatch) => {
-    dispatch({ type: LOGIN_USER })
+    dispatch({ type: LOGIN_USER });
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(user => loginUserSuccess(dispatch, user))
-      .catch((err)=> {
-        console.log(err)
+      .catch((err) => {
+        console.log(err);
         loginUserFail(dispatch);
       });
   };
 };
 
 export const registerUser = ({ email, password }) => {
-  return(dispatch) => {
-    dispatch({ type: REGISTER_USER })
+  return (dispatch) => {
+    dispatch({ type: REGISTER_USER });
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(user => registerUserSuccess(dispatch, user))
       .catch(() => registerUserFail(dispatch));
@@ -97,21 +98,20 @@ export const registerUser = ({ email, password }) => {
 };
 
 
-
 const loginUserFail = (dispatch) => {
   dispatch({ type: LOGIN_USER_FAIL, payload: 'Authentication Failed' });
-}
+};
 
 const loginUserSuccess = (dispatch, user) => {
   dispatch({ type: LOGIN_USER_SUCCESS, payload: user });
   Actions.main();
-}
+};
 
 const registerUserFail = (dispatch) => {
   dispatch({ type: REGISTER_USER_FAIL, payload: 'Registration Failed' });
-}
+};
 
 const registerUserSuccess = (dispatch, user) => {
   dispatch({ type: REGISTER_USER_SUCCESS, payload: user });
   Actions.main();
-}
+};

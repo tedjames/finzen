@@ -1,4 +1,4 @@
-import { SUPPORT_MODAL } from './types'
+import { SUPPORT_MODAL } from './types';
 
 export const showModal = () => {
   return {
