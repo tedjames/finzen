@@ -36,13 +36,6 @@ const styles = {
     marginBottom: 2,
     backgroundColor: 'transparent'
   },
-  field: {
-    fontFamily: 'Open Sans',
-    fontSize: 16,
-    color: '#252525',
-    marginTop: 3,
-    height: 250
-  },
 };
 
 class FormField extends Component {
@@ -83,15 +76,23 @@ class FormField extends Component {
       maxLength,
       autoCapitalize,
       lines,
-      multiline } = this.props;
+      multiline
+    } = this.props;
     const newLabel = label.toUpperCase();
+    const fieldStyle = {
+      fontFamily: 'Open Sans',
+      fontSize: 16,
+      color: '#252525',
+      marginTop: 3,
+      height: multiline ? 250 : 20
+    };
 
     return (
       <View style={styles.container}>
         <View style={styles.infoContainer}>
           <Text style={styles.label}>{newLabel}</Text>
           <TextInput
-            style={styles.field}
+            style={fieldStyle}
             onChangeText={text => this.setState({ text: this.convert(text) })}
             value={this.state.text}
             placeholder={placeholder}
