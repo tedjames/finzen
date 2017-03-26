@@ -1,8 +1,12 @@
-import React, { Component } from 'react'
-import { View, ScrollView } from 'react-native'
-import LinearGradient from 'react-native-linear-gradient'
-import { ActionForm, Form, FormField, FormSwitch, FormLabel, FormButton, BackButton, SaveButton } from '../../Common'
-import Header from './Header'
+import React, { Component } from 'react';
+import { View, ScrollView } from 'react-native';
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
+import LinearGradient from 'react-native-linear-gradient';
+/* eslint-enable import/no-unresolved */
+/* eslint-enable import/extensions */
+import { Form, FormSwitch, FormLabel, BackButton } from '../../Common';
+import Header from './Header';
 
 export default class Widgets extends Component {
   render() {
@@ -16,15 +20,15 @@ export default class Widgets extends Component {
 
           <Form height={615} disablePadding>
             <FormLabel text="General" />
-            <FormSwitch label="Show Available Balance" disableDivider/>
-            <FormSwitch label="Show Current Balance" disableDivider/>
-            <FormSwitch label="Safe Spending" disableDivider/>
-            <FormSwitch label="Upcoming Bills" disableDivider/>
-            <FormSwitch label="Safe Spending" disableDivider/>
+            <FormSwitch label="Show Available Balance" disableDivider />
+            <FormSwitch label="Show Current Balance" disableDivider />
+            <FormSwitch label="Safe Spending" disableDivider />
+            <FormSwitch label="Upcoming Bills" disableDivider />
+            <FormSwitch label="Safe Spending" disableDivider />
             <FormLabel text="Accounts" />
-            <FormSwitch label="Wells Fargo Checking" disableDivider/>
-            <FormSwitch label="Chase Savings" disableDivider/>
-            <FormSwitch label="My Wallet" disableDivider/>
+            <FormSwitch label="Wells Fargo Checking" disableDivider />
+            <FormSwitch label="Chase Savings" disableDivider />
+            <FormSwitch label="My Wallet" disableDivider />
           </Form>
         </ScrollView>
       </LinearGradient>
