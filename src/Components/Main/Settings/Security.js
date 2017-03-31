@@ -1,22 +1,23 @@
-import React, { Component } from 'react'
-import { Text, View, TouchableOpacity, ScrollView, AlertIOS, Alert } from 'react-native'
-import LinearGradient from 'react-native-linear-gradient'
-import Icon from "react-native-vector-icons/Ionicons"
-import { Actions } from 'react-native-router-flux'
-import { ActionForm, Form, FormField, FormSwitch, FormLabel, FormButton, BackButton, SaveButton } from '../../Common'
-import Header from './Header'
-import * as Animatable from 'react-native-animatable'
+import React, { Component } from 'react';
+import { View, ScrollView, Alert } from 'react-native';
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
+import LinearGradient from 'react-native-linear-gradient';
+/* eslint-enable import/no-unresolved */
+/* eslint-enable import/extensions */
+import { Form, FormButton, BackButton, SaveButton } from '../../Common';
+import Header from './Header';
 
 export default class Security extends Component {
   constructor(props) {
     super(props);
 
     this.state = ({
-      buttonText: "DELETE ACCOUNT",
+      buttonText: 'DELETE ACCOUNT',
       scrollEnabled: true,
       disableButtons: false,
       disableSwitches: false,
-    })
+    });
   }
 
   confirmDelete() {
@@ -24,17 +25,13 @@ export default class Security extends Component {
       'Confirm Deletion',
       'Are you sure you want to delete your account?',
       [
-        {text: 'Cancel', onPress: () => console.log('Cancel Pressed!')},
-        {text: 'OK', onPress: this.handleDelete}
+        { text: 'Cancel', onPress: () => console.log('Cancel Pressed!') },
+        { text: 'OK', onPress: () => console.log('Account Deleted') }
       ]);
   }
 
-  handleDelete() {
-    console.log("Account Deleted");
-  }
-
   render() {
-    const { loading, disableButtons, disableSwitches, buttonText } = this.state;
+    const { loading, disableSwitches, buttonText } = this.state;
 
     return (
       <LinearGradient colors={['#fff', '#f5f5f8']} style={{ flex: 1 }}>
@@ -48,11 +45,17 @@ export default class Security extends Component {
             <FormButton disabled={disableSwitches} label="Change Password" />
             <FormButton disabled={disableSwitches} label="Passcode and Touch ID" />
             <FormButton disabled={disableSwitches} label="Security Questions" bottom />
-
           </Form>
 
-          <SaveButton text={buttonText} width={275} onPress={this.confirmDelete} loading={loading} offset={100} disableAnimation/>
-      </ScrollView>
+          <SaveButton
+            text={buttonText}
+            width={275}
+            onPress={this.confirmDelete}
+            loading={loading}
+            offset={100}
+            disableAnimation
+          />
+        </ScrollView>
       </LinearGradient>
     );
   }
