@@ -20,6 +20,8 @@
     'import/prefer-default-export': 'off',
     'react/no-string-refs': 'off',
     'no-unneeded-ternary': 'off',
-    'react/prefer-stateless-function': 'off'
+    'react/prefer-stateless-function': 'off',
+    'class-methods-use-this': 'off',
+    'react/jsx-no-comment-textnodes': 'off'
   },
 }
