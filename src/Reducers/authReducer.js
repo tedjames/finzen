@@ -10,8 +10,6 @@ import {
   REGISTER_USER,
   RESET_AUTH_FORM,
   RESET_AUTH_ERROR,
-  SHOW_REGISTER,
-  HIDE_REGISTER,
   SET_AUTH_ROUTE,
   PASSWORD_MISMATCH
 } from '../Actions/types';
@@ -23,13 +21,13 @@ const INITIAL_STATE = {
   user: null,
   error: '',
   loading: false,
-  currentPage: "signIn"
+  currentPage: 'signIn'
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case PASSWORD_MISMATCH:
-      return { ...state, error: 'Passwords do not match' }
+      return { ...state, error: 'Passwords do not match' };
     case SET_AUTH_ROUTE:
       return { ...state, currentPage: action.payload };
     case EMAIL_CHANGED:
@@ -37,11 +35,11 @@ export default (state = INITIAL_STATE, action) => {
     case PASSWORD_CHANGED:
       return { ...state, password: action.payload };
     case CONFIRM_PASSWORD_CHANGED:
-        return { ...state, confirmPassword: action.payload };
+      return { ...state, confirmPassword: action.payload };
     case RESET_AUTH_FORM:
       return { ...state, ...INITIAL_STATE };
     case RESET_AUTH_ERROR:
-      return { ...state, error: '' }
+      return { ...state, error: '' };
     case LOGIN_USER:
       return { ...state, loading: true, error: '' };
     case LOGIN_USER_SUCCESS:
@@ -49,11 +47,11 @@ export default (state = INITIAL_STATE, action) => {
     case LOGIN_USER_FAIL:
       return { ...state, error: 'Authentication Failed', password: '', loading: false };
     case REGISTER_USER:
-      return {...state, loading: true, error: ''};
+      return { ...state, loading: true, error: '' };
     case REGISTER_USER_FAIL:
-      return {...state, error: 'Registration Failed', loading: false};
+      return { ...state, error: 'Registration Failed', loading: false };
     case REGISTER_USER_SUCCESS:
-      return {...state, ...INITIAL_STATE, error: 'User Registered!', user: action.payload};
+      return { ...state, ...INITIAL_STATE, error: 'User Registered!', user: action.payload };
     default:
       return state;
   }

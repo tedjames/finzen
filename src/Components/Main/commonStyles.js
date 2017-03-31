@@ -3,4 +3,4 @@ export const styles = {
     fontSize: 13,
     letterSpacing: 1.6
   }
-}
+};

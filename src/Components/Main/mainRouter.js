@@ -1,22 +1,14 @@
-// Bae
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { redirect } from '../../Actions/routerActions'
-// Native Components
-import { Text, View, Animated, Platform } from 'react-native'
-// React-Native-Elements Tab Bar
-// import { Tabs, Tab } from 'react-native-elements'
-// Navigation Tabs
-import { TabViewAnimated, TabBar, TabViewPagerPan, TabViewPagerScroll, TabViewPagerAndroid } from 'react-native-tab-view'
-// Icons
-import Icon from 'react-native-vector-icons/FontAwesome'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Text, View, Animated, Platform } from 'react-native';
+import { TabViewAnimated, TabBar, TabViewPagerPan, TabViewPagerScroll, TabViewPagerAndroid } from 'react-native-tab-view';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { redirect } from '../../Actions/routerActions';
 // Routes
-
-import Analysis from './Analysis'
-import Transactions from './Transactions'
-import Overview from './Overview'
-import Notifications from './Notifications'
-import Settings from './Settings'
+import Analysis from './Analysis';
+import Transactions from './Transactions';
+import Overview from './Overview';
+import Settings from './Settings';
 
 const styles = {
   container: {
@@ -77,31 +69,11 @@ class MainRouter extends Component {
     ],
   };
 
-  _renderIndicator = (props) => {
-    const { width, position } = props;
-
-    const translateX = Animated.multiply(position, width);
-
-    return (
-      <Animated.View
-        style={[ styles.container, { width, transform: [ { translateX } ] } ]}
-      >
-        <View style={styles.indicator} />
-      </Animated.View>
-    );
+  handleChangeTab = (index) => {
+    this.setState({ index });
   };
 
-  _renderIcon = ({ route }: any) => {
-    return (
-      <Icon
-        name={route.icon}
-        size={route.size}
-        style={styles.icon}
-      />
-    );
-  };
-
-  _renderBadge = ({ route }) => {
+  renderBadge = ({ route }) => {
     if (route.key === '8') {
       return (
         <View style={styles.badge}>
@@ -112,63 +84,81 @@ class MainRouter extends Component {
     return null;
   };
 
-  _handleChangeTab = (index) => {
-    this.setState({ index });
+  renderIcon = ({ route }: any) => {
+    return (
+      <Icon
+        name={route.icon}
+        size={route.size}
+        style={styles.icon}
+      />
+    );
   };
 
-  _renderFooter = (props) => {
+  renderIndicator = (props) => {
+    const { width, position } = props;
+
+    const translateX = Animated.multiply(position, width);
+
+    return (
+      <Animated.View style={[styles.container, { width, transform: [{ translateX }] }]}>
+        <View style={styles.indicator} />
+      </Animated.View>
+    );
+  };
+
+  renderFooter = (props) => {
     return (
       <TabBar
         {...props}
-        renderIcon={this._renderIcon}
-        renderBadge={this._renderBadge}
-        renderIndicator={this._renderIndicator}
+        renderIcon={this.renderIcon}
+        renderBadge={this.renderBadge}
+        renderIndicator={this.renderIndicator}
         style={styles.tabbar}
         tabStyle={styles.tab}
       />
     );
   };
 
-  _renderScene = ({ route }) => {
+  renderScene = ({ route }) => {
     switch (route.key) {
-    case '1':
-      return <Analysis />;
-    case '2':
-      return <Transactions />;
-    case '3':
-      return <Overview />;
-    case '4':
-      return <Settings />;
-    default:
-      return null;
+      case '1':
+        return <Analysis />;
+      case '2':
+        return <Transactions />;
+      case '3':
+        return <Overview />;
+      case '4':
+        return <Settings />;
+      default:
+        return null;
     }
   };
 
-  _renderPager = (props) => {
+  renderPager = (props) => {
     switch (Platform.OS) {
-    case 'ios':
-      return (
-        <TabViewPagerScroll
-          {...props}
-          animationEnabled={false}
-          swipeEnabled={false}
-        />
-      );
-    case 'android':
-      return (
-        <TabViewPagerAndroid
-          {...props}
-          animationEnabled={false}
-          swipeEnabled={false}
-        />
-      );
-    default:
-      return (
-        <TabViewPagerPan
-          {...props}
-          swipeEnabled={false}
-        />
-      );
+      case 'ios':
+        return (
+          <TabViewPagerScroll
+            {...props}
+            animationEnabled={false}
+            swipeEnabled={false}
+          />
+        );
+      case 'android':
+        return (
+          <TabViewPagerAndroid
+            {...props}
+            animationEnabled={false}
+            swipeEnabled={false}
+          />
+        );
+      default:
+        return (
+          <TabViewPagerPan
+            {...props}
+            swipeEnabled={false}
+          />
+        );
     }
   };
 
@@ -177,17 +167,21 @@ class MainRouter extends Component {
       <TabViewAnimated
         style={styles.container}
         navigationState={this.state}
-        renderScene={this._renderScene}
-        renderFooter={this._renderFooter}
-        renderPager={this._renderPager}
-        onRequestChangeTab={this._handleChangeTab}
+        renderScene={this.renderScene}
+        renderFooter={this.renderFooter}
+        renderPager={this.renderPager}
+        onRequestChangeTab={this.handleChangeTab}
       />
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
+  /* eslint-disable no-undef */
+  /* eslint-disable no-return-assign */
   return { currentPage } = state.mainRouter;
+  /* eslint-enable no-undef */
+  /* eslint-enable no-return-assign */
 };
 
 export default connect(mapStateToProps, { redirect })(MainRouter);
