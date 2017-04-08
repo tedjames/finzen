@@ -100,7 +100,7 @@ class ActionForm extends Component {
         activeOpacity={hideArrow ? 1 : 0.4}
         style={styles.container}
         onPress={this.props.onPress ?
-          () => this.props.onPress :
+          this.props.onPress :
           () => AlertIOS.prompt(label, null, this.saveResponse, undefined, value)
         }
         disabled={disabled}

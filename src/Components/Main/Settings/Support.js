@@ -31,7 +31,8 @@ export default class Support extends Component {
       disableButtons: false,
       loading: false,
       success: false,
-      fail: false
+      fail: false,
+      modalOpen: false
     });
   }
 
@@ -56,7 +57,7 @@ export default class Support extends Component {
           </View>
 
           <Form height={450} loading={loading}>
-            <ActionForm disabled={disableButtons} label="Problem Type" value="" placeholder="Please choose one..." dropdown />
+            <ActionForm disabled={disableButtons} label="Problem Type" value="" placeholder="Please choose one..." onPress={() => this.setState({ modalOpen: true })} dropdown />
             <FormField disabled={disableButtons} label="Description" value="" placeholder="Doe" lines={5} multiline />
           </Form>
 
@@ -71,7 +72,7 @@ export default class Support extends Component {
           />
         </ScrollView>
         <Modal
-          open={this.props.modalOpen}
+          open={this.state.modalOpen}
           offset={0}
           overlayBackground={'rgba(0, 0, 0, 0.75)'}
           animationDuration={200}
