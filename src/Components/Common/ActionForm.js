@@ -92,14 +92,17 @@ class ActionForm extends Component {
   }
 
   render() {
-    const { label, hideArrow, value, placeholder, disabled, dropdown } = this.props;
+    const { label, hideArrow, value, placeholder, disabled } = this.props;
     const newLabel = this.props.label.toUpperCase();
 
     return (
       <TouchableOpacity
         activeOpacity={hideArrow ? 1 : 0.4}
         style={styles.container}
-        onPress={() => AlertIOS.prompt(label, null, this.saveResponse, undefined, value)}
+        onPress={this.props.onPress ?
+          () => this.props.onPress :
+          () => AlertIOS.prompt(label, null, this.saveResponse, undefined, value)
+        }
         disabled={disabled}
       >
         <View style={styles.infoContainer}>
