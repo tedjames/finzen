@@ -1,23 +1,7 @@
 import React, { Component } from 'react';
 import { View, ScrollView } from 'react-native';
-/* eslint-disable import/no-unresolved */
-/* eslint-disable import/extensions */
-import LinearGradient from 'react-native-linear-gradient';
-/* eslint-enable import/no-unresolved */
-/* eslint-enable import/extensions */
-import Modal from 'react-native-simple-modal';
-import { ActionForm, Form, FormField, BackButton, SaveButton } from '../../Common';
+import { ActionForm, Form, FormField, BackButton, SaveButton, Dropdown, DropdownOption, GradientView } from '../../Common';
 import Header from './Header';
-
-const styles = {
-  modalStyle: {
-    borderRadius: 2,
-    margin: 20,
-    padding: 10,
-    backgroundColor: '#F5F5F5',
-    height: 300
-  }
-};
 
 
 export default class Support extends Component {
@@ -49,7 +33,7 @@ export default class Support extends Component {
     const { loading, disableButtons, buttonText, success, fail } = this.state;
 
     return (
-      <LinearGradient colors={['#fff', '#f5f5f8']} style={{ flex: 1 }}>
+      <GradientView colors={['#fff', '#f5f5f8']}>
         <ScrollView>
           <View>
             <BackButton loading={loading} />
@@ -71,19 +55,15 @@ export default class Support extends Component {
             fail={fail}
           />
         </ScrollView>
-        <Modal
-          open={this.state.modalOpen}
-          offset={0}
-          overlayBackground={'rgba(0, 0, 0, 0.75)'}
-          animationDuration={200}
-          animationTension={40}
-          modalDidOpen={() => undefined}
-          modalDidClose={() => this.setState({ modalOpen: false })}
-          containerStyle={{ justifyContent: 'center' }}
-          modalStyle={styles.modalStyle}
-          closeOnTouchOutside
-        />
-      </LinearGradient>
+        <Dropdown open={this.state.modalOpen} onClose={() => this.setState({ modalOpen: false })}>
+          <DropdownOption label="Account Linking" />
+          <DropdownOption label="Security" />
+          <DropdownOption label="Security" />
+          <DropdownOption label="Security" />
+          <DropdownOption label="Bug Report" />
+          <DropdownOption label="Other" disableDivider />
+        </Dropdown>
+      </GradientView>
     );
   }
 }
