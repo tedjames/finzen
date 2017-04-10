@@ -23,7 +23,7 @@ class DropdownOption extends Component {
   }
 
   render() {
-    const { disableDivider, label } = this.props;
+    const { disableDivider, label, onPress } = this.props;
 
     const styles = {
       container: {
@@ -57,7 +57,7 @@ class DropdownOption extends Component {
 
     return (
       <View style={styles.container}>
-        <TouchableHighlight style={styles.button} underlayColor={'#eee'} onPress={() => undefined}>
+        <TouchableHighlight style={styles.button} underlayColor={'#eee'} onPress={onPress}>
           <Text style={styles.label}>{label}</Text>
         </TouchableHighlight>
       </View>

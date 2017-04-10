@@ -9,6 +9,7 @@ export default class Support extends Component {
     super(props);
 
     this.handleSave = this.handleSave.bind(this);
+    this.closeModal = this.closeModal.bind(this);
 
     this.state = ({
       buttonText: 'SUBMIT',
@@ -27,6 +28,10 @@ export default class Support extends Component {
     setTimeout(() => {
       this.setState({ success: true });
     }, 3000);
+  }
+
+  closeModal() {
+    this.setState({ modalOpen: false });
   }
 
   render() {
@@ -56,12 +61,12 @@ export default class Support extends Component {
           />
         </ScrollView>
         <Dropdown open={this.state.modalOpen} onClose={() => this.setState({ modalOpen: false })}>
-          <DropdownOption label="Account Linking" />
-          <DropdownOption label="Security" />
-          <DropdownOption label="Security" />
-          <DropdownOption label="Security" />
-          <DropdownOption label="Bug Report" />
-          <DropdownOption label="Other" disableDivider />
+          <DropdownOption label="Account Linking" onPress={this.closeModal} />
+          <DropdownOption label="Security" onPress={this.closeModal} />
+          <DropdownOption label="Security" onPress={this.closeModal} />
+          <DropdownOption label="Security" onPress={this.closeModal} />
+          <DropdownOption label="Bug Report" onPress={this.closeModal} />
+          <DropdownOption label="Other" onPress={this.closeModal} disableDivider />
         </Dropdown>
       </GradientView>
     );
