@@ -42,7 +42,7 @@ export default class Header extends Component {
     return (
       <Animatable.View ref="header" animation="fadeInLeft" duration={1025} style={styles.headerContainer}>
         <Text style={styles.headerSymbol}>//</Text>
-        <Text style={styles.headerText}>{this.props.text}</Text>
+        <Text style={styles.headerText}>{this.props.text.toUpperCase()}</Text>
       </Animatable.View>
     );
   }
