@@ -9,10 +9,11 @@ export default class Support extends Component {
     super(props);
 
     this.handleSave = this.handleSave.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    this.dropdownHandler = this.dropdownHandler.bind(this);
 
     this.state = ({
       buttonText: 'SUBMIT',
+      problemType: '',
       disableButtons: false,
       loading: false,
       success: false,
@@ -30,8 +31,8 @@ export default class Support extends Component {
     }, 3000);
   }
 
-  closeModal() {
-    this.setState({ modalOpen: false });
+  dropdownHandler(problemType) {
+    this.setState({ modalOpen: false, problemType });
   }
 
   render() {
@@ -46,7 +47,7 @@ export default class Support extends Component {
           </View>
 
           <Form height={450} loading={loading}>
-            <ActionForm disabled={disableButtons} label="Problem Type" value="" placeholder="Please choose one..." onPress={() => this.setState({ modalOpen: true })} dropdown />
+            <ActionForm disabled={disableButtons} label="Problem Type" value={this.state.problemType} placeholder="Please choose one..." onPress={() => this.setState({ modalOpen: true })} dropdown />
             <FormField disabled={disableButtons} label="Description" value="" placeholder="Doe" lines={5} multiline />
           </Form>
 
@@ -61,12 +62,12 @@ export default class Support extends Component {
           />
         </ScrollView>
         <Dropdown open={this.state.modalOpen} onClose={() => this.setState({ modalOpen: false })}>
-          <DropdownOption label="Account Linking" onPress={this.closeModal} />
-          <DropdownOption label="Security" onPress={this.closeModal} />
-          <DropdownOption label="Security" onPress={this.closeModal} />
-          <DropdownOption label="Security" onPress={this.closeModal} />
-          <DropdownOption label="Bug Report" onPress={this.closeModal} />
-          <DropdownOption label="Other" onPress={this.closeModal} disableDivider />
+          <DropdownOption label="Account Linking" onPress={label => this.dropdownHandler(label)} />
+          <DropdownOption label="Security" onPress={label => this.dropdownHandler(label)} />
+          <DropdownOption label="Security" onPress={label => this.dropdownHandler(label)} />
+          <DropdownOption label="Security" onPress={label => this.dropdownHandler(label)} />
+          <DropdownOption label="Bug Report" onPress={label => this.dropdownHandler(label)} />
+          <DropdownOption label="Other" onPress={label => this.dropdownHandler(label)} disableDivider />
         </Dropdown>
       </GradientView>
     );

@@ -57,7 +57,7 @@ class DropdownOption extends Component {
 
     return (
       <View style={styles.container}>
-        <TouchableHighlight style={styles.button} underlayColor={'#eee'} onPress={onPress}>
+        <TouchableHighlight style={styles.button} underlayColor={'#eee'} onPress={() => onPress(label)}>
           <Text style={styles.label}>{label}</Text>
         </TouchableHighlight>
       </View>
