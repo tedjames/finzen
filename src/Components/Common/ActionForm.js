@@ -92,7 +92,7 @@ class ActionForm extends Component {
   }
 
   render() {
-    const { label, hideArrow, value, placeholder, disabled } = this.props;
+    const { label, formLabel, hideArrow, value, placeholder, disabled } = this.props;
     const newLabel = this.props.label.toUpperCase();
 
     return (
@@ -101,7 +101,7 @@ class ActionForm extends Component {
         style={styles.container}
         onPress={this.props.onPress ?
           this.props.onPress :
-          () => AlertIOS.prompt(label, null, this.saveResponse, undefined, value)
+          () => AlertIOS.prompt(formLabel, null, this.saveResponse, undefined, value)
         }
         disabled={disabled}
       >

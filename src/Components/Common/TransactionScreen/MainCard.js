@@ -1,6 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
-import ActionForm from './ActionForm'
+import { ActionForm } from '../ActionForm'
 import TagsForm from './TagsForm'
 import CommentSection from './CommentSection'
 import * as Animatable from 'react-native-animatable'
@@ -25,7 +25,7 @@ const styles = {
 const MainCard = (props) => {
   return (
     <View style={styles.mainCard}>
-      <ActionForm label="MERCHANT" value="Antonio's Pizza LLC" />
+      <ActionForm label="Merchant" value="Antonio's Pizza LLC" formLabel="Rename Merchant" />
       <ActionForm label="PAYMENT METHOD" value="Chase Checking" />
       <TagsForm label="TAGS" value="meh" />
       <CommentSection />
