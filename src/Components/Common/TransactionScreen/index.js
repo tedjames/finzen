@@ -43,13 +43,13 @@ export default class TransactionScreen extends Component {
           <Animatable.View animation="fadeIn" easing="ease-out" duration={1800}>
             <MapView
               provider={PROVIDER_GOOGLE}
+              initialRegion={this.state.region}
               style={styles.map}
               customMapStyle={mapStyle}
-              scrollEnabled={true}
-              zoomEnabled={true}
-              pitchEnabled={true}
-              rotateEnabled={true}
-              initialRegion={this.state.region}
+              scrollEnabled
+              zoomEnabled
+              pitchEnabled
+              rotateEnabled
             >
               <MapView.Marker
                 title="Antonio's Brick Oven Pizza"
