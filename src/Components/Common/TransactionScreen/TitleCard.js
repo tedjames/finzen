@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
-import { Text, View, TouchableOpacity, ActionSheetIOS, AlertIOS } from 'react-native';
+import { Text, View, TouchableOpacity, ActionSheetIOS, AlertIOS, Alert } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 const styles = {
@@ -120,8 +120,13 @@ export default class titleCard extends Component {
           AlertIOS.prompt('Rename Transaction', null, this.handleRename, undefined, this.state.name);
           break;
         case 1:
-          // TODO: Create a mark as recurring set of pages
-          // TODO: Insert router push to 'mark as recurring' scene bucket and pass in a txid
+          Alert.alert(
+            'Mark as Recurring',
+            'Are you sure you want this transaction marked as a recurring bill?',
+            [
+              { text: 'Cancel', onPress: () => console.log('Cancel Pressed!') },
+              { text: 'OK', onPress: undefined }
+            ]);
           break;
         case 2:
           break;
@@ -131,7 +136,6 @@ export default class titleCard extends Component {
     });
   }
   render() {
-    // BUG: https://github.com/tedjames/finzen/issues/4 - Text scaling issue
     return (
       <Animatable.View animation="slideInRight" duration={800} style={styles.titleCard}>
 
