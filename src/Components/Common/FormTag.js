@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 class FormTag extends Component {
   constructor(props) {
     super(props);
+    this.confirmDelete = this.confirmDelete.bind(this);
 
     this.state = ({
       text: '',
@@ -21,6 +22,21 @@ class FormTag extends Component {
     if (placeholder) {
       this.setState({ placeholder });
     }
+  }
+
+  handleDelete() {
+    // TODO: delete tag in the backend here
+    return null;
+  }
+
+  confirmDelete() {
+    Alert.alert(
+      'Confirm Deletion',
+      `Are you sure you want to remove the "${this.props.label}" tag from this transaction?`,
+      [
+        { text: 'Cancel', onPress: this.handleDelete },
+        { text: 'OK', onPress: undefined }
+      ]);
   }
 
   render() {
@@ -92,7 +108,7 @@ class FormTag extends Component {
             <Text style={styles.label}>{label}</Text>
           </View>
 
-          <TouchableOpacity style={styles.rightSection}>
+          <TouchableOpacity style={styles.rightSection} onPress={this.confirmDelete}>
             <Icon name="times-circle" size={15} style={styles.deleteIcon} />
           </TouchableOpacity>
         </View>

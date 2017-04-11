@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, AlertIOS } from 'react-native';
 import { Form, FormTag, BackButton, SaveButton, GradientView } from '../../Common';
 import Header from './Header';
 
@@ -7,10 +7,10 @@ export default class TagEditor extends Component {
   constructor(props) {
     super(props);
 
-    this.handleToggle = this.handleToggle.bind(this);
+    this.handleButton = this.handleButton.bind(this);
 
     this.state = ({
-      buttonText: 'SAVE CHANGES',
+      buttonText: 'ADD TAGS',
       scrollEnabled: true,
       disableButtons: false,
       disableSwitches: false,
@@ -20,15 +20,13 @@ export default class TagEditor extends Component {
     });
   }
 
-  handleToggle() {
-    // TODO: Insert API calls here
-    const enable = 'ENABLE NOTIFICATIONS';
-    const disable = 'DISABLE NOTIFICATIONS';
-    const { buttonText, disableSwitches } = this.state;
-    this.setState({
-      buttonText: buttonText === enable ? disable : enable,
-      disableSwitches: !disableSwitches
-    });
+  createTag(tagName) {
+    // TODO: add API call here to insert/assign tag in the backend
+    console.log(tagName);
+  }
+
+  handleButton() {
+    AlertIOS.prompt('Add a Tag', 'Please enter a name for your tag', this.createTag, undefined, '');
   }
 
   render() {
@@ -51,7 +49,7 @@ export default class TagEditor extends Component {
           <SaveButton
             text={buttonText}
             width={300}
-            onPress={this.handleToggle}
+            onPress={this.handleButton}
             loading={loading}
             disabled={disableButtons}
             offset={100}
