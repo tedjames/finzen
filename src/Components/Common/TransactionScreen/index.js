@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { Text, View, Dimensions, ScrollView, StyleSheet, TouchableOpacity, ActionSheetIOS } from 'react-native';
-import { GradientView } from '../../Common'
+import { View, Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
-import Icon from 'react-native-vector-icons/SimpleLineIcons'
-import FaIcon from './FaIcon'
-import TitleCard from './TitleCard'
-import MainCard from './MainCard'
-import { Actions } from 'react-native-router-flux'
-import * as Animatable from 'react-native-animatable'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import Icon from 'react-native-vector-icons/SimpleLineIcons';
+import { Actions } from 'react-native-router-flux';
+import * as Animatable from 'react-native-animatable';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
+import TitleCard from './TitleCard';
+import MainCard from './MainCard';
+
 
 const { width, height } = Dimensions.get('window');
 const SCREEN_WIDTH = width;
@@ -18,7 +18,7 @@ const LONGITUDE = -74.362480;
 const LATITUDE_DELTA = 0.005;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
-const mapStyle = [{"stylers":[{"hue":"#ff1a00"},{"invert_lightness":true},{"saturation":-100},{"lightness":33},{"gamma":0.5}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#2D333C"}]}]
+const mapStyle = [{'stylers':[{'hue':'#ff1a00'},{'invert_lightness':true},{'saturation':-100},{'lightness':33},{'gamma':0.5}]},{'featureType':'water','elementType':'geometry','stylers':[{'color':'#2D333C'}]}]
 
 export default class TransactionScreen extends Component {
   constructor(props) {
@@ -40,7 +40,7 @@ export default class TransactionScreen extends Component {
         <KeyboardAwareScrollView
           style={StyleSheet.absoluteFill}
         >
-          <Animatable.View animation="fadeIn" easing="ease-out" duration={1800}>
+          <Animatable.View>
             <MapView
               provider={PROVIDER_GOOGLE}
               initialRegion={this.state.region}
@@ -58,11 +58,15 @@ export default class TransactionScreen extends Component {
                 pinColor="#d3d8d9"
               />
             </MapView>
-            <TouchableOpacity style={styles.iconContainer} activeOpacity={0.4} onPress={() => Actions.pop()}>
+            <TouchableOpacity
+              style={styles.iconContainer}
+              activeOpacity={0.4}
+              onPress={() => Actions.pop()}
+            >
               <Icon name="arrow-left-circle" size={28} style={styles.backIcon} />
             </TouchableOpacity>
           </Animatable.View>
-          <TitleCard />
+          <TitleCard name="Antonio's Brick Oven Pizza" />
           <MainCard />
         </KeyboardAwareScrollView>
       </View>
@@ -75,7 +79,7 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     justifyContent: 'flex-end',
     alignItems: 'center',
-    backgroundColor: "#252525"
+    backgroundColor: '#252525'
   },
 
   map: {
@@ -84,16 +88,16 @@ const styles = StyleSheet.create({
     marginTop: -60
   },
   backIcon: {
-    color: "#fff",
+    color: '#fff',
     opacity: 0.9,
-    backgroundColor: "transparent",
+    backgroundColor: 'transparent',
   },
   iconContainer: {
-    position: "relative",
+    position: 'relative',
     bottom: 220,
     margin: 5,
     width: 50,
     height: 20,
-    alignItems: "center"
+    alignItems: 'center'
   }
 });

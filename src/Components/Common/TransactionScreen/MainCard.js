@@ -1,16 +1,15 @@
-import React from 'react'
-import { View } from 'react-native'
-import { ActionForm } from '../ActionForm'
-import TagsForm from './TagsForm'
-import CommentSection from './CommentSection'
-import * as Animatable from 'react-native-animatable'
+import React from 'react';
+import { View } from 'react-native';
+import { ActionForm } from '../ActionForm';
+import TagsForm from './TagsForm';
+import CommentSection from './CommentSection';
 
 const styles = {
   mainCard: {
-    backgroundColor: "#ecedf0",
+    backgroundColor: '#ecedf0',
     paddingTop: 125,
     paddingBottom: 350,
-    position: "relative",
+    position: 'relative',
     bottom: 162,
     marginBottom: -500,
     zIndex: -1,
@@ -20,13 +19,13 @@ const styles = {
     shadowRadius: 15,
     elevation: 1,
   },
-}
+};
 
-const MainCard = (props) => {
+const MainCard = () => {
   return (
     <View style={styles.mainCard}>
+      <ActionForm label="Payment Method" value="Chase Checking" disabled hideArrow />
       <ActionForm label="Merchant" value="Antonio's Pizza LLC" formLabel="Rename Merchant" />
-      <ActionForm label="PAYMENT METHOD" value="Chase Checking" />
       <TagsForm label="TAGS" value="meh" />
       <CommentSection />
     </View>
