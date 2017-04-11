@@ -93,7 +93,7 @@ class ActionForm extends Component {
 
   render() {
     const { label, formLabel, hideArrow, value, placeholder, disabled } = this.props;
-    const newLabel = this.props.label.toUpperCase();
+    const newLabel = label.toUpperCase();
 
     return (
       <TouchableOpacity
