@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { View, ScrollView } from 'react-native';
-/* eslint-disable import/no-unresolved */
-/* eslint-disable import/extensions */
-import LinearGradient from 'react-native-linear-gradient';
-/* eslint-enable import/no-unresolved */
-/* eslint-enable import/extensions */import { Form, FormSwitch, BackButton, SaveButton } from '../../Common';
+import { Form, FormSwitch, BackButton, SaveButton, GradientView } from '../../Common';
 import Header from './Header';
 
 export default class Notifications extends Component {
@@ -39,7 +35,7 @@ export default class Notifications extends Component {
     const { loading, disableButtons, disableSwitches, buttonText } = this.state;
 
     return (
-      <LinearGradient colors={['#fff', '#f5f5f8']} style={{ flex: 1 }}>
+      <GradientView colors={['#fff', '#f5f5f8']}>
         <ScrollView scrollEnabled={this.state.scrollEnabled}>
           <View>
             <BackButton loading={loading} />
@@ -64,7 +60,7 @@ export default class Notifications extends Component {
             disableAnimation
           />
         </ScrollView>
-      </LinearGradient>
+      </GradientView>
     );
   }
 }
