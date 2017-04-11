@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, ScrollView } from 'react-native';
-import { Form, FormSwitch, FormTag, BackButton, SaveButton, GradientView } from '../../Common';
+import { Form, FormTag, BackButton, SaveButton, GradientView } from '../../Common';
 import Header from './Header';
 
 export default class TagEditor extends Component {

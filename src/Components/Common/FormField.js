@@ -81,9 +81,9 @@ class FormField extends Component {
     const newLabel = label.toUpperCase();
     const fieldStyle = {
       fontFamily: 'Open Sans',
-      fontSize: 16,
+      fontSize: 15,
       color: '#252525',
-      marginTop: 3,
+      marginTop: 5,
       height: multiline ? 250 : 20
     };
 
