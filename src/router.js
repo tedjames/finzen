@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import { Scene, Router, Actions } from 'react-native-router-flux';
+import { Scene, Router } from 'react-native-router-flux';
 import MainRouter from './Components/Main/mainRouter';
-import TransactionScreen from './Components/Common/TransactionScreen'
-import AccountScreen from './Components/Main/Overview/AccountScreen'
-import UserAccount from './Components/Main/Settings/UserAccount'
-import Notifications from './Components/Main/Settings/Notifications'
-import Widgets from './Components/Main/Settings/Widgets'
-import Security from './Components/Main/Settings/Security'
-import Support from './Components/Main/Settings/Support'
-import Feedback from './Components/Main/Settings/Feedback'
+import TransactionScreen from './Components/Common/TransactionScreen';
+import AccountScreen from './Components/Main/Overview/AccountScreen';
+import UserAccount from './Components/Main/Settings/UserAccount';
+import Notifications from './Components/Main/Settings/Notifications';
+import Widgets from './Components/Main/Settings/Widgets';
+import Security from './Components/Main/Settings/Security';
+import Support from './Components/Main/Settings/Support';
+import Feedback from './Components/Main/Settings/Feedback';
+import TagEditor from './Components/Common/TransactionScreen/TagEditor';
 
 export default class RouterComponent extends Component {
   render() {
@@ -24,6 +25,7 @@ export default class RouterComponent extends Component {
           <Scene key="sec" component={Security} />
           <Scene key="sup" component={Support} />
           <Scene key="feed" component={Feedback} />
+          <Scene key="tags" component={TagEditor} />
         </Scene>
 
       </Router>
