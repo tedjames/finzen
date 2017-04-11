@@ -10,7 +10,7 @@ export default class TagEditor extends Component {
     this.handleToggle = this.handleToggle.bind(this);
 
     this.state = ({
-      buttonText: 'DISABLE NOTIFICATIONS',
+      buttonText: 'SAVE CHANGES',
       scrollEnabled: true,
       disableButtons: false,
       disableSwitches: false,
@@ -32,22 +32,20 @@ export default class TagEditor extends Component {
   }
 
   render() {
-    const { loading, disableButtons, disableSwitches, buttonText } = this.state;
+    const { loading, disableButtons, buttonText } = this.state;
 
     return (
       <GradientView colors={['#fff', '#f5f5f8']}>
         <ScrollView scrollEnabled={this.state.scrollEnabled}>
           <View>
             <BackButton loading={loading} />
-            <Header text="NOTIFICATIONS" loading={loading} />
+            <Header text="EDIT TAGS" loading={loading} />
           </View>
 
           <Form loading={loading}>
-            <FormTag label="Meh" />
-            <FormTag label="Meh" />
-            <FormTag label="Meh" />
-            <FormSwitch disabled={disableSwitches} label="New Expenses" />
-            <FormSwitch disabled={disableSwitches} label="Safe Spending" disableDivider />
+            <FormTag label="Food" color="#4ab8ff" />
+            <FormTag label="Eating out" color="#584aff" />
+            <FormTag label="Pizza" color="#ff4a60" disableDivider />
           </Form>
 
           <SaveButton
