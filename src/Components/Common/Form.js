@@ -31,6 +31,7 @@ class Form extends Component {
       elevation: 2,
       paddingTop: disablePadding ? 0 : 50
     };
+
     return (
       <Animatable.View ref="mainCard" animation="fadeInUp" duration={900} style={mainCard}>
         <Animatable.View ref="form" style={{ opacity: 1 }}>
