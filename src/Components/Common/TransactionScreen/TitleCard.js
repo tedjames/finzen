@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
-import { Text, View, TouchableOpacity, ActionSheetIOS } from 'react-native';
+import { Text, View, TouchableOpacity, ActionSheetIOS, AlertIOS } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 const styles = {
@@ -95,6 +95,20 @@ const styles = {
 };
 
 export default class titleCard extends Component {
+  constructor(props) {
+    super(props);
+    this.handleRename = this.handleRename.bind(this);
+    this.showActionSheet = this.showActionSheet.bind(this);
+
+    this.state = ({
+      name: "Antonio's Brick Oven Pizza",
+    });
+  }
+
+  handleRename(newName) {
+    this.setState({ name: newName });
+  }
+
   showActionSheet() {
     ActionSheetIOS.showActionSheetWithOptions({
       options: ['Rename', 'Mark as Recurring', 'Cancel'],
@@ -103,8 +117,7 @@ export default class titleCard extends Component {
     (buttonIndex) => {
       switch (buttonIndex) {
         case 0:
-          // TODO: Create an edit details page
-          // TODO: Insert router push to edit details page here and pass in a txid
+          AlertIOS.prompt('Rename Transaction', null, this.handleRename, undefined, this.state.name);
           break;
         case 1:
           // TODO: Create a mark as recurring set of pages
@@ -123,7 +136,7 @@ export default class titleCard extends Component {
       <Animatable.View animation="slideInRight" duration={800} style={styles.titleCard}>
 
         <View style={styles.row}>
-          <Text style={styles.title}>{this.props.name}</Text>
+          <Text style={styles.title}>{this.state.name}</Text>
 
           <TouchableOpacity activeOpacity={0.4} onPress={this.showActionSheet}>
             <Icon name="options-vertical" size={16} style={styles.settingsIcon} />
