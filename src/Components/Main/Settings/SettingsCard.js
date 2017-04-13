@@ -12,7 +12,7 @@ const styles = {
     fontSize: 14,
     letterSpacing: 0.3,
     backgroundColor: 'transparent',
-    marginTop: 12.5
+    marginTop: 15
   },
   subtitle: {
     fontFamily: 'Open Sans',
@@ -27,7 +27,7 @@ const styles = {
   rightCard: {
     backgroundColor: '#fff',
     borderRadius: 10,
-    height: height / 6,
+    height: height / 5.85,
     width: width / 2.25,
     margin: 10,
     padding: 20,
@@ -45,7 +45,7 @@ const styles = {
     borderBottomRightRadius: 10,
     borderBottomLeftRadius: 2,
     borderTopLeftRadius: 2,
-    height: height / 6,
+    height: height / 5.85,
     width: width / 2.25,
     marginRight: 10,
     marginTop: 10,
