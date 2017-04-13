@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+
+// Get device dimensions for responsive components
+const { height, width } = Dimensions.get('window');
 
 const styles = {
   title: {
@@ -24,8 +27,8 @@ const styles = {
   rightCard: {
     backgroundColor: '#fff',
     borderRadius: 10,
-    height: 112.5,
-    width: 162.5,
+    height: height / 6,
+    width: width / 2.25,
     margin: 10,
     padding: 20,
     borderWidth: 1,
@@ -42,8 +45,8 @@ const styles = {
     borderBottomRightRadius: 10,
     borderBottomLeftRadius: 2,
     borderTopLeftRadius: 2,
-    height: 112.5,
-    width: 162.5,
+    height: height / 6,
+    width: width / 2.25,
     marginRight: 10,
     marginTop: 10,
     marginBottom: 10,

@@ -19,7 +19,8 @@ const headerText = {
 
 const row = {
   flex: 1,
-  flexDirection: 'row'
+  flexDirection: 'row',
+  justifyContent: 'space-between'
 };
 
 export default class Settings extends Component {
