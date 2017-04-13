@@ -36,19 +36,19 @@ const styles = {
     flex: 1,
     flexDirection: 'row',
     marginLeft: 25,
-    marginTop: 30,
+    paddingTop: 15,
     justifyContent: 'space-between',
     alignItems: 'center'
   },
   settingsIcon: {
-    color: '#333',
+    color: '#555',
     backgroundColor: 'transparent',
     opacity: 0.6,
     alignSelf: 'center',
     marginRight: 15,
     marginLeft: 10,
     marginBottom: 5,
-    marginTop: 5
+    marginTop: 4
   },
   clockIcon: {
     color: '#3d3d3d',
