@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import * as Animatable from 'react-native-animatable';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Actions } from 'react-native-router-flux';
+
+// Get device dimensions for responsive components
+const { height } = Dimensions.get('window');
 
 const styles = {
   backButtonContainer: {
@@ -17,7 +20,6 @@ const styles = {
     flex: 1,
     position: 'relative',
     top: 100
-
   },
   angledContainer: {
     transform: [
@@ -29,8 +31,11 @@ const styles = {
     transform: [
       { rotate: '-30deg' }
     ],
-    marginTop: 303,
-    marginLeft: 15,
+    position: 'relative',
+    // Tested and supported on: iPhone6, iPhone7-Plus
+    // TODO: Test this on all available iPhone models in xcode
+    top: height > 667 ? 310 : 300,
+    left: 15
   },
 };
 
