@@ -10,13 +10,15 @@ import Security from './Components/Main/Settings/Security';
 import Support from './Components/Main/Settings/Support';
 import Feedback from './Components/Main/Settings/Feedback';
 import TagEditor from './Components/Common/TransactionScreen/TagEditor';
+import Auth from './Components/Auth';
 
 export default class RouterComponent extends Component {
   render() {
     return (
       <Router>
-        <Scene key="main" hideNavBar initial>
-          <Scene key="app" component={MainRouter} initial />
+        <Scene key="main" hideNavBar>
+          <Scene key="auth" component={Auth} initial />
+          <Scene key="app" component={MainRouter} />
           <Scene key="tx" component={TransactionScreen} />
           <Scene key="act" component={AccountScreen} />
           <Scene key="userAct" component={UserAccount} />
