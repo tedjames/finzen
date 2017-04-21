@@ -7,7 +7,10 @@ const defaultColors = ['#f2f2f2', '#eee'];
 
 const GradientView = (props) => {
   return (
-    <LinearGradient colors={props.colors ? props.colors : defaultColors} style={{ flex: 1 }}>
+    <LinearGradient
+      colors={props.colors ? props.colors : defaultColors}
+      style={props.style ? props.style : { flex: 1 }}
+    >
       {props.children}
     </LinearGradient>
   );
