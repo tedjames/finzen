@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StatusBar, Text, TextInput, Image, TouchableOpacity, Dimensions } from 'react-native';
+import { View, StatusBar, Text, TextInput, Image, TouchableOpacity, Dimensions, Modal } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { connect } from 'react-redux';
@@ -127,7 +127,7 @@ class Auth extends Component {
     this.handleLogin = this.handleLogin.bind(this);
 
     this.state = ({
-      modalOpen: false,
+      modalVisible: false,
     });
   }
 
@@ -192,10 +192,22 @@ class Auth extends Component {
             </GradientView>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.registerButton}>
+          <TouchableOpacity
+            style={styles.registerButton}
+            onPress={() => this.setState({ modalVisible: true })}
+          >
             <Text style={styles.registerText}>NEW ACCOUNT</Text>
           </TouchableOpacity>
+
         </Image>
+        <Modal
+          animationType={'slide'}
+          transparent={false}
+          visible={this.state.modalVisible}
+          onRequestClose={() => this.setState({ modalVisible: false })}
+        >
+          <Text>Meh</Text>
+        </Modal>
       </KeyboardAwareScrollView>
     );
   }
