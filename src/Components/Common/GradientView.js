@@ -10,6 +10,8 @@ const GradientView = (props) => {
     <LinearGradient
       colors={props.colors ? props.colors : defaultColors}
       style={props.style ? props.style : { flex: 1 }}
+      start={props.start}
+      end={props.end}
     >
       {props.children}
     </LinearGradient>
