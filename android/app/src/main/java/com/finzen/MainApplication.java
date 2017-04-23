@@ -3,13 +3,13 @@ package com.finzen;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactnative.ivpusic.imagepicker.PickerPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.react.rnspinkit.RNSpinkitPackage;
 import com.azendoo.reactnativesnackbar.SnackbarPackage;
 import cl.json.RNSharePackage;
 import com.github.xinthink.rnmk.ReactMaterialKitPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
-import com.reactnative.ivpusic.imagepicker.PickerPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -30,13 +30,13 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new PickerPackage(),
             new VectorIconsPackage(),
             new RNSpinkitPackage(),
             new SnackbarPackage(),
             new RNSharePackage(),
             new ReactMaterialKitPackage(),
-            new LinearGradientPackage(),
-            new PickerPackage()
+            new LinearGradientPackage()
       );
     }
   };

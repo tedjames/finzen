@@ -3528,9 +3528,9 @@ react-native-gesture-responder@0.1.1:
   dependencies:
     react-timer-mixin "^0.13.3"
 
-react-native-image-crop-picker@^0.12.6:
-  version "0.12.6"
-  resolved "https://registry.yarnpkg.com/react-native-image-crop-picker/-/react-native-image-crop-picker-0.12.6.tgz#20daddb5dd8ff808b68530626f6a49ead35cb851"
+react-native-image-crop-picker@^0.12.10:
+  version "0.12.10"
+  resolved "https://registry.yarnpkg.com/react-native-image-crop-picker/-/react-native-image-crop-picker-0.12.10.tgz#ad2bfc89c17163b96419a54c7d680aebe0f71809"
 
 react-native-keyboard-aware-scroll-view@^0.2.7:
   version "0.2.7"

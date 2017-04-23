@@ -1,87 +1,98 @@
 import React from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
+import { View, TouchableOpacity, Text, Image, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/Octicons';
+import Icon2 from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux';
 import { hideRegister } from '../../Actions';
+import { GradientView } from '../Common';
+import Logo from './Logo';
 
+const { width } = Dimensions.get('window');
 
 const styles = {
-  header: {
-    paddingTop: 25,
-    paddingRight: 13,
-    paddingLeft: 13
-  },
   xIcon: {
     backgroundColor: 'transparent',
     alignSelf: 'center',
     color: 'white'
   },
   iconContainer: {
-    alignSelf: 'flex-end'
+    alignSelf: 'flex-end',
+    padding: 20,
+    top: 16
   },
   container: {
     backgroundColor: 'white',
-    height: 195,
-    width: 300,
-    marginRight: 25,
+    height: width / 1.025,
+    width: width / 1.25,
     alignSelf: 'center',
     justifyContent: 'center',
-    marginTop: 175,
     padding: 30,
     paddingBottom: 35,
-    paddingTop: 35
+    paddingTop: 35,
+    bottom: 32,
+    zIndex: -1
   },
-  logo: {
-    alignSelf: 'flex-start'
+  image: {
+    width: width / 1.275,
+    height: width / 1.95,
+    alignSelf: 'center',
+    marginTop: 30,
+    marginRight: 35
   },
-  fin: {
+  buttonText: {
     backgroundColor: 'transparent',
     fontFamily: 'Montserrat',
     color: 'white',
-    fontSize: 9,
-    fontWeight: '600',
-    letterSpacing: 6,
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    textShadowColor: 'rgba(0, 0, 0, 0.25)',
-    textShadowOffset: { width: 4, height: 5 },
-    textShadowRadius: 12
+    fontSize: 12,
+    fontWeight: '400',
+    letterSpacing: 4,
+    alignSelf: 'center'
   },
-  zen: {
+  nextButton: {
+    height: 75,
+    width: 250,
+    alignSelf: 'flex-end',
+    right: 30,
+    bottom: 80,
+  },
+  arrowIcon: {
     backgroundColor: 'transparent',
-    fontFamily: 'Montserrat',
-    color: 'white',
-    fontSize: 9,
-    fontWeight: '600',
-    letterSpacing: 6,
-    zIndex: 2,
-    position: 'absolute',
-    top: 13,
-    left: 15,
-    textShadowColor: 'rgba(0, 0, 0, 0.2)',
-    textShadowOffset: { width: 4, height: 5 },
-    textShadowRadius: 12
-  },
+    alignSelf: 'center',
+    marginLeft: 20,
+    color: 'white'
+  }
 };
 
 const RegisterForm = (props) => {
   return (
     <View>
-      <View style={styles.header}>
-        <View style={styles.logo}>
-          <Text style={styles.fin}>FIN</Text>
-          <Text style={styles.zen}>ZEN</Text>
-        </View>
+      <View>
+        <Logo />
 
         <TouchableOpacity style={styles.iconContainer} onPress={props.hideRegister}>
-          <Icon style={styles.xIcon} name="x" size={20} />
+          <Icon style={styles.xIcon} name="x" size={24} />
         </TouchableOpacity>
       </View>
+      <Image
+        source={require('../../Images/registerImage.png')}
+        style={styles.image}
+      />
 
       <View style={styles.container}>
         {props.children}
       </View>
+
+      <TouchableOpacity onPress={null} style={styles.nextButton} activeOpacity={0.6}>
+        <GradientView
+          start={{ x: 0.0, y: 0.75 }}
+          end={{ x: 0.5, y: 1.0 }}
+          style={{ height: '100%', justifyContent: 'center', flexDirection: 'row' }}
+          colors={['#AC70FB', '#9197F8', '#77BDF5']}
+        >
+          <Text style={styles.buttonText}>NEXT</Text>
+          <Icon2 style={styles.arrowIcon} name="md-arrow-round-forward" size={14} />
+        </GradientView>
+      </TouchableOpacity>
     </View>
   );
 };

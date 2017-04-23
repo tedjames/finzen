@@ -89,7 +89,27 @@ class Auth extends Component {
             source={require('../../Images/registerBackground.png')}
             style={styles.registerBackground}
           >
-            <RegisterForm />
+            <RegisterForm>
+              <Field
+                label="Name"
+                value={this.props.email}
+                placeholder="John Smith"
+                onChangeText={text => this.props.emailChanged(text)}
+              />
+              <Field
+                label="Email"
+                placeholder="john@smith.com"
+                value={this.props.email}
+                onChangeText={text => this.props.emailChanged(text)}
+              />
+              <Field
+                label="Password"
+                placeholder="******"
+                value={this.props.email}
+                onChangeText={text => this.props.emailChanged(text)}
+                secureTextEntry
+              />
+            </RegisterForm>
           </Image>
         </Modal>
 
