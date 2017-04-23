@@ -20,7 +20,7 @@ const styles = {
   }
 };
 
-const EmailField = (props) => {
+const Field = (props) => {
   return (
     <View style={styles.emailField}>
       <Text style={styles.label}>USERNAME</Text>
@@ -37,4 +37,4 @@ const EmailField = (props) => {
   );
 };
 
-export default EmailField;
+export default Field;

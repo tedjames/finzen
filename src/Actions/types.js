@@ -13,6 +13,10 @@ export const CONFIRM_PASSWORD_CHANGED = 'confirm_password_changed';
 export const SET_AUTH_ROUTE = 'set_auth_route';
 export const PASSWORD_MISMATCH = 'password_mismatch';
 
+// Registration Modal
+export const SHOW_REGISTER = 'SHOW_REGISTER';
+export const HIDE_REGISTER = 'HIDE_REGISTER';
+
 // Main Router
 export const REDIRECT = 'redirect';
 

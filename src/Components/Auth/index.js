@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Image } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Modal from 'react-native-modalbox';
 
 import { connect } from 'react-redux';
-import { loginUser, emailChanged, passwordChanged, registerUser, resetAuth, hideRegister } from '../../Actions';
+import { loginUser, emailChanged, passwordChanged, registerUser, resetAuth, hideRegister, showRegister } from '../../Actions';
 
 import AuthHeader from './authHeader';
 import LoginButton from './LoginButton';
 import RegisterButton from './RegisterButton';
-import EmailField from './EmailField';
+import Field from './Field';
 import PasswordField from './PasswordField';
 import LoginForm from './LoginForm';
+import RegisterForm from './RegisterForm';
 
 const styles = {
   authBackground: {
@@ -19,6 +20,11 @@ const styles = {
     width: '100%',
     alignSelf: 'center',
     zIndex: -1
+  },
+  registerBackground: {
+    flex: 1,
+    width: '100%',
+    alignSelf: 'center'
   },
   divider: {
     height: 1,
@@ -59,7 +65,7 @@ class Auth extends Component {
           style={styles.authBackground}
         >
           <LoginForm>
-            <EmailField
+            <Field
               value={this.props.email}
               onChangeText={text => this.props.emailChanged(text)}
             />
@@ -71,15 +77,20 @@ class Auth extends Component {
           </LoginForm>
 
           <LoginButton onPress={null} />
-          <RegisterButton onPress={() => this.setState({ modalVisible: true })} />
+          <RegisterButton onPress={this.props.showRegister} />
 
         </Image>
         <Modal
           style={{ zIndex: 5 }}
-          isOpen={this.state.modalVisible}
-          onClosed={() => this.setState({ modalVisible: false })}
+          isOpen={this.props.showRegisterModal}
+          onClosed={this.props.hideRegister}
         >
-          <Text>Meh</Text>
+          <Image
+            source={require('../../Images/registerBackground.png')}
+            style={styles.registerBackground}
+          >
+            <RegisterForm />
+          </Image>
         </Modal>
 
       </KeyboardAwareScrollView>
@@ -97,5 +108,6 @@ export default connect(mapStateToProps, {
   loginUser,
   registerUser,
   resetAuth,
-  hideRegister
+  hideRegister,
+  showRegister
 })(Auth);

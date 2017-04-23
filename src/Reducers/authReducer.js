@@ -11,7 +11,9 @@ import {
   RESET_AUTH_FORM,
   RESET_AUTH_ERROR,
   SET_AUTH_ROUTE,
-  PASSWORD_MISMATCH
+  PASSWORD_MISMATCH,
+  SHOW_REGISTER,
+  HIDE_REGISTER
 } from '../Actions/types';
 
 const INITIAL_STATE = {
@@ -21,7 +23,7 @@ const INITIAL_STATE = {
   user: null,
   error: '',
   loading: false,
-  currentPage: 'signIn'
+  showRegisterModal: false
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -32,6 +34,11 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, currentPage: action.payload };
     case EMAIL_CHANGED:
       return { ...state, email: action.payload };
+    // Registration
+    case SHOW_REGISTER:
+      return { ...state, showRegisterModal: true };
+    case HIDE_REGISTER:
+      return { ...state, showRegisterModal: false };
     case PASSWORD_CHANGED:
       return { ...state, password: action.payload };
     case CONFIRM_PASSWORD_CHANGED:
