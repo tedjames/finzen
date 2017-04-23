@@ -14,7 +14,6 @@ import {
   RESET_AUTH_FORM,
   SHOW_REGISTER,
   HIDE_REGISTER,
-  SET_AUTH_ROUTE,
   RESET_AUTH_ERROR,
   PASSWORD_MISMATCH
 } from './types';
@@ -22,13 +21,6 @@ import {
 export const passwordMismatch = () => {
   return {
     type: PASSWORD_MISMATCH
-  };
-};
-
-export const setAuthRoute = (newRoute) => {
-  return {
-    type: SET_AUTH_ROUTE,
-    payload: newRoute
   };
 };
 
@@ -57,13 +49,6 @@ export const hideRegister = () => {
 };
 
 // Forms
-
-export const nameChanged = (text) => {
-  return {
-    type: NAME_CHANGED,
-    payload: text
-  };
-};
 
 export const emailChanged = (text) => {
   return {

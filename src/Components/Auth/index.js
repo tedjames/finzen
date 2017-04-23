@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
-import { View, Image } from 'react-native';
+import { Image } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Modal from 'react-native-modalbox';
 
 import { connect } from 'react-redux';
 import {
   loginUser, registerUser,
-  nameChanged, emailChanged, passwordChanged,
+  emailChanged, passwordChanged, confirmPasswordChanged,
   resetAuth,
   hideRegister, showRegister
 } from '../../Actions';
 
 import AuthHeader from './authHeader';
-import LoginButton from './LoginButton';
-import RegisterButton from './RegisterButton';
+import LoginButton from './Buttons/LoginButton';
+import RegisterButton from './Buttons/RegisterButton';
 import Field from './Field';
-import PasswordField from './PasswordField';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 
@@ -101,12 +100,6 @@ class Auth extends Component {
           >
             <RegisterForm>
               <Field
-                label="Name"
-                value={this.props.name}
-                placeholder="John Smith"
-                onChangeText={text => this.props.nameChanged(text)}
-              />
-              <Field
                 label="Email"
                 placeholder="john@smith.com"
                 value={this.props.email}
@@ -119,6 +112,13 @@ class Auth extends Component {
                 onChangeText={text => this.props.passwordChanged(text)}
                 secureTextEntry
               />
+              <Field
+                label="Confirm Password"
+                value={this.props.confirmPassword}
+                placeholder="******"
+                onChangeText={text => this.props.confirmPasswordChanged(text)}
+                secureTextEntry
+              />
             </RegisterForm>
           </Image>
         </Modal>
@@ -129,11 +129,11 @@ class Auth extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { name, email, password, error, loading, showRegisterModal, currentPage } = state.auth;
+  return { email, password, confirmPassword, error, loading, showRegisterModal, currentPage } = state.auth;
 };
 
 export default connect(mapStateToProps, {
-  nameChanged,
+  confirmPasswordChanged,
   emailChanged,
   passwordChanged,
   loginUser,
