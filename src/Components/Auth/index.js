@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import Modal from 'react-native-modalbox';
 
 import { connect } from 'react-redux';
 import { loginUser, emailChanged, passwordChanged, registerUser, resetAuth, hideRegister } from '../../Actions';
@@ -17,6 +18,7 @@ const styles = {
     flex: 1,
     width: '100%',
     alignSelf: 'center',
+    zIndex: -1
   },
   divider: {
     height: 1,
@@ -69,9 +71,17 @@ class Auth extends Component {
           </LoginForm>
 
           <LoginButton onPress={null} />
-          <RegisterButton onPress={null} />
+          <RegisterButton onPress={() => this.setState({ modalVisible: true })} />
 
         </Image>
+        <Modal
+          style={{ zIndex: 5 }}
+          isOpen={this.state.modalVisible}
+          onClosed={() => this.setState({ modalVisible: false })}
+        >
+          <Text>Meh</Text>
+        </Modal>
+
       </KeyboardAwareScrollView>
     );
   }

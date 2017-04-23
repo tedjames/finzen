@@ -36,7 +36,7 @@ const styles = {
 
 const AuthHeader = () => {
   return (
-    <View style={{ zIndex: 1 }}>
+    <View>
       <StatusBar hidden />
       <GradientView
         start={{ x: 0.0, y: 0.5 }}
