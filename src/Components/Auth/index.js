@@ -76,9 +76,13 @@ class Auth extends Component {
               value={this.props.email}
               onChangeText={text => this.props.emailChanged(text)}
             />
-            <PasswordField
+            <Field
+              label="Password"
+              placeholder="******"
               value={this.props.password}
               onChangeText={text => this.props.passwordChanged(text)}
+              secureTextEntry
+              disableDivider
             />
           </LoginForm>
 

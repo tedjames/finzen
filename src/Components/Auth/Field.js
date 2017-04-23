@@ -40,7 +40,7 @@ const Field = (props) => {
         autoCorrect={false}
         secureTextEntry={props.secureTextEntry ? true : false}
       />
-      <View style={styles.divider} />
+      { props.disableDivider ? null : <View style={styles.divider} /> }
     </View>
   );
 };
