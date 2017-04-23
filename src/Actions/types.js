@@ -1,6 +1,4 @@
 // Authentication
-export const EMAIL_CHANGED = 'email_changed';
-export const PASSWORD_CHANGED = 'password_changed';
 export const LOGIN_USER_SUCCESS = 'login_user_success';
 export const LOGIN_USER_FAIL = 'login_user_fail';
 export const LOGIN_USER = 'login_user';
@@ -16,6 +14,11 @@ export const PASSWORD_MISMATCH = 'password_mismatch';
 // Registration Modal
 export const SHOW_REGISTER = 'SHOW_REGISTER';
 export const HIDE_REGISTER = 'HIDE_REGISTER';
+
+// Login + Registration Forms
+export const NAME_CHANGED = 'NAME_CHANGED';
+export const EMAIL_CHANGED = 'email_changed';
+export const PASSWORD_CHANGED = 'password_changed';
 
 // Main Router
 export const REDIRECT = 'redirect';

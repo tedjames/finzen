@@ -22,7 +22,7 @@ const styles = {
   },
   container: {
     backgroundColor: 'white',
-    height: width / 1.025,
+    height: width / 1,
     width: width / 1.25,
     alignSelf: 'center',
     justifyContent: 'center',
@@ -62,6 +62,7 @@ const styles = {
     alignSelf: 'flex-end',
     right: 30,
     bottom: 80,
+    backgroundColor: '#000',
     shadowColor: '#000',
     shadowOffset: { width: 3, height: 4 },
     shadowOpacity: 0.175,
@@ -105,6 +106,7 @@ const RegisterForm = (props) => {
           <Icon2 style={styles.arrowIcon} name="md-arrow-round-forward" size={14} />
         </GradientView>
       </TouchableOpacity>
+
     </View>
   );
 };

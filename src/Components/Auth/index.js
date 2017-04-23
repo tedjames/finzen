@@ -4,7 +4,12 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import Modal from 'react-native-modalbox';
 
 import { connect } from 'react-redux';
-import { loginUser, emailChanged, passwordChanged, registerUser, resetAuth, hideRegister, showRegister } from '../../Actions';
+import {
+  loginUser, registerUser,
+  nameChanged, emailChanged, passwordChanged,
+  resetAuth,
+  hideRegister, showRegister
+} from '../../Actions';
 
 import AuthHeader from './authHeader';
 import LoginButton from './LoginButton';
@@ -93,9 +98,9 @@ class Auth extends Component {
             <RegisterForm>
               <Field
                 label="Name"
-                value={this.props.email}
+                value={this.props.name}
                 placeholder="John Smith"
-                onChangeText={text => this.props.emailChanged(text)}
+                onChangeText={text => this.props.nameChanged(text)}
               />
               <Field
                 label="Email"
@@ -106,8 +111,8 @@ class Auth extends Component {
               <Field
                 label="Password"
                 placeholder="******"
-                value={this.props.email}
-                onChangeText={text => this.props.emailChanged(text)}
+                value={this.props.password}
+                onChangeText={text => this.props.passwordChanged(text)}
                 secureTextEntry
               />
             </RegisterForm>
@@ -120,10 +125,11 @@ class Auth extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { email, password, error, loading, showRegisterModal, currentPage } = state.auth;
+  return { name, email, password, error, loading, showRegisterModal, currentPage } = state.auth;
 };
 
 export default connect(mapStateToProps, {
+  nameChanged,
   emailChanged,
   passwordChanged,
   loginUser,

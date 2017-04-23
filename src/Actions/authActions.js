@@ -1,6 +1,7 @@
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import {
+  NAME_CHANGED,
   EMAIL_CHANGED,
   PASSWORD_CHANGED,
   CONFIRM_PASSWORD_CHANGED,
@@ -52,6 +53,15 @@ export const showRegister = () => {
 export const hideRegister = () => {
   return {
     type: HIDE_REGISTER
+  };
+};
+
+// Forms
+
+export const nameChanged = (text) => {
+  return {
+    type: NAME_CHANGED,
+    payload: text
   };
 };
 
