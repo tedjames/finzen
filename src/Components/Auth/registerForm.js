@@ -30,14 +30,22 @@ const styles = {
     paddingBottom: 35,
     paddingTop: 35,
     bottom: 32,
-    zIndex: -1
+    zIndex: -1,
+    shadowColor: '#000',
+    shadowOffset: { width: 3, height: 4 },
+    shadowOpacity: 0.175,
+    shadowRadius: 10
   },
   image: {
     width: width / 1.275,
     height: width / 1.95,
     alignSelf: 'center',
     marginTop: 30,
-    marginRight: 35
+    marginRight: 35,
+    shadowColor: '#000',
+    shadowOffset: { width: 3, height: 4 },
+    shadowOpacity: 0.75,
+    shadowRadius: 3,
   },
   buttonText: {
     backgroundColor: 'transparent',
@@ -49,11 +57,15 @@ const styles = {
     alignSelf: 'center'
   },
   nextButton: {
-    height: 75,
+    height: 70,
     width: 250,
     alignSelf: 'flex-end',
     right: 30,
     bottom: 80,
+    shadowColor: '#000',
+    shadowOffset: { width: 3, height: 4 },
+    shadowOpacity: 0.175,
+    shadowRadius: 7
   },
   arrowIcon: {
     backgroundColor: 'transparent',
