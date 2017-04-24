@@ -54,15 +54,15 @@ export default (state = INITIAL_STATE, action) => {
     case LOGIN_USER:
       return { ...state, loading: true, error: '' };
     case LOGIN_USER_SUCCESS:
-      return { ...state, ...INITIAL_STATE, error: 'Login Worked!', user: action.payload };
+      return { ...state, ...INITIAL_STATE, error: '', user: action.payload };
     case LOGIN_USER_FAIL:
       return { ...state, error: 'Authentication Failed', password: '', loading: false };
     case REGISTER_USER:
       return { ...state, loading: true, error: '' };
     case REGISTER_USER_FAIL:
-      return { ...state, error: 'Registration Failed', loading: false };
+      return { ...state, error: action.payload, loading: false };
     case REGISTER_USER_SUCCESS:
-      return { ...state, ...INITIAL_STATE, error: 'User Registered!', user: action.payload };
+      return { ...state, ...INITIAL_STATE, error: '', user: action.payload };
     default:
       return state;
   }

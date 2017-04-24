@@ -41,6 +41,14 @@ const styles = {
     padding: 30,
     paddingBottom: 35,
     paddingTop: 35
+  },
+  error: {
+    color: 'red',
+    fontFamily: 'Montserrat',
+    fontSize: 11,
+    letterSpacing: 1.1,
+    fontWeight: '400',
+    top: 12
   }
 };
 

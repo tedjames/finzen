@@ -79,7 +79,7 @@ const styles = {
     fontFamily: 'Montserrat',
     fontSize: 11,
     letterSpacing: 1.1,
-    fontWeight: '400',
+    fontWeight: '400'
   }
 };
 
@@ -100,7 +100,7 @@ const RegisterForm = (props) => {
 
       <View style={styles.container}>
         {props.children}
-        { props.error ? <Text style={styles.error}>{props.error}</Text> : null }
+        { props.error ? <Text style={styles.error}>{props.error.toUpperCase()}</Text> : null }
       </View>
 
       <TouchableOpacity onPress={props.onSubmit} style={styles.nextButton} activeOpacity={0.6}>
