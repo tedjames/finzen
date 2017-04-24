@@ -34,7 +34,7 @@ const styles = {
   },
 };
 
-const AuthHeader = () => {
+const LoginHeader = () => {
   return (
     <View>
       <StatusBar hidden />
@@ -50,4 +50,4 @@ const AuthHeader = () => {
   );
 };
 
-export default AuthHeader;
+export default LoginHeader;
