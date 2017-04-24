@@ -51,6 +51,7 @@ const AuthForm = (props) => {
     <View>
       <View style={loginContainer}>
         {props.children}
+        { props.error ? <Text style={styles.error}>AUTHENTICATION FAILED</Text> : null }
       </View>
       <TouchableOpacity onPress={props.onSubmit} style={styles.loginButton} activeOpacity={0.6}>
         <GradientView start={{ x: 0.0, y: 0.25 }} end={{ x: 0.5, y: 1.0 }} style={{ height: '100%', justifyContent: 'center' }} colors={['#AC70FB', '#9197F8', '#77BDF5']}>

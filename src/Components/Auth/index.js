@@ -7,11 +7,11 @@ import { connect } from 'react-redux';
 import {
   loginUser, registerUser,
   emailChanged, passwordChanged, confirmPasswordChanged,
-  resetAuth,
+  resetAuthError, passwordMismatch,
   hideRegister, showRegister
 } from '../../Actions';
 
-import AuthHeader from './authHeader';
+import LoginHeader from './LoginHeader';
 import RegisterButton from './Buttons/RegisterButton';
 import Field from './Field';
 import LoginForm from './LoginForm';
@@ -49,6 +49,8 @@ class Auth extends Component {
   constructor(props) {
     super(props);
     this.handleLogin = this.handleLogin.bind(this);
+    this.toggleRegister = this.toggleRegister.bind(this);
+    this.handleRegister = this.handleRegister.bind(this);
 
     this.state = ({
       modalVisible: false,
@@ -60,8 +62,22 @@ class Auth extends Component {
     this.props.loginUser({ email, password });
   }
 
+  handleRegister() {
+    const { email, password, confirmPassword } = this.props;
+    if (password === confirmPassword) {
+      this.props.registerUser({ email, password });
+    } else {
+      this.props.passwordMismatch();
+    }
+  }
+
+  toggleRegister() {
+    this.props.resetAuthError();
+    return this.props.showRegisterModal ? this.props.hideRegister() : this.props.showRegister();
+  }
+
   render() {
-    const { email, password, confirmPassword, loading } = this.props;
+    const { email, password, confirmPassword, loading, error } = this.props;
     return (
       <KeyboardAwareScrollView
         scrollEnabled={false}
@@ -70,13 +86,17 @@ class Auth extends Component {
         contentContainerStyle={{ flex: 1 }}
         style={{ backgroundColor: '#000' }}
       >
-        <AuthHeader />
+        <LoginHeader />
 
         <Image
           source={require('../../Images/authBackground.png')}
           style={styles.authBackground}
         >
-          <LoginForm loading={loading} onSubmit={() => this.props.loginUser({ email, password })}>
+          <LoginForm
+            error={error}
+            loading={loading}
+            onSubmit={() => this.props.loginUser({ email, password })}
+          >
             <Field
               label="Username"
               placeholder="your@email.com"
@@ -91,10 +111,9 @@ class Auth extends Component {
               secureTextEntry
               disableDivider
             />
-            { error ? <Text style={styles.error}>AUTHENTICATION FAILED</Text> : null }
           </LoginForm>
 
-          <RegisterButton onPress={this.props.showRegister} />
+          <RegisterButton onPress={this.toggleRegister} />
 
         </Image>
         <Modal
@@ -107,7 +126,10 @@ class Auth extends Component {
             style={styles.registerBackground}
           >
             <RegisterForm
-              onSubmit={() => this.props.registerUser(email, password, confirmPassword)}
+              onSubmit={this.handleRegister}
+              error={error}
+              loading={loading}
+              toggleRegister={this.toggleRegister}
             >
               <Field
                 label="Email"
@@ -148,7 +170,8 @@ export default connect(mapStateToProps, {
   passwordChanged,
   loginUser,
   registerUser,
-  resetAuth,
+  resetAuthError,
+  passwordMismatch,
   hideRegister,
   showRegister
 })(Auth);
