@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Modal from 'react-native-modalbox';
 
@@ -35,6 +35,14 @@ const styles = {
     marginTop: 15,
     marginBottom: 20,
     backgroundColor: '#eee'
+  },
+  error: {
+    color: 'red',
+    fontFamily: 'Montserrat',
+    fontSize: 11,
+    letterSpacing: 1.1,
+    fontWeight: '400',
+    top: 12
   }
 };
 
@@ -53,7 +61,35 @@ class Auth extends Component {
     this.props.loginUser({ email, password });
   }
 
+  renderForm() {
+    const { loading, email, password, error } = this.props;
+    if (loading) {
+      return (
+        <Text>Loading...</Text>
+      );
+    } return (
+      <LoginForm onSubmit={() => this.props.loginUser({ email, password })}>
+        <Field
+          label="Username"
+          placeholder="your@email.com"
+          value={email}
+          onChangeText={text => this.props.emailChanged(text)}
+        />
+        <Field
+          label="Password"
+          placeholder="******"
+          value={password}
+          onChangeText={text => this.props.passwordChanged(text)}
+          secureTextEntry
+          disableDivider
+        />
+        { error ? <Text style={styles.error}>AUTHENTICATION FAILED</Text> : null }
+      </LoginForm>
+    );
+  }
+
   render() {
+    const { email, password, confirmPassword } = this.props;
     return (
       <KeyboardAwareScrollView
         scrollEnabled={false}
@@ -68,24 +104,8 @@ class Auth extends Component {
           source={require('../../Images/authBackground.png')}
           style={styles.authBackground}
         >
-          <LoginForm>
-            <Field
-              label="Username"
-              placeholder="your@email.com"
-              value={this.props.email}
-              onChangeText={text => this.props.emailChanged(text)}
-            />
-            <Field
-              label="Password"
-              placeholder="******"
-              value={this.props.password}
-              onChangeText={text => this.props.passwordChanged(text)}
-              secureTextEntry
-              disableDivider
-            />
-          </LoginForm>
+          {this.renderForm()}
 
-          <LoginButton onPress={null} />
           <RegisterButton onPress={this.props.showRegister} />
 
         </Image>
@@ -98,23 +118,25 @@ class Auth extends Component {
             source={require('../../Images/registerBackground.png')}
             style={styles.registerBackground}
           >
-            <RegisterForm>
+            <RegisterForm
+              onSubmit={() => this.props.registerUser(email, password, confirmPassword)}
+            >
               <Field
                 label="Email"
                 placeholder="john@smith.com"
-                value={this.props.email}
+                value={email}
                 onChangeText={text => this.props.emailChanged(text)}
               />
               <Field
                 label="Password"
                 placeholder="******"
-                value={this.props.password}
+                value={password}
                 onChangeText={text => this.props.passwordChanged(text)}
                 secureTextEntry
               />
               <Field
                 label="Confirm Password"
-                value={this.props.confirmPassword}
+                value={confirmPassword}
                 placeholder="******"
                 onChangeText={text => this.props.confirmPasswordChanged(text)}
                 secureTextEntry

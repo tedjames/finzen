@@ -95,7 +95,7 @@ const RegisterForm = (props) => {
         {props.children}
       </View>
 
-      <TouchableOpacity onPress={null} style={styles.nextButton} activeOpacity={0.6}>
+      <TouchableOpacity onPress={props.onSubmit} style={styles.nextButton} activeOpacity={0.6}>
         <GradientView
           start={{ x: 0.0, y: 0.75 }}
           end={{ x: 0.5, y: 1.0 }}
