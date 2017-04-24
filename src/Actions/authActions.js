@@ -1,7 +1,6 @@
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import {
-  NAME_CHANGED,
   EMAIL_CHANGED,
   PASSWORD_CHANGED,
   CONFIRM_PASSWORD_CHANGED,
