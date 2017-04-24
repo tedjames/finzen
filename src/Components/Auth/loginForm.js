@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { GradientView } from '../Common';
 
@@ -45,7 +45,9 @@ const styles = {
 };
 
 const AuthForm = (props) => {
-  return (
+  if (props.loading) {
+    return <Text>Loading...</Text>;
+  } return (
     <View>
       <View style={loginContainer}>
         {props.children}

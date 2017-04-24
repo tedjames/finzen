@@ -12,7 +12,6 @@ import {
 } from '../../Actions';
 
 import AuthHeader from './authHeader';
-import LoginButton from './Buttons/LoginButton';
 import RegisterButton from './Buttons/RegisterButton';
 import Field from './Field';
 import LoginForm from './LoginForm';
@@ -61,35 +60,8 @@ class Auth extends Component {
     this.props.loginUser({ email, password });
   }
 
-  renderForm() {
-    const { loading, email, password, error } = this.props;
-    if (loading) {
-      return (
-        <Text>Loading...</Text>
-      );
-    } return (
-      <LoginForm onSubmit={() => this.props.loginUser({ email, password })}>
-        <Field
-          label="Username"
-          placeholder="your@email.com"
-          value={email}
-          onChangeText={text => this.props.emailChanged(text)}
-        />
-        <Field
-          label="Password"
-          placeholder="******"
-          value={password}
-          onChangeText={text => this.props.passwordChanged(text)}
-          secureTextEntry
-          disableDivider
-        />
-        { error ? <Text style={styles.error}>AUTHENTICATION FAILED</Text> : null }
-      </LoginForm>
-    );
-  }
-
   render() {
-    const { email, password, confirmPassword } = this.props;
+    const { email, password, confirmPassword, loading } = this.props;
     return (
       <KeyboardAwareScrollView
         scrollEnabled={false}
@@ -104,7 +76,23 @@ class Auth extends Component {
           source={require('../../Images/authBackground.png')}
           style={styles.authBackground}
         >
-          {this.renderForm()}
+          <LoginForm loading={loading} onSubmit={() => this.props.loginUser({ email, password })}>
+            <Field
+              label="Username"
+              placeholder="your@email.com"
+              value={email}
+              onChangeText={text => this.props.emailChanged(text)}
+            />
+            <Field
+              label="Password"
+              placeholder="******"
+              value={password}
+              onChangeText={text => this.props.passwordChanged(text)}
+              secureTextEntry
+              disableDivider
+            />
+            { error ? <Text style={styles.error}>AUTHENTICATION FAILED</Text> : null }
+          </LoginForm>
 
           <RegisterButton onPress={this.props.showRegister} />
 
