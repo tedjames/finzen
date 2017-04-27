@@ -26,7 +26,9 @@ const styles = {
 };
 
 const RegisterButton = (props) => {
-  return (
+  if (props.loading) {
+    return null;
+  } return (
     <TouchableOpacity
       style={styles.registerButton}
       onPress={props.onPress}

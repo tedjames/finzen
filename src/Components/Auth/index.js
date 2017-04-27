@@ -113,7 +113,7 @@ class Auth extends Component {
             />
           </LoginForm>
 
-          <RegisterButton onPress={this.toggleRegister} />
+          <RegisterButton loading={loading} onPress={this.toggleRegister} />
 
         </Image>
         <Modal

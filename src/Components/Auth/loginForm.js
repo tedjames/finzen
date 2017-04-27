@@ -1,7 +1,9 @@
 import React from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Spinner from 'react-native-spinkit';
 import { GradientView } from '../Common';
+
 
 const loginContainer = {
   backgroundColor: 'white',
@@ -49,17 +51,22 @@ const styles = {
     letterSpacing: 1.1,
     fontWeight: '400',
     top: 12
+  },
+  spinner: {
+    backgroundColor: 'transparent',
+    alignSelf: 'center',
+    marginTop: 200
   }
 };
 
 const AuthForm = (props) => {
   if (props.loading) {
-    return <Text>Loading...</Text>;
+    return <Spinner style={styles.spinner} type="Pulse" size={120} color={'#FFFFFF'} isVisible />;
   } return (
     <View>
       <View style={loginContainer}>
         {props.children}
-        { props.error ? <Text style={styles.error}>AUTHENTICATION FAILED</Text> : null }
+        { props.error ? <Text style={styles.error}>{props.error.toUpperCase()}</Text> : null }
       </View>
       <TouchableOpacity onPress={props.onSubmit} style={styles.loginButton} activeOpacity={0.6}>
         <GradientView start={{ x: 0.0, y: 0.25 }} end={{ x: 0.5, y: 1.0 }} style={{ height: '100%', justifyContent: 'center' }} colors={['#AC70FB', '#9197F8', '#77BDF5']}>
