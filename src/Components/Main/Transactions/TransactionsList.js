@@ -5,25 +5,8 @@ import Divider from './Divider'
 
 const styles = {
   transactionsCard: {
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    elevation: 1,
-    backgroundColor: "#fff",
-    marginRight: 0,
-    marginLeft: 0,
-    marginTop: -3,
-    marginBottom: 147,
-    paddingBottom: 7,
-    borderBottomLeftRadius: 0,
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
-    borderBottomRightRadius: 0,
-    borderTopWidth: 0.5,
-    borderRightWidth: 0.5,
-    borderLeftWidth: 1,
-    borderColor: "#d1d1d1"
+    backgroundColor: '#eee',
+    paddingBottom: 140
   },
   separator: {
     height: 1,
@@ -47,21 +30,21 @@ export default class TransactionsList extends Component {
 
   convertTransactions() {
     const transactions = [
-      {txid: 0, merchant: "Amazon", amount: "94.55", date: "TODAY", time: "4:30pm", location: "Online", neg: false},
-      {txid: 1, merchant: "Amazon", amount: "94.55", date: "YESTERDAY ", time: "4:30pm", location: "Online", neg: true},
-      {txid: 2, merchant: "Amazon", amount: "94.55", date: "JANUARY 28, 2017", time: "4:30pm", location: "Online", neg: false},
-      {txid: 3, merchant: "Amazon", amount: "94.55", date: "JANUARY 28, 2017", time: "4:30pm", location: "Online", neg: true},
-      {txid: 4, merchant: "Amazon", amount: "94.55", date: "JANUARY 28, 2017", time: "4:30pm", location: "Online", neg: false},
-      {txid: 5, merchant: "Amazon", amount: "94.55", date: "JANUARY 27, 2017", time: "4:30pm", location: "Online", neg: true},
-      {txid: 6, merchant: "Amazon", amount: "94.55", date: "JANUARY 27, 2017", time: "4:30pm", location: "Online", neg: true},
-      {txid: 7, merchant: "Amazon", amount: "94.55", date: "JANUARY 27, 2017", time: "4:30pm", location: "Online", neg: false},
-      {txid: 8, merchant: "Amazon", amount: "94.55", date: "JANUARY 27, 2017", time: "4:30pm", location: "Online", neg: false},
-      {txid: 9, merchant: "Amazon", amount: "94.55", date: "JANUARY 27, 2017", time: "4:30pm", location: "Online", neg: false},
-      {txid: 10, merchant: "Amazon", amount: "94.55", date: "JANUARY 27, 2017", time: "4:30pm", location: "Online", neg: false},
-      {txid: 11, merchant: "Amazon", amount: "94.55", date: "JANUARY 26, 2017", time: "4:30pm", location: "Online", neg: false},
-      {txid: 12, merchant: "Amazon", amount: "94.55", date: "JANUARY 26, 2017", time: "4:30pm", location: "Online", neg: false},
-      {txid: 13, merchant: "Amazon", amount: "94.55", date: "JANUARY 25, 2017", time: "4:30pm", location: "Online", neg: false},
-      {txid: 14, merchant: "Amazon", amount: "94.55", date: "JANUARY 24, 2017", time: "4:30pm", location: "Online", neg: false},
+      { txid: 0, merchant: 'Amazon', amount: '94.55', date: 'Today', time: '4:30pm', location: 'Online', neg: false },
+      { txid: 1, merchant: 'Amazon', amount: '94.55', date: 'Yesterday ', time: '4:30pm', location: 'Online', neg: true },
+      { txid: 2, merchant: 'Amazon', amount: '94.55', date: 'January 28, 2017', time: '4:30pm', location: 'Online', neg: false },
+      { txid: 3, merchant: 'Amazon', amount: '94.55', date: 'January 28, 2017', time: '4:30pm', location: 'Online', neg: true },
+      { txid: 4, merchant: 'Amazon', amount: '94.55', date: 'January 28, 2017', time: '4:30pm', location: 'Online', neg: false },
+      { txid: 5, merchant: 'Amazon', amount: '94.55', date: 'January 27, 2017', time: '4:30pm', location: 'Online', neg: true },
+      { txid: 6, merchant: 'Amazon', amount: '94.55', date: 'January 27, 2017', time: '4:30pm', location: 'Online', neg: true },
+      { txid: 7, merchant: 'Amazon', amount: '94.55', date: 'January 27, 2017', time: '4:30pm', location: 'Online', neg: false },
+      { txid: 8, merchant: 'Amazon', amount: '94.55', date: 'January 27, 2017', time: '4:30pm', location: 'Online', neg: false },
+      { txid: 9, merchant: 'Amazon', amount: '94.55', date: 'January 27, 2017', time: '4:30pm', location: 'Online', neg: false },
+      { txid: 10, merchant: 'Amazon', amount: '94.55', date: 'January 27, 2017', time: '4:30pm', location: 'Online', neg: false },
+      { txid: 11, merchant: 'Amazon', amount: '94.55', date: 'January 26, 2017', time: '4:30pm', location: 'Online', neg: false },
+      { txid: 12, merchant: 'Amazon', amount: '94.55', date: 'January 26, 2017', time: '4:30pm', location: 'Online', neg: false },
+      { txid: 13, merchant: 'Amazon', amount: '94.55', date: 'January 25, 2017', time: '4:30pm', location: 'Online', neg: false },
+      { txid: 14, merchant: 'Amazon', amount: '94.55', date: 'January 24, 2017', time: '4:30pm', location: 'Online', neg: false },
     ];
     const transactionsMap = {}; // Create the blank map
     transactions.forEach((transaction) => {
@@ -93,7 +76,8 @@ export default class TransactionsList extends Component {
         <ListView
           dataSource={this.state.dataSource}
           renderSectionHeader={this.renderSectionHeader}
-          renderRow={(rowData) => <TransactionCard merchant={rowData.merchant} amount={rowData.amount} time={rowData.time} location={rowData.location} neg={rowData.neg}/>}
+          renderRow={rowData => <TransactionCard merchant={rowData.merchant} amount={rowData.amount} time={rowData.time} location={rowData.location} neg={rowData.neg}/>}
+          stickySectionHeadersEnabled={false}
           refreshControl={
             <RefreshControl
               title="Syncing financial data..."
@@ -102,8 +86,8 @@ export default class TransactionsList extends Component {
               refreshing={this.state.refreshing}
               onRefresh={this._onRefresh.bind(this)}
             />
-          }>
-        </ListView>
+          }
+        />
       </View>
     );
   }

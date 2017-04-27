@@ -2,15 +2,13 @@ import React from 'react';
 import { View } from 'react-native';
 import TransactionsList from './TransactionsList';
 import Header from './Header';
+import { GradientView } from '../../Common';
 
 const Transactions = () => {
   return (
-    <View>
+    <View style={{ backgroundColor: '#eee' }}>
       <Header onSearchPress={undefined} onFilterPress={undefined} />
-
-      <View>
-        <TransactionsList />
-      </View>
+      <TransactionsList />
     </View>
   );
 };

@@ -11,15 +11,17 @@ const FormLabel = (props) => {
       letterSpacing: 1.75,
       color: '#879099',
       alignSelf: 'center',
-      backgroundColor: 'transparent'
+      backgroundColor: 'transparent',
+      marginRight: 10,
+      marginLeft: 10
     },
     leftDivider: {
       borderBottomWidth: 1,
       borderColor: '#eee',
       paddingBottom: 10,
-      width: 100,
+      flex: 1,
       marginRight: 10,
-      marginLeft: 5,
+      marginLeft: 10,
       position: 'relative',
       bottom: 5
     },
@@ -27,8 +29,8 @@ const FormLabel = (props) => {
       borderBottomWidth: 1,
       borderColor: '#eee',
       paddingBottom: 10,
-      width: 100,
-      marginRight: 5,
+      flex: 1,
+      marginRight: 10,
       marginLeft: 10,
       position: 'relative',
       bottom: 5
@@ -36,7 +38,7 @@ const FormLabel = (props) => {
   };
 
   return (
-    <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 35, marginBottom: 5 }}>
+    <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: props.marginTop ? props.marginTop : 35, marginBottom: props.marginBottom ? props.marginBottom : 5 }}>
       <View style={styles.leftDivider} />
       <Text style={styles.label}>{label}</Text>
       <View style={styles.rightDivider} />

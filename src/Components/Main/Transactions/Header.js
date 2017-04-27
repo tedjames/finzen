@@ -3,12 +3,15 @@ import { Text, View, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Octicons';
 
 const styles = {
-  filterIcon: {
+  icon: {
     backgroundColor: 'transparent',
     alignSelf: 'center'
   },
   iconContainer: {
-    padding: 20
+    paddingRight: 20,
+    paddingLeft: 20,
+    paddingTop: 20,
+    paddingBottom: 20
   },
   text: {
     fontFamily: 'Montserrat',
@@ -22,12 +25,20 @@ const styles = {
     textShadowRadius: 1
   },
   headerContainer: {
-    marginTop: 10,
+    paddingTop: 10,
+    zIndex: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingRight: 5,
-    paddingLeft: 5
+    paddingLeft: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 3, height: 4 },
+    shadowOpacity: 0.125,
+    shadowRadius: 8,
+    borderBottomRightRadius: 0,
+    borderBottomLeftRadius: 0,
+    backgroundColor: '#fff'
   },
 };
 
@@ -36,11 +47,11 @@ export default class Header extends Component {
     return (
       <View style={styles.headerContainer}>
         <TouchableOpacity style={styles.iconContainer} onPress={this.props.onSearchPress}>
-          <Icon name="search" size={15} style={styles.filterIcon} color="#777" />
+          <Icon name="search" size={15} style={styles.icon} color="#777" />
         </TouchableOpacity>
         <Text style={styles.text}>TRANSACTIONS</Text>
         <TouchableOpacity style={styles.iconContainer} onPress={this.props.onFilterPress}>
-          <Icon name="settings" size={17} style={styles.filterIcon} color="#777" />
+          <Icon name="settings" size={17} style={styles.icon} color="#777" />
         </TouchableOpacity>
       </View>
     );
