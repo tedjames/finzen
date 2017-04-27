@@ -40,9 +40,9 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, email: action.payload };
     // Registration
     case SHOW_REGISTER:
-      return { ...state, showRegisterModal: true };
+      return { ...state, showRegisterModal: true, error: '', password: '', confirmPassword: '' };
     case HIDE_REGISTER:
-      return { ...state, showRegisterModal: false };
+      return { ...state, showRegisterModal: false, error: '', password: '', confirmPassword: '' };
     case PASSWORD_CHANGED:
       return { ...state, password: action.payload };
     case CONFIRM_PASSWORD_CHANGED:

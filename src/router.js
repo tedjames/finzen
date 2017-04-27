@@ -17,8 +17,8 @@ export default class RouterComponent extends Component {
     return (
       <Router>
         <Scene key="main" hideNavBar>
-          <Scene key="auth" component={Auth} initial />
-          <Scene key="app" component={MainRouter} />
+          <Scene key="auth" component={Auth} />
+          <Scene key="app" component={MainRouter} initial />
           <Scene key="tx" component={TransactionScreen} />
           <Scene key="act" component={AccountScreen} />
           <Scene key="userAct" component={UserAccount} />

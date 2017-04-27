@@ -89,7 +89,7 @@ const RegisterForm = (props) => {
       <View>
         <Logo />
 
-        <TouchableOpacity style={styles.iconContainer} onPress={props.toggleRegister}>
+        <TouchableOpacity style={styles.iconContainer} onPress={props.hideRegister}>
           <Icon style={styles.xIcon} name="x" size={24} />
         </TouchableOpacity>
       </View>

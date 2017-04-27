@@ -49,8 +49,9 @@ class Auth extends Component {
   constructor(props) {
     super(props);
     this.handleLogin = this.handleLogin.bind(this);
-    this.toggleRegister = this.toggleRegister.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
+    this.hideRegister = this.hideRegister.bind(this);
+    this.showRegister = this.showRegister.bind(this);
 
     this.state = ({
       modalVisible: false,
@@ -71,9 +72,12 @@ class Auth extends Component {
     }
   }
 
-  toggleRegister() {
-    this.props.resetAuthError();
-    return this.props.showRegisterModal ? this.props.hideRegister() : this.props.showRegister();
+  showRegister() {
+    return this.props.showRegister();
+  }
+
+  hideRegister() {
+    return this.props.hideRegister();
   }
 
   render() {
@@ -113,13 +117,13 @@ class Auth extends Component {
             />
           </LoginForm>
 
-          <RegisterButton loading={loading} onPress={this.toggleRegister} />
+          <RegisterButton loading={loading} onPress={this.showRegister} />
 
         </Image>
         <Modal
           style={{ zIndex: 5 }}
           isOpen={this.props.showRegisterModal}
-          onClosed={this.props.hideRegister}
+          onClosed={this.hideRegister}
         >
           <Image
             source={require('../../Images/registerBackground.png')}
@@ -129,7 +133,7 @@ class Auth extends Component {
               onSubmit={this.handleRegister}
               error={error}
               loading={loading}
-              toggleRegister={this.toggleRegister}
+              hideRegister={this.hideRegister}
             >
               <Field
                 label="Email"
