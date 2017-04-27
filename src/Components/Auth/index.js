@@ -50,8 +50,6 @@ class Auth extends Component {
     super(props);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
-    this.hideRegister = this.hideRegister.bind(this);
-    this.showRegister = this.showRegister.bind(this);
 
     this.state = ({
       modalVisible: false,
@@ -70,14 +68,6 @@ class Auth extends Component {
     } else {
       this.props.passwordMismatch();
     }
-  }
-
-  showRegister() {
-    return this.props.showRegister();
-  }
-
-  hideRegister() {
-    return this.props.hideRegister();
   }
 
   render() {
@@ -117,13 +107,13 @@ class Auth extends Component {
             />
           </LoginForm>
 
-          <RegisterButton loading={loading} onPress={this.showRegister} />
+          <RegisterButton loading={loading} onPress={() => this.props.showRegister()} />
 
         </Image>
         <Modal
           style={{ zIndex: 5 }}
           isOpen={this.props.showRegisterModal}
-          onClosed={this.hideRegister}
+          onClosed={() => this.props.hideRegister()}
         >
           <Image
             source={require('../../Images/registerBackground.png')}
@@ -133,7 +123,7 @@ class Auth extends Component {
               onSubmit={this.handleRegister}
               error={error}
               loading={loading}
-              hideRegister={this.hideRegister}
+              hideRegister={() => this.props.hideRegister()}
             >
               <Field
                 label="Email"
