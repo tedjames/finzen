@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Octicons';
 
@@ -31,18 +31,18 @@ const styles = {
   },
 };
 
-const Header = (props) => {
-  return (
-    <View style={styles.headerContainer}>
-      <TouchableOpacity style={styles.iconContainer} onPress={props.onSearchPress}>
-        <Icon name="search" size={15} style={styles.filterIcon} color="#777" />
-      </TouchableOpacity>
-      <Text style={styles.text}>TRANSACTIONS</Text>
-      <TouchableOpacity style={styles.iconContainer} onPress={props.onFilterPress}>
-        <Icon name="settings" size={17} style={styles.filterIcon} color="#777" />
-      </TouchableOpacity>
-    </View>
-  );
-};
-
-export default Header;
+export default class Header extends Component {
+  render() {
+    return (
+      <View style={styles.headerContainer}>
+        <TouchableOpacity style={styles.iconContainer} onPress={this.props.onSearchPress}>
+          <Icon name="search" size={15} style={styles.filterIcon} color="#777" />
+        </TouchableOpacity>
+        <Text style={styles.text}>TRANSACTIONS</Text>
+        <TouchableOpacity style={styles.iconContainer} onPress={this.props.onFilterPress}>
+          <Icon name="settings" size={17} style={styles.filterIcon} color="#777" />
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}
