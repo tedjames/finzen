@@ -20,11 +20,10 @@ export default class Widgets extends Component {
 
           <Form height={615} disablePadding>
             <FormLabel text="General" />
-            <FormSwitch label="Show Available Balance" disableDivider />
-            <FormSwitch label="Show Current Balance" disableDivider />
-            <FormSwitch label="Safe Spending" disableDivider />
+            <FormSwitch label="Available Balance" disableDivider />
+            <FormSwitch label="Current Balance" disableDivider />
+            <FormSwitch label="Flex Spending" disableDivider />
             <FormSwitch label="Upcoming Bills" disableDivider />
-            <FormSwitch label="Safe Spending" disableDivider />
             <FormLabel text="Accounts" />
             <FormSwitch label="Wells Fargo Checking" disableDivider />
             <FormSwitch label="Chase Savings" disableDivider />
