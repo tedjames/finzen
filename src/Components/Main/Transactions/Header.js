@@ -1,44 +1,45 @@
-import React from 'react'
-import { Text, View ,TouchableOpacity } from 'react-native'
-import Icon from 'react-native-vector-icons/Octicons'
+import React from 'react';
+import { Text, View, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/Octicons';
 
 const styles = {
   filterIcon: {
-    color: "#333",
-    backgroundColor: "transparent",
-    opacity: 0.6,
-    alignSelf: "center"
+    backgroundColor: 'transparent',
+    alignSelf: 'center'
   },
   iconContainer: {
-    alignSelf: "flex-end",
-    marginRight: 0,
-    position: "relative",
-    bottom: 18,
-    height: 30,
-    marginBottom: -8,
-    width: 60,
+    padding: 20
   },
-  headerText: {
-    fontFamily: "Montserrat",
-    fontSize: 13,
-    fontWeight: "500",
-    color: "#333333",
+  text: {
+    fontFamily: 'Montserrat',
+    fontSize: 12,
+    fontWeight: '400',
+    color: '#444',
     letterSpacing: 4,
-    backgroundColor: "transparent",
-    opacity: 0.70,
-    alignSelf: "center"
+    backgroundColor: 'transparent',
+    textShadowColor: 'rgba(0, 0, 0, 0.025)',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 1
   },
   headerContainer: {
-    marginTop: 28
+    marginTop: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingRight: 5,
+    paddingLeft: 5
   },
 };
 
 const Header = (props) => {
   return (
     <View style={styles.headerContainer}>
-      <Text style={styles.headerText}>TRANSACTIONS</Text>
-      <TouchableOpacity style={styles.iconContainer} onPress={this.showActionSheet}>
-        <Icon name="settings" size={20} style={styles.filterIcon} />
+      <TouchableOpacity style={styles.iconContainer} onPress={props.onSearchPress}>
+        <Icon name="search" size={15} style={styles.filterIcon} color="#777" />
+      </TouchableOpacity>
+      <Text style={styles.text}>TRANSACTIONS</Text>
+      <TouchableOpacity style={styles.iconContainer} onPress={props.onFilterPress}>
+        <Icon name="settings" size={17} style={styles.filterIcon} color="#777" />
       </TouchableOpacity>
     </View>
   );

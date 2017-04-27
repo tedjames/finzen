@@ -1,20 +1,17 @@
-import React from 'react'
-import { View } from 'react-native'
-import { GradientView } from '../../Common'
-import Header from './Header'
-import Search from './Search'
-import TransactionsList from './TransactionsList'
+import React from 'react';
+import { View } from 'react-native';
+import TransactionsList from './TransactionsList';
+import Header from './Header';
 
-const Transactions = (props) => {
+const Transactions = () => {
   return (
-    <GradientView>
-        <Header />
-        <View>
-          <Search />
-          <TransactionsList />
-        </View>
+    <View>
+      <Header onSearchPress={undefined} onFilterPress={undefined} />
 
-    </GradientView>
+      <View>
+        <TransactionsList />
+      </View>
+    </View>
   );
 };
 
