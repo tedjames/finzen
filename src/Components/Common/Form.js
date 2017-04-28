@@ -10,14 +10,14 @@ class Form extends Component {
   }
 
   render() {
-    const { height, disablePadding } = this.props;
+    const { height, disablePadding, marginTop } = this.props;
     const mainCard = {
       backgroundColor: '#fff',
       marginLeft: 5,
       marginRight: 5,
-      marginTop: 0,
+      marginTop: marginTop ? marginTop : 0,
       marginBottom: 15,
-      borderRadius: 12,
+      borderRadius: 10,
       borderWidth: 0.5,
       borderColor: '#eee',
       height: height ? height : 450,
