@@ -10,46 +10,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import Snackbar from 'react-native-snackbar';
 import { Actions } from 'react-native-router-flux';
 
-const styles = {
-  saveButton: {
-    width: '100%',
-    height: '100%',
-    alignSelf: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 10,
-    paddingTop: 18,
-    paddingBottom: 18,
-    zIndex: 1,
-    shadowColor: '#8788ff',
-    shadowOffset: { width: 0, height: 5 },
-    shadowOpacity: 0.5,
-    shadowRadius: 9,
-    elevation: 2,
-  },
-  buttonText: {
-    fontFamily: 'Montserrat',
-    fontSize: 12,
-    letterSpacing: 1.25,
-    position: 'relative',
-    bottom: 0,
-    opacity: 1,
-    alignSelf: 'center',
-    backgroundColor: 'transparent',
-    color: '#fff',
-    fontWeight: '400',
-    shadowColor: '#000',
-    shadowOffset: { width: 0.5, height: 2 },
-    shadowOpacity: 0,
-    shadowRadius: 1,
-    transform: [{ scale: 1 }],
-  },
-  spinner: {
-    opacity: 0,
-    marginBottom: 0,
-  }
-};
-
 class SaveButton extends Component {
   constructor(props) {
     super(props);
@@ -115,7 +75,46 @@ class SaveButton extends Component {
   }
 
   render() {
-    const { width, disableAnimation, disabled, onPress } = this.props;
+    const { width, disableAnimation, disabled, onPress, colors, textColor } = this.props;
+    const styles = {
+      saveButton: {
+        width: '100%',
+        height: '100%',
+        alignSelf: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 10,
+        paddingTop: 18,
+        paddingBottom: 18,
+        zIndex: 1,
+        shadowColor: '#8788ff',
+        shadowOffset: { width: 0, height: 5 },
+        shadowOpacity: 0.5,
+        shadowRadius: 9,
+        elevation: 2,
+      },
+      buttonText: {
+        fontFamily: 'Montserrat',
+        fontSize: 12,
+        letterSpacing: 1.25,
+        position: 'relative',
+        bottom: 0,
+        opacity: 1,
+        alignSelf: 'center',
+        backgroundColor: 'transparent',
+        color: textColor ? textColor : '#fff',
+        fontWeight: '400',
+        shadowColor: '#000',
+        shadowOffset: { width: 0.5, height: 2 },
+        shadowOpacity: 0,
+        shadowRadius: 1,
+        transform: [{ scale: 1 }],
+      },
+      spinner: {
+        opacity: 0,
+        marginBottom: 0,
+      }
+    };
     const saveButtonContainer = {
       flex: 1,
       flexDirection: 'row',
@@ -137,7 +136,7 @@ class SaveButton extends Component {
             <LinearGradient
               start={{ x: 0.1, y: 0.25 }}
               end={{ x: 1.6, y: 1.5 }}
-              colors={['#7e41ff', '#5AFFFB']}
+              colors={colors ? colors : ['#7e41ff', '#5AFFFB']}
               style={styles.saveButton}
             >
               <View ref="spinner" style={styles.spinner}>
@@ -162,7 +161,7 @@ class SaveButton extends Component {
           <LinearGradient
             start={{ x: 0.1, y: 0.25 }}
             end={{ x: 1.6, y: 1.5 }}
-            colors={['#7e41ff', '#5AFFFB']}
+            colors={colors ? colors : ['#7e41ff', '#5AFFFB']}
             style={styles.saveButton}
           >
             <Animatable.View ref="spinner" style={styles.spinner}>
