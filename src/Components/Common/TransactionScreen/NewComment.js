@@ -1,87 +1,82 @@
 import React, { Component } from 'react';
-import { View, TouchableOpacity, TextInput, Text, ActionSheetIOS, Image, Platform } from 'react-native'
-import Icon from 'react-native-vector-icons/SimpleLineIcons'
+import { View, TouchableOpacity, TextInput, Text, ActionSheetIOS } from 'react-native';
+import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import ImagePicker from 'react-native-image-crop-picker';
 import Snackbar from 'react-native-snackbar';
 
 const styles = {
   commentContainer: {
-    marginTop: 10,
-    flexDirection: "row",
-    marginLeft: -10
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+    height: 55,
+    alignItems: 'center',
+    borderRadius: 0,
+    marginRight: 15,
+    marginLeft: 15,
+    marginTop: 15,
+    marginBottom: -15,
+    shadowColor: '#000',
+    shadowOffset: { width: 1, height: 3 },
+    shadowOpacity: 0.125,
+    shadowRadius: 10,
   },
   attachIcon: {
-    color: "#8b8b8b",
-    marginLeft: 1.5,
-    marginTop: 4,
-    flex: 1,
-    marginRight: 10,
-    marginLeft: 10,
-    marginBottom: 5
+    color: '#bbb',
+    alignSelf: 'center',
+    marginLeft: 20,
+    paddingRight: 5,
+    paddingBottom: 10,
+    paddingTop: 10,
+    top: 1
   },
   formField: {
-    fontSize: 11.5,
-    marginLeft: 2,
-    borderColor: "#bbb",
-    borderWidth: 1,
-    borderRadius: 3,
-    marginTop: -2,
-    paddingLeft: 8,
-    paddingTop: 2,
-    backgroundColor: "#f5f5f5",
-    flex: 10
+    fontFamily: 'Open Sans',
+    fontSize: 14,
+    flex: 8,
+    color: '#000',
+    marginLeft: 10,
+    alignSelf: 'center',
   },
   activeSend: {
-    marginTop: 1,
-    flex: 1,
-    marginLeft: 17,
-    fontFamily: "Open Sans",
-    fontSize: 14,
-    fontWeight: "500",
-    color: "#63cce8"
+    fontFamily: 'Montserrat',
+    fontSize: 11,
+    letterSpacing: 3,
+    fontWeight: '300',
+    color: '#AC70FB',
+    paddingLeft: 10,
+    paddingRight: 20,
+    paddingBottom: 10,
+    paddingTop: 10,
+    backgroundColor: 'transparent'
   },
   send: {
-    marginTop: 1,
-    flex: 1,
-    marginLeft: 17,
-    fontFamily: "Open Sans",
-    fontSize: 14,
-    fontWeight: "500",
-    color: "#cccccc"
+    fontFamily: 'Montserrat',
+    fontSize: 11,
+    letterSpacing: 3,
+    fontWeight: '300',
+    color: '#dadada',
+    paddingLeft: 10,
+    paddingRight: 20,
+    paddingBottom: 10,
+    paddingTop: 10,
+    backgroundColor: 'transparent',
   }
-}
+};
 
 export default class NewComment extends Component {
   constructor(props) {
     super(props);
-    this.renderSendButton = this.renderSendButton.bind(this);
     this.handleSend = this.handleSend.bind(this);
 
     this.state = ({
-      text: "",
+      text: '',
       height: 21,
       sendOpacity: 0.4
     });
   }
-  renderSendButton(text) {
-    switch (text) {
-      case "":
-        return (
-          <TouchableOpacity onPress={this.handleSend} activeOpacity={0.4}>
-            <Text style={styles.send}>Send</Text>
-          </TouchableOpacity>
-        );
-      default:
-        return (
-          <TouchableOpacity onPress={this.handleSend} activeOpacity={0.4}>
-            <Text style={styles.activeSend}>Send</Text>
-          </TouchableOpacity>
-        );
-    }
-  }
   handleSend() {
-    console.log("handleSend fired");
-    this.setState({ text: "" });
+    console.log('handleSend fired');
+    this.setState({ text: '' });
     Snackbar.show({
       title: 'Comment was succesfully submitted',
       duration: Snackbar.LENGTH_LONG,
@@ -89,7 +84,7 @@ export default class NewComment extends Component {
   }
   showActionSheet() {
     ActionSheetIOS.showActionSheetWithOptions({
-      options: [ "Take a Photo", "Choose from Gallery", "Cancel" ],
+      options: ['Take a Photo', 'Choose from Gallery', 'Cancel'],
       cancelButtonIndex: 2,
     },
     (buttonIndex) => {
@@ -99,7 +94,7 @@ export default class NewComment extends Component {
             width: 300,
             height: 450,
             cropping: true
-          }).then(image => {
+          }).then((image) => {
             console.log(image);
             Snackbar.show({
               title: 'Image was succesfully added',
@@ -112,7 +107,7 @@ export default class NewComment extends Component {
             width: 300,
             height: 450,
             cropping: true
-          }).then(image => {
+          }).then((image) => {
             console.log(image);
             Snackbar.show({
               title: 'Image was succesfully added',
@@ -127,25 +122,29 @@ export default class NewComment extends Component {
       }
     });
   }
+
   render() {
     return (
       <View style={styles.commentContainer}>
         <TouchableOpacity activeOpacity={0.4} onPress={this.showActionSheet}>
-          <Icon name="paper-clip" size={16} style={styles.attachIcon} />
+          <Icon name="paper-clip" size={15} style={styles.attachIcon} />
         </TouchableOpacity>
         <TextInput
           style={[styles.formField, { height: this.state.height + 7 }]}
-          selectionColor="#728ce7"
-          onChangeText={(text) => this.setState({text})}
+          selectionColor="#95b8f4"
+          onChangeText={text => this.setState({ text })}
           value={this.state.text}
           placeholder="Add comment..."
-          clearButtonMode="always"
+          placeholderTextColor="#888"
+          clearButtonMode="never"
           autoCapitalize="none"
           keyboardAppearance="dark"
           returnKeyType="done"
-          onContentSizeChange={(e) => this.setState({ height: e.nativeEvent.contentSize.height })}
+          onContentSizeChange={e => this.setState({ height: e.nativeEvent.contentSize.height })}
         />
-        {this.renderSendButton(this.state.text)}
+      <TouchableOpacity onPress={this.handleSend} activeOpacity={0.4} disabled={this.state.text ? false : true}>
+          <Text style={this.state.text ? styles.activeSend : styles.send}>SEND</Text>
+        </TouchableOpacity>
       </View>
     );
   }
