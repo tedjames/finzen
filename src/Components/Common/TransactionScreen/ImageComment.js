@@ -7,91 +7,89 @@ import Lightbox from '../Lightbox'
 import Snackbar from 'react-native-snackbar'
 
 const styles = {
-    commentContainer: {
-      marginTop: 8,
-      paddingBottom: 4
+  commentContainer: {
+    marginTop: 8,
+    paddingBottom: 4
+  },
+  amount: {
+    alignSelf: "flex-end",
+    backgroundColor: 'transparent',
+    color: '#f95757',
+    fontSize: 22,
+    fontWeight: "300",
+    marginRight: 25,
+    marginBottom: 5
+  },
+  row: {
+    flexDirection: "row",
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "space-between"
+  },
+  imageName: {
+    fontFamily: "Open Sans",
+    fontSize: 14,
+    fontStyle: "italic",
+    marginTop: 1,
+    letterSpacing: 0.75,
+    color: "#252525"
+  },
+  time: {
+    fontFamily: "Open Sans",
+    fontSize: 11,
+    fontWeight: "400",
+    letterSpacing: 0.75,
+    color: "#879099",
+  },
+  date: {
+    fontFamily: "Open Sans",
+    fontSize: 11,
+    fontWeight: "400",
+    letterSpacing: 0.75,
+    color: "#879099",
+  },
+  slash: {
+    color: "#879099",
+    marginLeft: 3,
+    marginRight: 3,
+    fontSize: 10,
+    marginTop: 1,
+    opacity: 0.75
+  },
+  image: {
+    height: 200,
+    width: 250,
+    justifyContent: "center",
+    alignSelf: "center",
+    marginTop: 3,
+    borderRadius: 8,
+    backgroundColor: "#fff",
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 2,
+  },
+  editButton: {
+    color: 'white',
+    shadowOffset: {
+      width: 0,
+      height: 0,
     },
-    amount: {
-      alignSelf: "flex-end",
-      backgroundColor: 'transparent',
-      color: '#f95757',
-      fontSize: 22,
-      fontWeight: "300",
-      marginRight: 25,
-      marginBottom: 5
-    },
-    row: {
-      flexDirection: "row",
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "space-between"
-    },
-    imageName: {
-      fontFamily: "Open Sans",
-      fontSize: 14,
-      fontStyle: "italic",
-      marginTop: 1,
-      letterSpacing: 0.75,
-      color: "#252525"
-    },
-    time: {
-      fontFamily: "Open Sans",
-      fontSize: 11,
-      fontWeight: "400",
-      letterSpacing: 0.75,
-      color: "#879099",
-      opacity: 0.9
-    },
-    date: {
-      fontFamily: "Open Sans",
-      fontSize: 11,
-      fontWeight: "400",
-      letterSpacing: 0.75,
-      color: "#879099",
-      opacity: 0.9
-    },
-    slash: {
-      color: "#879099",
-      marginLeft: 3,
-      marginRight: 3,
-      fontSize: 10,
-      marginTop: 1,
-      opacity: 0.75
-    },
-    image: {
-      height: 200,
-      width: 250,
-      justifyContent: "center",
-      alignSelf: "center",
-      marginTop: 3,
-      borderRadius: 8,
-      backgroundColor: "#fff",
-      shadowColor: '#000',
-      shadowOffset: { width: 0, height: 2 },
-      shadowOpacity: 0.25,
-      shadowRadius: 2,
-    },
-    editButton: {
-      color: 'white',
-      shadowOffset: {
-        width: 0,
-        height: 0,
-      },
-      shadowRadius: 1.5,
-      shadowColor: 'black',
-      shadowOpacity: 0.8,
-      margin: 15,
-      marginTop: 20
-    },
-    headerContainer: {
-      flex: 1,
-      justifyContent: "space-between",
-      flexDirection: "row",
-    },
-    headerSection: {
-      flexDirection: "row",
-      alignItems: "center"
-    }
+    shadowRadius: 1.5,
+    shadowColor: 'black',
+    shadowOpacity: 0.8,
+    margin: 15,
+    marginTop: 20
+  },
+  headerContainer: {
+    flex: 1,
+    justifyContent: "space-between",
+    flexDirection: "row",
+  },
+  headerSection: {
+    flexDirection: "row",
+    alignItems: "center"
+  }
 };
 
 
