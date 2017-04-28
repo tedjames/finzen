@@ -15,17 +15,7 @@ const FormLabel = (props) => {
       marginRight: 10,
       marginLeft: 10
     },
-    leftDivider: {
-      borderBottomWidth: 1,
-      borderColor: '#eee',
-      paddingBottom: 10,
-      flex: 1,
-      marginRight: 10,
-      marginLeft: 10,
-      position: 'relative',
-      bottom: 5
-    },
-    rightDivider: {
+    divider: {
       borderBottomWidth: 1,
       borderColor: '#eee',
       paddingBottom: 10,
@@ -39,9 +29,9 @@ const FormLabel = (props) => {
 
   return (
     <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: props.marginTop ? props.marginTop : 35, marginBottom: props.marginBottom ? props.marginBottom : 5 }}>
-      <View style={styles.leftDivider} />
+      <View style={styles.divider} />
       <Text style={styles.label}>{label}</Text>
-      <View style={styles.rightDivider} />
+      <View style={styles.divider} />
     </View>
 
   );
