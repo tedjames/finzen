@@ -1,12 +1,13 @@
-import React, { Component } from 'react'
-import TransactionCard from './TransactionCard'
-import { View, ListView, RefreshControl } from 'react-native'
-import Divider from './Divider'
+import React, { Component } from 'react';
+import { View, ListView, RefreshControl } from 'react-native';
+import { GradientView } from '../../Common';
+import TransactionCard from './TransactionCard';
+import Divider from './Divider';
 
 const styles = {
   transactionsCard: {
-    backgroundColor: '#eee',
-    paddingBottom: 140
+    backgroundColor: '#fafafa',
+    paddingBottom: 138
   },
   separator: {
     height: 1,
@@ -30,11 +31,11 @@ export default class TransactionsList extends Component {
 
   convertTransactions() {
     const transactions = [
-      { txid: 0, merchant: 'Amazon', amount: '94.55', date: 'Today', time: '4:30pm', location: 'Online', neg: false },
-      { txid: 1, merchant: 'Amazon', amount: '94.55', date: 'Yesterday ', time: '4:30pm', location: 'Online', neg: true },
-      { txid: 2, merchant: 'Amazon', amount: '94.55', date: 'January 28, 2017', time: '4:30pm', location: 'Online', neg: false },
-      { txid: 3, merchant: 'Amazon', amount: '94.55', date: 'January 28, 2017', time: '4:30pm', location: 'Online', neg: true },
-      { txid: 4, merchant: 'Amazon', amount: '94.55', date: 'January 28, 2017', time: '4:30pm', location: 'Online', neg: false },
+      { txid: 0, merchant: 'Amazon', amount: '29.54', date: 'Today', time: '4:30pm', location: 'Online', neg: false },
+      { txid: 1, merchant: 'Walgreens', amount: '12.41', date: 'Yesterday ', time: '12:15pm', location: 'Edison, NJ', neg: true },
+      { txid: 2, merchant: 'Walmart', amount: '52.00', date: 'January 28, 2017', time: '4:30pm', location: 'Online', neg: false },
+      { txid: 3, merchant: 'Antonio\'s Pizzaria', amount: '5.24', date: 'January 28, 2017', time: '10:43pm', location: 'Metuchen, NJ', neg: true },
+      { txid: 4, merchant: 'Brown\'s Bagels', amount: '31.85', date: 'January 28, 2017', time: '8:27am', location: 'New York, NY', neg: false },
       { txid: 5, merchant: 'Amazon', amount: '94.55', date: 'January 27, 2017', time: '4:30pm', location: 'Online', neg: true },
       { txid: 6, merchant: 'Amazon', amount: '94.55', date: 'January 27, 2017', time: '4:30pm', location: 'Online', neg: true },
       { txid: 7, merchant: 'Amazon', amount: '94.55', date: 'January 27, 2017', time: '4:30pm', location: 'Online', neg: false },
@@ -72,7 +73,7 @@ export default class TransactionsList extends Component {
   }
   render() {
     return (
-      <View style={styles.transactionsCard}>
+      <GradientView style={styles.transactionsCard} colors={['#fff', '#f5f5f5']}>
         <ListView
           dataSource={this.state.dataSource}
           renderSectionHeader={this.renderSectionHeader}
@@ -82,13 +83,13 @@ export default class TransactionsList extends Component {
             <RefreshControl
               title="Syncing financial data..."
               tintColor="#ddd"
-              titleColor="#a1a1a1"
+              titleColor="#444"
               refreshing={this.state.refreshing}
               onRefresh={this._onRefresh.bind(this)}
             />
           }
         />
-      </View>
+    </GradientView>
     );
   }
 }
