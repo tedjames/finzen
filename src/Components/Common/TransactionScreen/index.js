@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Dimensions, StyleSheet, TouchableOpacity, AlertIOS, Text } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import { Actions } from 'react-native-router-flux';
@@ -8,7 +8,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 
 import TitleCard from './TitleCard';
 import MainCard from './MainCard';
-
+import NewComment from './NewComment';
 
 const { width, height } = Dimensions.get('window');
 const SCREEN_WIDTH = width;
@@ -18,7 +18,7 @@ const LONGITUDE = -74.362480;
 const LATITUDE_DELTA = 0.005;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
-const mapStyle = [{'stylers':[{'hue':'#ff1a00'},{'invert_lightness':true},{'saturation':-100},{'lightness':33},{'gamma':0.5}]},{'featureType':'water','elementType':'geometry','stylers':[{'color':'#2D333C'}]}]
+const mapStyle = [{'stylers':[{'hue':'#ff1a00'},{'invert_lightness':true},{'saturation':-100},{'lightness':33},{'gamma':0.5}]},{'featureType':'water','elementType':'geometry','stylers':[{'color':'#2D333C'}]}];
 
 export default class TransactionScreen extends Component {
   constructor(props) {
@@ -34,11 +34,15 @@ export default class TransactionScreen extends Component {
     };
   }
 
+  handleButton() {
+    AlertIOS.prompt('Add a Tag', 'Please enter a name for your tag', this.createTag, undefined, '');
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <KeyboardAwareScrollView
-          style={StyleSheet.absoluteFill}
+          style={styles.scrollContainer}
         >
           <Animatable.View>
             <MapView
@@ -78,10 +82,12 @@ const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
     justifyContent: 'flex-end',
-    alignItems: 'center',
-    backgroundColor: '#252525'
+    alignItems: 'center'
   },
-
+  scrollContainer: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: '#ebecee'
+  },
   map: {
     width: SCREEN_WIDTH,
     height: 300,
@@ -99,5 +105,5 @@ const styles = StyleSheet.create({
     width: 50,
     height: 20,
     alignItems: 'center'
-  }
+  },
 });

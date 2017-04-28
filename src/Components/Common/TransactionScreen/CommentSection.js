@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, TextInput } from 'react-native'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
-import NewComment from './NewComment'
 import Comment from './Comment'
 import ImageComment from './ImageComment'
 
@@ -30,7 +29,6 @@ export default class CommentSection extends Component {
         <Comment date="Yesterday" time="1:24am" text="Try their canolli next time" />
         <Comment date="Jan 21, 2017" time="7:10pm" text="Try their canolli next time" />
         <ImageComment date="Jan 21, 2017" time="7:10pm" url="" name="React logo image" />
-        <NewComment />
       </View>
     );
   }
