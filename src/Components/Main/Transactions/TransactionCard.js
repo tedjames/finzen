@@ -8,13 +8,13 @@ const styles = {
     borderWidth: 0.5,
     borderColor: '#eaeff1',
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 0.15,
-    shadowRadius: 8,
-    marginLeft: 10,
-    marginRight: 10,
+    shadowOffset: { width: 2, height: 6 },
+    shadowOpacity: 0.1,
+    shadowRadius: 6,
+    marginLeft: 11,
+    marginRight: 11,
     height: 80,
-    borderRadius: 0,
+    borderRadius: 2,
     marginBottom: 1
   },
   transactionCard: {
@@ -23,7 +23,7 @@ const styles = {
     alignItems: 'center',
     height: 80,
     paddingLeft: 15,
-    paddingRight: 15,
+    paddingRight: 20,
     flexDirection: 'row',
     borderRadius: 0,
   },
@@ -51,17 +51,10 @@ const styles = {
   },
   merchant: {
     fontFamily: 'Open Sans',
-    fontSize: 14.5,
+    fontSize: 15,
     fontWeight: '400',
-    letterSpacing: 0.85,
-    color: '#252525',
-  },
-  time: {
-    fontFamily: 'Open Sans',
-    fontSize: 11,
-    fontWeight: '400',
-    letterSpacing: 0.75,
-    color: '#989898',
+    letterSpacing: 0.65,
+    color: '#333',
   },
   location: {
     fontFamily: 'Open Sans',
@@ -76,40 +69,34 @@ const styles = {
   amount: {
     fontFamily: 'Open Sans',
     color: '#1ecd8e',
-    fontSize: 15,
+    fontSize: 17.5,
     alignSelf: 'center',
-    fontWeight: '400'
+    fontWeight: '500'
   },
   dollarIcon: {
     fontFamily: 'Open Sans',
     color: '#1ecd8e',
-    fontSize: 12,
-    fontWeight: '400',
+    fontSize: 14.5,
+    fontWeight: '500',
     alignSelf: 'center',
-    opacity: 0.75
+    opacity: 0.75,
+    marginRight: 0.5
   },
   negAmount: {
     fontFamily: 'Open Sans',
     color: '#f95757',
-    fontSize: 15,
+    fontSize: 17.5,
     alignSelf: 'center',
-    fontWeight: '400'
+    fontWeight: '500'
   },
   negDollarIcon: {
     fontFamily: 'Open Sans',
     color: '#f95757',
-    fontSize: 12,
-    fontWeight: '400',
+    fontSize: 14.5,
+    fontWeight: '500',
     alignSelf: 'center',
-    opacity: 0.75
-  },
-  slash: {
-    color: '#989898',
-    marginLeft: 3,
-    marginRight: 3,
-    fontSize: 10,
-    marginTop: 1,
-    opacity: 0.75
+    opacity: 0.75,
+    marginRight: 0.5
   }
 };
 
@@ -139,10 +126,8 @@ export default class extends Component {
           <View style={styles.transactionData}>
             <View>
               <Text style={styles.merchant}>{this.props.merchant}</Text>
-              <View style={{ flexDirection: 'row', marginTop: 1 }}>
+              <View style={{ flexDirection: 'row', marginTop: 1.5 }}>
                 <Text style={styles.location}>{this.props.location}</Text>
-                <Text style={styles.slash}>/</Text>
-                <Text style={styles.time}>{this.props.time}</Text>
               </View>
 
             </View>
