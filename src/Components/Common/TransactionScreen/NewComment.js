@@ -131,7 +131,7 @@ export default class NewComment extends Component {
         </TouchableOpacity>
         <TextInput
           style={[styles.formField, { height: this.state.height + 7 }]}
-          selectionColor="#95b8f4"
+          selectionColor="#AC70FB"
           onChangeText={text => this.setState({ text })}
           value={this.state.text}
           placeholder="Add comment..."
