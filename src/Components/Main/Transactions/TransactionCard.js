@@ -51,31 +51,31 @@ const styles = {
   },
   merchant: {
     fontFamily: 'Open Sans',
-    fontSize: 15,
+    fontSize: 16,
     fontWeight: '400',
-    letterSpacing: 0.65,
-    color: '#333',
+    letterSpacing: 0.75,
+    color: '#444',
   },
   location: {
     fontFamily: 'Open Sans',
-    fontSize: 11,
-    fontWeight: '400',
-    letterSpacing: 0.75,
-    color: '#989898',
+    fontSize: 12,
+    fontWeight: '300',
+    letterSpacing: 0.65,
+    color: '#000',
   },
   amountContainer: {
     flexDirection: 'row'
   },
   amount: {
     fontFamily: 'Open Sans',
-    color: '#1ecd8e',
-    fontSize: 17.5,
+    color: '#0dc381',
+    fontSize: 18,
     alignSelf: 'center',
-    fontWeight: '500'
+    fontWeight: '400'
   },
   dollarIcon: {
     fontFamily: 'Open Sans',
-    color: '#1ecd8e',
+    color: '#0dc381',
     fontSize: 14.5,
     fontWeight: '500',
     alignSelf: 'center',
@@ -85,9 +85,9 @@ const styles = {
   negAmount: {
     fontFamily: 'Open Sans',
     color: '#f95757',
-    fontSize: 17.5,
+    fontSize: 18,
     alignSelf: 'center',
-    fontWeight: '500'
+    fontWeight: '400'
   },
   negDollarIcon: {
     fontFamily: 'Open Sans',
@@ -108,7 +108,7 @@ export default class extends Component {
 
   renderDollarSign(neg) {
     if (neg) {
-      return <Text style={styles.negDollarIcon}>- $</Text>;
+      return <Text style={styles.negDollarIcon}>$</Text>;
     } return <Text style={styles.dollarIcon}>$</Text>;
   }
 
