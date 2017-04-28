@@ -15,7 +15,7 @@ const styles = {
   },
   date: {
     fontFamily: 'Open Sans',
-    fontSize: 10,
+    fontSize: 10.5,
     letterSpacing: 2.75,
     backgroundColor: 'transparent',
     color: '#878a96', // #999cac is a nice color for stuff that's usually white! (blue/white) OR #a8aaba
