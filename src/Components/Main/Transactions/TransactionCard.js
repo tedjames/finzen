@@ -13,7 +13,7 @@ const styles = {
     shadowRadius: 6,
     marginLeft: 11,
     marginRight: 11,
-    height: 80,
+    height: 85,
     borderRadius: 2,
     marginBottom: 1
   },
@@ -21,7 +21,7 @@ const styles = {
     backgroundColor: '#fff',
     alignSelf: 'center',
     alignItems: 'center',
-    height: 80,
+    height: 85,
     paddingLeft: 15,
     paddingRight: 20,
     flexDirection: 'row',
@@ -69,7 +69,7 @@ const styles = {
   amount: {
     fontFamily: 'Open Sans',
     color: '#0dc381',
-    fontSize: 18,
+    fontSize: 17,
     alignSelf: 'center',
     fontWeight: '400'
   },
@@ -85,7 +85,7 @@ const styles = {
   negAmount: {
     fontFamily: 'Open Sans',
     color: '#f95757',
-    fontSize: 18,
+    fontSize: 17,
     alignSelf: 'center',
     fontWeight: '400'
   },
