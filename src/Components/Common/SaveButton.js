@@ -75,7 +75,7 @@ class SaveButton extends Component {
   }
 
   render() {
-    const { width, disableAnimation, disabled, onPress, colors, textColor } = this.props;
+    const { width, disableAnimation, disabled, onPress, colors, textColor, top } = this.props;
     const styles = {
       saveButton: {
         width: '100%',
@@ -120,6 +120,7 @@ class SaveButton extends Component {
       flexDirection: 'row',
       width: width ? width : 200,
       height: 50,
+      top: top ? top : 0,
       marginTop: 20,
       alignSelf: 'center',
       position: 'relative',
