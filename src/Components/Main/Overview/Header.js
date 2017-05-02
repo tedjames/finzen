@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, TouchableOpacity, ActionSheetIOS } from 'react-native';
 import Icon from 'react-native-vector-icons/Octicons';
 import Icon2 from 'react-native-vector-icons/FontAwesome';
+import { Actions } from 'react-native-router-flux';
 
 const styles = {
   icon: {
@@ -52,6 +53,10 @@ export default class Header extends Component {
     (buttonIndex) => {
       console.log(buttonIndex);
     });
+  }
+
+  handleSettings() {
+    Actions.settings();
   }
 
   render() {

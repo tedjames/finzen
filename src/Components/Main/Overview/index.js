@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { StatusBar, ScrollView } from 'react-native';
-import Modal from 'react-native-modalbox';
 
 import { GradientView } from '../../Common';
 import CardCarousel from './CardCarousel';
@@ -47,9 +46,8 @@ export default class Overview extends Component {
       <GradientView>
         <StatusBar translucent hidden />
 
-        <Header />
         <ScrollView>
-
+          <Header />
           <CardCarousel />
           <Accounts />
           <RecentTransactions />

@@ -31,7 +31,6 @@ export default class Settings extends Component {
   render() {
     return (
       <GradientView colors={['#eee', '#eee']}>
-        <MainHeader />
         <ScrollView>
 
           <Text style={styles.sectionHeader}>GENERAL</Text>

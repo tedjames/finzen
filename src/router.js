@@ -11,6 +11,7 @@ import Support from './Components/Main/Settings/Support';
 import Feedback from './Components/Main/Settings/Feedback';
 import TagEditor from './Components/Common/TransactionScreen/TagEditor';
 import Auth from './Components/Auth';
+import Settings from './Components/Main/Settings';
 
 export default class RouterComponent extends Component {
   render() {
@@ -18,6 +19,7 @@ export default class RouterComponent extends Component {
       <Router>
         <Scene key="main" hideNavBar>
           <Scene key="auth" component={Auth} />
+          <Scene key="settings" component={Settings} direction="vertical" />
           <Scene key="app" component={MainRouter} initial />
           <Scene key="tx" component={TransactionScreen} />
           <Scene key="act" component={AccountScreen} />
