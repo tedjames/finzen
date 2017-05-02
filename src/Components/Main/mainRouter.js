@@ -8,7 +8,6 @@ import { redirect } from '../../Actions/routerActions';
 import Analysis from './Analysis';
 import Transactions from './Transactions';
 import Overview from './Overview';
-import Settings from './Settings';
 
 const styles = {
   container: {
@@ -60,12 +59,11 @@ const styles = {
 
 class MainRouter extends Component {
   state = {
-    index: 2,
+    index: 1,
     routes: [
       { key: '1', size: 20, icon: 'signal' },
-      { key: '2', size: 20, icon: 'exchange' },
-      { key: '3', size: 23, icon: 'compass' },
-      { key: '4', size: 20, icon: 'cogs' }
+      { key: '2', size: 23, icon: 'compass' },
+      { key: '3', size: 20, icon: 'exchange' }
     ],
   };
 
@@ -124,11 +122,9 @@ class MainRouter extends Component {
       case '1':
         return <Analysis />;
       case '2':
-        return <Transactions />;
-      case '3':
         return <Overview />;
-      case '4':
-        return <Settings />;
+      case '3':
+        return <Transactions />;
       default:
         return null;
     }
