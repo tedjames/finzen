@@ -24,11 +24,11 @@ const styles = {
     backgroundColor: 'transparent',
     opacity: 0.75
   },
-  rightCard: {
+  card: {
     backgroundColor: '#fff',
     borderRadius: 10,
-    height: height / 5.85,
-    width: width / 2.25,
+    height: 80,
+    width: '80%',
     margin: 10,
     padding: 20,
     borderWidth: 1,
@@ -37,27 +37,14 @@ const styles = {
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 2,
-    elevation: 1,
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row'
   },
-  leftCard: {
-    backgroundColor: '#fff',
-    borderTopRightRadius: 10,
-    borderBottomRightRadius: 10,
-    borderBottomLeftRadius: 2,
-    borderTopLeftRadius: 2,
-    height: height / 5.85,
-    width: width / 2.25,
-    marginRight: 10,
-    marginTop: 10,
-    marginBottom: 10,
-    padding: 20,
-    borderWidth: 1,
-    borderColor: '#eeeeee',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 1,
+  icon: {
+    alignSelf: 'center',
+    top: 6
   }
 };
 
@@ -65,31 +52,30 @@ export default class SettingsCard extends Component {
   renderIcon() {
     switch (this.props.type) {
       case 'account':
-        return <Icon name={'user'} size={20} color="#ccc" />;
+        return <Icon style={styles.icon} name={'user'} size={20} color="#252525" />;
       case 'notifications':
-        return <Icon name={'bell'} size={20} color="#ccc" />;
+        return <Icon style={styles.icon} name={'bell'} size={20} color="#252525" />;
       case 'preferences':
-        return <Icon name={'cog'} size={20} color="#ccc" />;
+        return <Icon style={styles.icon} name={'cog'} size={20} color="#252525" />;
       case 'security':
-        return <Icon name={'lock'} size={20} color="#ccc" />;
+        return <Icon style={styles.icon} name={'lock'} size={20} color="#252525" />;
       case 'support':
-        return <Icon name={'question-circle'} size={20} color="#ccc" />;
+        return <Icon style={styles.icon} name={'question-circle'} size={20} color="#252525" />;
       case 'feedback':
-        return <Icon name={'bullhorn'} size={20} color="#ccc" />;
+        return <Icon style={styles.icon} name={'bullhorn'} size={20} color="#252525" />;
       case 'logout':
-        return <Icon name={'sign-out'} size={20} color="#ccc" style={{ marginTop: 0 }} />;
+        return <Icon style={styles.icon} name={'sign-out'} size={20} color="#252525" />;
       default:
-        return <Icon name={'rocket'} size={20} color="#ccc" />;
+        return <Icon style={styles.icon} name={'rocket'} size={20} color="#252525" />;
     }
   }
 
   render() {
     return (
       <TouchableOpacity activeOpacity={0.3} onPress={this.props.handlePress} >
-        <View style={this.props.left ? styles.leftCard : styles.rightCard}>
+        <View style={styles.card}>
           {this.renderIcon()}
           <Text style={styles.title}>{this.props.title}</Text>
-          <Text style={styles.subtitle}>{this.props.subtitle}</Text>
         </View>
       </TouchableOpacity>
     );
