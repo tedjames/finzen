@@ -3,47 +3,51 @@ import { View, Text, ScrollView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { GradientView } from '../../Common';
 import SettingsCard from './SettingsCard';
+import MainHeader from './MainHeader';
+import SettingsCardAlt from './SettingsCardAlt';
 
-const headerText = {
-  fontFamily: 'Montserrat',
-  fontSize: 13,
-  fontWeight: '500',
-  color: '#333333',
-  letterSpacing: 4,
-  backgroundColor: 'transparent',
-  opacity: 0.70,
-  alignSelf: 'center',
-  marginTop: 28,
-  marginBottom: 25
-};
-
-const row = {
-  flex: 1,
-  flexDirection: 'row',
-  justifyContent: 'space-between'
+const styles = {
+  height: {
+    height: 60,
+    backgroundColor: 'white',
+    shadowColor: 'black',
+    shadowOpacity: 0.1,
+    shadowRadius: 8
+  },
+  sectionHeader: {
+    fontFamily: 'Montserrat',
+    fontSize: 11,
+    letterSpacing: 1.8,
+    color: '#99a2ab',
+    backgroundColor: 'transparent',
+    fontWeight: '500',
+    marginLeft: 40,
+    marginTop: 30,
+    marginBottom: 20
+  }
 };
 
 export default class Settings extends Component {
   render() {
     return (
-      <GradientView>
+      <GradientView colors={['#eee', '#eee']}>
+        <MainHeader />
         <ScrollView>
-          <Text style={headerText}>SETTINGS</Text>
-          <View style={row}>
-            <SettingsCard title="Account" subtitle="Ted Werbel" type="account" handlePress={() => Actions.userAct()} left />
-          </View>
-          <View style={row}>
-            <SettingsCard title="Notifications" subtitle="Enabled" type="notifications" handlePress={() => Actions.notif()} left />
-            <SettingsCard title="Widgets" subtitle="Enabled" type="preferences" handlePress={() => Actions.widgets()} />
-          </View>
-          <View style={row}>
-            <SettingsCard title="Security" type="security" subtitle="Medium" handlePress={() => Actions.sec()} left />
-            <SettingsCard title="Support" type="support" subtitle="Need help?" handlePress={() => Actions.sup()} />
-          </View>
-          <View style={row}>
-            <SettingsCard title="Feedback" type="feedback" subtitle="Let's talk!" handlePress={() => Actions.feed()} left />
-            <SettingsCard title="Logout" type="logout" handlePress={() => Actions.auth()} />
-          </View>
+
+          <Text style={styles.sectionHeader}>GENERAL</Text>
+          <SettingsCardAlt title="Profile" type="account" handlePress={() => Actions.userAct()} />
+          <SettingsCardAlt title="Widgets" type="preferences" handlePress={() => Actions.widgets()} />
+          <SettingsCardAlt title="Notifications" type="notifications" handlePress={() => Actions.notif()} />
+
+          <Text style={styles.sectionHeader}>SECURITY</Text>
+          <SettingsCardAlt title="Change Password" type="account" handlePress={() => Actions.sec()} />
+          <SettingsCardAlt title="Passcode and Touch ID" type="account" handlePress={() => Actions.sec()} />
+
+          <Text style={styles.sectionHeader}>CONTACT</Text>
+          <SettingsCardAlt title="Support" type="support" handlePress={() => Actions.sup()} />
+          <SettingsCardAlt title="Feedback" type="feedback" handlePress={() => Actions.feed()} />
+          <SettingsCardAlt title="Logout" type="logout" handlePress={() => Actions.auth()} />
+
         </ScrollView>
       </GradientView>
     );
