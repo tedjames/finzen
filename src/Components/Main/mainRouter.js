@@ -140,23 +140,23 @@ class MainRouter extends Component {
         return (
           <TabViewPagerScroll
             {...props}
-            animationEnabled={false}
-            swipeEnabled={false}
+            animationEnabled
+            swipeEnabled
           />
         );
       case 'android':
         return (
           <TabViewPagerAndroid
             {...props}
-            animationEnabled={false}
-            swipeEnabled={false}
+            animationEnabled
+            swipeEnabled
           />
         );
       default:
         return (
           <TabViewPagerPan
             {...props}
-            swipeEnabled={false}
+            swipeEnabled
           />
         );
     }
