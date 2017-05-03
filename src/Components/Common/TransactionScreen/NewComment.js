@@ -74,6 +74,7 @@ export default class NewComment extends Component {
       sendOpacity: 0.4
     });
   }
+
   handleSend() {
     console.log('handleSend fired');
     this.setState({ text: '' });
@@ -82,6 +83,7 @@ export default class NewComment extends Component {
       duration: Snackbar.LENGTH_LONG,
     });
   }
+
   showActionSheet() {
     ActionSheetIOS.showActionSheetWithOptions({
       options: ['Take a Photo', 'Choose from Gallery', 'Cancel'],
@@ -142,7 +144,11 @@ export default class NewComment extends Component {
           returnKeyType="done"
           onContentSizeChange={e => this.setState({ height: e.nativeEvent.contentSize.height })}
         />
-      <TouchableOpacity onPress={this.handleSend} activeOpacity={0.4} disabled={this.state.text ? false : true}>
+        <TouchableOpacity
+          onPress={this.handleSend}
+          activeOpacity={0.4}
+          disabled={this.state.text ? false : true}
+        >
           <Text style={this.state.text ? styles.activeSend : styles.send}>SEND</Text>
         </TouchableOpacity>
       </View>
