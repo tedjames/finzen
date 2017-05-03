@@ -13,3 +13,4 @@ export * from './FormButton';
 export * from './DropdownOption';
 export * from './Dropdown';
 export * from './FormTag';
+export * from './Logo';
