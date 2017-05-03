@@ -4,8 +4,7 @@ import Icon from 'react-native-vector-icons/Octicons';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux';
 import { hideRegister } from '../../Actions';
-import { GradientView } from '../Common';
-import Logo from './Logo';
+import { GradientView, Logo } from '../Common';
 
 const { width } = Dimensions.get('window');
 
