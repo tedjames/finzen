@@ -1,82 +1,82 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, Dimensions } from 'react-native';
+import { View, TouchableOpacity, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-// Get device dimensions for responsive components
-const { height, width } = Dimensions.get('window');
-
 const styles = {
-  title: {
-    fontFamily: 'Open Sans',
-    fontWeight: '500',
-    fontSize: 14,
-    letterSpacing: 0.3,
-    backgroundColor: 'transparent',
-    marginTop: 15
-  },
-  subtitle: {
-    fontFamily: 'Open Sans',
-    fontWeight: '400',
-    fontStyle: 'italic',
-    fontSize: 13,
-    letterSpacing: 0.65,
-    marginTop: 2,
-    backgroundColor: 'transparent',
-    opacity: 0.75
-  },
-  card: {
-    backgroundColor: '#fff',
-    borderRadius: 10,
-    height: 80,
+  container: {
+    flexDirection: 'row',
+    backgroundColor: 'white',
+    height: 65,
     width: '80%',
-    margin: 10,
-    padding: 20,
-    borderWidth: 1,
-    borderColor: '#eeeeee',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    alignSelf: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    flexDirection: 'row'
+    alignSelf: 'center',
+    paddingRight: 25,
+    borderBottomWidth: 0.5,
+    borderColor: '#eee',
+    shadowColor: '#000',
+    shadowOffset: { width: 2, height: 6 },
+    shadowOpacity: 0.1,
+    shadowRadius: 6,
   },
   icon: {
-    alignSelf: 'center',
-    top: 6
-  }
+    backgroundColor: 'transparent',
+    color: '#ddd',
+  },
+  title: {
+    backgroundColor: 'transparent',
+    fontFamily: 'Open Sans',
+    fontSize: 15,
+    letterSpacing: 0.25,
+    color: '#252525',
+  },
+  arrowIcon: {
+    backgroundColor: 'transparent'
+  },
 };
 
 export default class SettingsCard extends Component {
+  constructor(props) {
+    super(props);
+    this.renderIcon = this.renderIcon.bind(this);
+  }
   renderIcon() {
     switch (this.props.type) {
       case 'account':
-        return <Icon style={styles.icon} name={'user'} size={20} color="#252525" />;
+        return <Icon style={styles.icon} name={'user'} size={18} />;
       case 'notifications':
-        return <Icon style={styles.icon} name={'bell'} size={20} color="#252525" />;
-      case 'preferences':
-        return <Icon style={styles.icon} name={'cog'} size={20} color="#252525" />;
+        return <Icon style={styles.icon} name={'bell'} size={18} />;
+      case 'widgets':
+        return <Icon style={styles.icon} name={'cog'} size={18} />;
       case 'security':
-        return <Icon style={styles.icon} name={'lock'} size={20} color="#252525" />;
+        return <Icon style={styles.icon} name={'lock'} size={18} />;
       case 'support':
-        return <Icon style={styles.icon} name={'question-circle'} size={20} color="#252525" />;
+        return <Icon style={styles.icon} name={'question-circle'} size={18} />;
       case 'feedback':
-        return <Icon style={styles.icon} name={'bullhorn'} size={20} color="#252525" />;
+        return <Icon style={styles.icon} name={'bullhorn'} size={18} />;
       case 'logout':
-        return <Icon style={styles.icon} name={'sign-out'} size={20} color="#252525" />;
+        return <Icon style={styles.icon} name={'sign-out'} size={18} />;
       default:
-        return <Icon style={styles.icon} name={'rocket'} size={20} color="#252525" />;
+        return <Icon style={styles.icon} name={'rocket'} size={18} />;
     }
   }
 
   render() {
+    const { disableDivider } = this.props;
     return (
-      <TouchableOpacity activeOpacity={0.3} onPress={this.props.handlePress} >
-        <View style={styles.card}>
-          {this.renderIcon()}
+      <TouchableOpacity
+        style={[styles.container, { borderBottomWidth: disableDivider ? 0 : 0.5 }]}
+        activeOpacity={0.6}
+        onPress={this.props.handlePress}
+      >
+        <View style={{ flexDirection: 'row' }}>
+          <View style={{ justifyContent: 'center', width: 65, alignItems: 'center' }}>
+            {this.renderIcon()}
+          </View>
           <Text style={styles.title}>{this.props.title}</Text>
         </View>
+
+        <Icon style={styles.arrowIcon} name={'angle-right'} size={19} color="#8b8b8b" />
       </TouchableOpacity>
     );
   }

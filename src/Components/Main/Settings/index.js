@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Octicons';
-import { GradientView } from '../../Common';
+import { GradientView, SaveButton } from '../../Common';
 import SettingsCard from './SettingsCard';
 import MainHeader from './MainHeader';
-import SettingsCardAlt from './SettingsCardAlt';
 
 const styles = {
   height: {
@@ -18,25 +17,28 @@ const styles = {
   sectionHeader: {
     fontFamily: 'Montserrat',
     fontSize: 11,
-    letterSpacing: 1.8,
+    letterSpacing: 4,
     color: '#99a2ab',
     backgroundColor: 'transparent',
     fontWeight: '500',
-    marginLeft: 40,
-    marginTop: 30,
-    marginBottom: 20
+    marginTop: 32,
+    marginBottom: 15,
+    alignSelf: 'center'
   },
   iconContainer: {
-    paddingTop: 30,
-    paddingRight: 25,
+    paddingTop: 35,
+    paddingRight: 15,
+    right: 10,
+    paddingLeft: 15,
     paddingBottom: 10,
-    marginBottom: -25
+    width: 50,
+    height: 50,
+    alignSelf: 'flex-end'
   },
   icon: {
     transform: [{ rotate: '45deg' }],
-    backgroundColor: 'transparent',
-    alignSelf: 'flex-end'
-  }
+    backgroundColor: 'transparent'
+  },
 };
 
 export default class Settings extends Component {
@@ -49,21 +51,18 @@ export default class Settings extends Component {
             <Icon name="plus" size={17} style={styles.icon} color="#777" />
           </TouchableOpacity>
 
-          <Text style={styles.sectionHeader}>GENERAL</Text>
-          <SettingsCardAlt title="Profile" type="account" handlePress={() => Actions.userAct()} />
-          <SettingsCardAlt title="Widgets" type="preferences" handlePress={() => Actions.widgets()} />
-          <SettingsCardAlt title="Notifications" type="notifications" handlePress={() => Actions.notif()} />
+          <Text style={styles.sectionHeader}>PREFERENCES</Text>
+          <SettingsCard title="Widgets" type="preferences" handlePress={() => Actions.widgets()} />
+          <SettingsCard title="Notifications" type="notifications" handlePress={() => Actions.notif()} />
 
-          <Text style={styles.sectionHeader}>SECURITY</Text>
-          <SettingsCardAlt title="Change Password" type="account" handlePress={() => Actions.sec()} />
-          <SettingsCardAlt title="Passcode and Touch ID" type="account" handlePress={() => Actions.sec()} />
-
-          <Text style={styles.sectionHeader}>CONTACT</Text>
-          <SettingsCardAlt title="Support" type="support" handlePress={() => Actions.sup()} />
-          <SettingsCardAlt title="Feedback" type="feedback" handlePress={() => Actions.feed()} />
-          <SettingsCardAlt title="Logout" type="logout" handlePress={() => Actions.auth()} />
+          <Text style={styles.sectionHeader}>ACCOUNT</Text>
+          <SettingsCard title="Edit Profile" type="account" handlePress={() => Actions.userAct()} />
+          <SettingsCard title="Security" type="security" handlePress={() => Actions.sec()} />
+          <SettingsCard title="Support" type="support" handlePress={() => Actions.sup()} />
+          <SettingsCard title="Logout" type="logout" handlePress={() => Actions.sup()} />
 
         </ScrollView>
+
       </GradientView>
     );
   }
