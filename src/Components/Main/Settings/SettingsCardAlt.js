@@ -12,7 +12,7 @@ const styles = {
     alignItems: 'center',
     alignSelf: 'center',
     paddingRight: 25,
-    borderBottomWidth: 1,
+    borderBottomWidth: 0.5,
     borderColor: '#eee',
     shadowColor: '#000',
     shadowOffset: { width: 2, height: 6 },
@@ -26,10 +26,9 @@ const styles = {
   title: {
     backgroundColor: 'transparent',
     fontFamily: 'Open Sans',
-    fontSize: 14,
-    letterSpacing: 0.5,
+    fontSize: 15,
+    letterSpacing: 0.25,
     color: '#252525',
-    fontWeight: '400',
   },
   arrowIcon: {
     backgroundColor: 'transparent'
@@ -63,14 +62,15 @@ export default class SettingsCardAlt extends Component {
   }
 
   render() {
+    const { disableDivider } = this.props;
     return (
       <TouchableOpacity
-        style={styles.container}
+        style={[styles.container, { borderBottomWidth: disableDivider ? 0 : 0.5 }]}
         activeOpacity={0.6}
         onPress={this.props.handlePress}
       >
         <View style={{ flexDirection: 'row' }}>
-          <View style={{ justifyContent: 'center', width: 60, alignItems: 'center' }}>
+          <View style={{ justifyContent: 'center', width: 65, alignItems: 'center' }}>
             {this.renderIcon()}
           </View>
           <Text style={styles.title}>{this.props.title}</Text>
