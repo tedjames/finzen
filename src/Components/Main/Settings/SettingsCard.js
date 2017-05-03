@@ -56,6 +56,8 @@ export default class SettingsCard extends Component {
         return <Icon style={styles.icon} name={'bullhorn'} size={18} />;
       case 'logout':
         return <Icon style={styles.icon} name={'sign-out'} size={18} />;
+      case 'none':
+        return null;
       default:
         return <Icon style={styles.icon} name={'rocket'} size={18} />;
     }
