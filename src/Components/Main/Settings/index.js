@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/Octicons';
 import { GradientView, SaveButton } from '../../Common';
 import SettingsCard from './SettingsCard';
 import MainHeader from './MainHeader';
+import Footer from './Footer';
 
 const styles = {
   height: {
@@ -52,17 +53,17 @@ export default class Settings extends Component {
           </TouchableOpacity>
 
           <Text style={styles.sectionHeader}>PREFERENCES</Text>
-          <SettingsCard title="Widgets" type="preferences" handlePress={() => Actions.widgets()} />
+          <SettingsCard title="Widgets" type="widgets" handlePress={() => Actions.widgets()} />
           <SettingsCard title="Notifications" type="notifications" handlePress={() => Actions.notif()} />
 
           <Text style={styles.sectionHeader}>ACCOUNT</Text>
           <SettingsCard title="Edit Profile" type="account" handlePress={() => Actions.userAct()} />
           <SettingsCard title="Security" type="security" handlePress={() => Actions.sec()} />
           <SettingsCard title="Support" type="support" handlePress={() => Actions.sup()} />
-          <SettingsCard title="Logout" type="logout" handlePress={() => Actions.sup()} />
+          <SettingsCard title="Logout" handlePress={() => Actions.sup()} />
 
         </ScrollView>
-
+        <Footer />
       </GradientView>
     );
   }
