@@ -39,7 +39,7 @@ const styles = {
   },
 };
 
-const Logo = (props) => {
+const Logo = () => {
   return (
     <View style={styles.logo}>
       <Text style={styles.fin}>FIN</Text>
@@ -48,4 +48,4 @@ const Logo = (props) => {
   );
 };
 
-export default Logo;
+export { Logo };
