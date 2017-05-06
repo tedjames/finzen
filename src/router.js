@@ -22,13 +22,13 @@ export default class RouterComponent extends Component {
           <Scene key="settings" component={Settings} direction="vertical" />
           <Scene key="app" component={MainRouter} initial />
           <Scene key="tx" component={TransactionScreen} />
-          <Scene key="act" component={AccountScreen} />
-          <Scene key="userAct" component={UserAccount} />
-          <Scene key="notif" component={Notifications} />
+          <Scene key="account" component={AccountScreen} />
+          <Scene key="profile" component={UserAccount} />
+          <Scene key="notifications" component={Notifications} />
           <Scene key="widgets" component={Widgets} />
-          <Scene key="sec" component={Security} />
-          <Scene key="sup" component={Support} />
-          <Scene key="feed" component={Feedback} />
+          <Scene key="security" component={Security} />
+          <Scene key="support" component={Support} />
+          <Scene key="feedback" component={Feedback} />
           <Scene key="tags" component={TagEditor} />
         </Scene>
 
