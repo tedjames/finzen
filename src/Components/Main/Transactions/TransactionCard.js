@@ -113,7 +113,7 @@ export default class extends Component {
     return (
       <TouchableOpacity
         style={styles.transactionCard}
-        activeOpacity={0.6}
+        activeOpacity={0.35}
         onPress={this.handlePress}
       >
         <View style={styles.iconCard}>
