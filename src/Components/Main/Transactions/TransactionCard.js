@@ -4,28 +4,23 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { Actions } from 'react-native-router-flux';
 
 const styles = {
-  container: {
-    borderWidth: 0.5,
-    borderColor: '#eaeff1',
-    shadowColor: '#000',
-    shadowOffset: { width: 2, height: 6 },
-    shadowOpacity: 0.1,
-    shadowRadius: 6,
-    marginLeft: 11,
-    marginRight: 11,
-    height: 85,
-    borderRadius: 2,
-    marginBottom: 1
-  },
   transactionCard: {
     backgroundColor: '#fff',
     alignSelf: 'center',
     alignItems: 'center',
     height: 85,
-    paddingLeft: 15,
-    paddingRight: 20,
+    width: '93%',
+    paddingLeft: 20,
+    paddingRight: 15,
     flexDirection: 'row',
-    borderRadius: 0,
+    borderWidth: 0.5,
+    borderColor: '#f5f5f5',
+    shadowColor: '#000',
+    shadowOffset: { width: 2, height: 6 },
+    shadowOpacity: 0.05,
+    shadowRadius: 3,
+    borderRadius: 6,
+    marginBottom: 10,
   },
   iconCard: {
     height: 42.5,
@@ -47,21 +42,21 @@ const styles = {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 3
+    marginBottom: 2
   },
   merchant: {
     fontFamily: 'Open Sans',
     fontSize: 16,
     fontWeight: '400',
-    letterSpacing: 0.75,
-    color: '#444',
+    letterSpacing: 0.25,
+    color: '#000',
   },
   location: {
     fontFamily: 'Open Sans',
     fontSize: 12,
-    fontWeight: '300',
-    letterSpacing: 0.65,
-    color: '#000',
+    fontWeight: '400',
+    letterSpacing: 0.4,
+    color: '#96979c',
   },
   amountContainer: {
     flexDirection: 'row'
@@ -69,7 +64,8 @@ const styles = {
   amount: {
     fontFamily: 'Open Sans',
     color: '#0dc381',
-    fontSize: 17,
+    fontSize: 17.5,
+    letterSpacing: 0.2,
     alignSelf: 'center',
     fontWeight: '400'
   },
@@ -85,7 +81,8 @@ const styles = {
   negAmount: {
     fontFamily: 'Open Sans',
     color: '#f95757',
-    fontSize: 17,
+    fontSize: 17.5,
+    letterSpacing: 0.2,
     alignSelf: 'center',
     fontWeight: '400'
   },
@@ -114,32 +111,30 @@ export default class extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <TouchableOpacity
-          style={styles.transactionCard}
-          activeOpacity={0.4}
-          onPress={this.handlePress}
-        >
-          <View style={styles.iconCard}>
-            <Icon name="amazon" size={19} style={styles.icon} />
-          </View>
-          <View style={styles.transactionData}>
-            <View>
-              <Text style={styles.merchant}>{this.props.merchant}</Text>
-              <View style={{ flexDirection: 'row', marginTop: 1.5 }}>
-                <Text style={styles.location}>{this.props.location}</Text>
-              </View>
+      <TouchableOpacity
+        style={styles.transactionCard}
+        activeOpacity={0.6}
+        onPress={this.handlePress}
+      >
+        <View style={styles.iconCard}>
+          <Icon name="amazon" size={19} style={styles.icon} />
+        </View>
+        <View style={styles.transactionData}>
+          <View>
+            <Text style={styles.merchant}>{this.props.merchant}</Text>
+            <View style={{ flexDirection: 'row', marginTop: 1.5 }}>
+              <Text style={styles.location}>{this.props.location}</Text>
+            </View>
 
-            </View>
-            <View style={styles.amountContainer}>
-              {this.renderDollarSign(this.props.neg)}
-              <Text style={this.props.neg ? styles.negAmount : styles.amount}>
-                {this.props.amount}
-              </Text>
-            </View>
           </View>
-        </TouchableOpacity>
-      </View>
+          <View style={styles.amountContainer}>
+            {this.renderDollarSign(this.props.neg)}
+            <Text style={this.props.neg ? styles.negAmount : styles.amount}>
+              {this.props.amount}
+            </Text>
+          </View>
+        </View>
+      </TouchableOpacity>
     );
   }
 }

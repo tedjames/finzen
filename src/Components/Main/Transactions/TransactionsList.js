@@ -6,18 +6,15 @@ import Divider from './Divider';
 
 const styles = {
   transactionsCard: {
-    backgroundColor: '#fafafa',
-    paddingBottom: 138
-  },
-  separator: {
-    height: 1,
-    backgroundColor: '#8E8E8E',
+    paddingBottom: 139
   },
 };
 
 export default class TransactionsList extends Component {
   constructor(props) {
     super(props);
+    this.onRefresh = this.onRefresh.bind(this);
+
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2,
       sectionHeaderHasChanged: (s1, s2) => s1 !== s2
@@ -28,6 +25,15 @@ export default class TransactionsList extends Component {
       dataSource: ds.cloneWithRowsAndSections(this.convertTransactions()),
     });
   }
+
+  onRefresh = () => {
+    this.setState({ refreshing: true });
+    setTimeout(() => {
+      this.setState({
+        refreshing: false,
+      });
+    }, 2000);
+  };
 
   convertTransactions() {
     const transactions = [
@@ -57,15 +63,6 @@ export default class TransactionsList extends Component {
     return transactionsMap;
   }
 
-
-  _onRefresh = () => {
-    this.setState({ refreshing: true });
-    setTimeout(() => {
-      this.setState({
-        refreshing: false,
-      });
-    }, 2000);
-  };
   renderSectionHeader(sectionData, date) {
     return (
       <Divider date={date} />
@@ -73,7 +70,7 @@ export default class TransactionsList extends Component {
   }
   render() {
     return (
-      <GradientView style={styles.transactionsCard} colors={['#fff', '#f5f5f5']}>
+      <GradientView style={styles.transactionsCard} start={{ x: 0.00, y: 0.005 }} end={{ x: 0.5, y: 1.0 }} colors={['#F2F1F7', '#efedf6']}>
         <ListView
           dataSource={this.state.dataSource}
           renderSectionHeader={this.renderSectionHeader}
@@ -85,11 +82,11 @@ export default class TransactionsList extends Component {
               tintColor="#ddd"
               titleColor="#444"
               refreshing={this.state.refreshing}
-              onRefresh={this._onRefresh.bind(this)}
+              onRefresh={this.onRefresh}
             />
           }
         />
-    </GradientView>
+      </GradientView>
     );
   }
 }

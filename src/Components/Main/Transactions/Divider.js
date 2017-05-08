@@ -3,31 +3,29 @@ import { View, Text } from 'react-native';
 
 const styles = {
   container: {
-    marginTop: 20,
-    marginLeft: 5,
-    marginRight: 5,
-    marginBottom: 10,
-    flex: 1,
+    marginTop: 22,
+    marginBottom: 12,
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    flex: 1,
   },
   date: {
     fontFamily: 'Open Sans',
-    fontSize: 10.5,
-    letterSpacing: 2.75,
+    fontSize: 14,
+    letterSpacing: 1.25,
     backgroundColor: 'transparent',
-    color: '#878a96', // #999cac is a nice color for stuff that's usually white! (blue/white) OR #a8aaba
-    fontWeight: '600',
-    marginBottom: 5,
-    alignSelf: 'center'
+    color: '#777', // #999cac is a nice color for stuff that's usually white! (blue/white) OR #a8aaba
+    fontWeight: '400',
+    alignSelf: 'center',
   },
   divider: {
-    height: 1,
-    backgroundColor: '#e3e3e3',
+    height: 0.5,
+    backgroundColor: '#000',
+    opacity: 0.1,
     flex: 1,
-    bottom: 2,
+    bottom: 0,
     marginRight: 15,
     marginLeft: 15
   }
@@ -38,7 +36,7 @@ export default class Divider extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.divider} />
-        <Text style={styles.date}>{this.props.date.toUpperCase()}</Text>
+        <Text style={styles.date}>{this.props.date}</Text>
         <View style={styles.divider} />
       </View>
     );
