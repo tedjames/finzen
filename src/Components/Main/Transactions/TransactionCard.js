@@ -76,7 +76,8 @@ const styles = {
     fontWeight: '500',
     alignSelf: 'center',
     opacity: 0.75,
-    marginRight: 0.5
+    marginRight: 0.5,
+    top: 1
   },
   negAmount: {
     fontFamily: 'Open Sans',
@@ -93,7 +94,8 @@ const styles = {
     fontWeight: '500',
     alignSelf: 'center',
     opacity: 0.75,
-    marginRight: 0.5
+    marginRight: 0.5,
+    top: 1
   }
 };
 
