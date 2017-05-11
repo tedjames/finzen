@@ -6,7 +6,7 @@ import Divider from './Divider';
 
 const styles = {
   transactionsCard: {
-    paddingBottom: 139
+    height: '85%'
   },
 };
 
