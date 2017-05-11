@@ -19,7 +19,7 @@ const styles = {
     shadowOffset: { width: 2, height: 6 },
     shadowOpacity: 0.05,
     shadowRadius: 3,
-    borderRadius: 6,
+    borderRadius: 12,
     marginBottom: 10,
   },
   iconCard: {
