@@ -3,24 +3,23 @@ import { View, TextInput, TouchableOpacity, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/MaterialIcons';
 import Icon3 from 'react-native-vector-icons/Octicons';
-import Icon4 from 'react-native-vector-icons/MaterialIcons';
 import TransactionsList from './TransactionsList';
 
 const styles = {
   searchBar: {
-    width: '85%'
+    width: '85%',
   },
   header: {
-    paddingTop: 40,
+    position: 'absolute',
     width: '100%',
-    height: '15%',
     backgroundColor: 'transparent',
+    top: 55,
     zIndex: 1,
     alignItems: 'center',
   },
   formField: {
     fontFamily: 'Open Sans',
-    fontSize: 18,
+    fontSize: 19,
     height: 40,
     fontWeight: '400',
     width: '85%',
@@ -33,19 +32,21 @@ const styles = {
     backgroundColor: '#E2E7EB'
   },
   cancelButton: {
-    right: 5,
+    right: 15,
   },
   searchButton: {
     left: 5,
     alignSelf: 'center',
-    marginRight: 25
+    marginRight: 27,
+    top: 1
   },
   toolbar: {
     flexDirection: 'row',
     alignItems: 'center',
-    height: 55,
-    top: 20,
-    width: '85%',
+    height: 60,
+    position: 'absolute',
+    top: 60,
+    width: '92%',
     backgroundColor: '#fff',
     borderRadius: 5,
     shadowColor: '#000',
@@ -94,7 +95,7 @@ export default class Transactions extends Component {
     if (this.state.text !== '') {
       return (
         <TouchableOpacity style={styles.cancelButton} onPress={() => this.setState({ text: '' })}>
-          <Icon2 name="cancel" size={15} color="#d9e3ec" />
+          <Icon2 name="cancel" size={15} color="#C9D6E2" />
         </TouchableOpacity>
       );
     } return null;
@@ -108,7 +109,7 @@ export default class Transactions extends Component {
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
               <View style={{ flexDirection: 'row' }}>
                 <TouchableOpacity style={styles.searchButton}>
-                  <Icon name="md-search" size={20} color="#C9D6E2" />
+                  <Icon name="md-search" size={24} color="#C9D6E2" />
                 </TouchableOpacity>
 
                 <TextInput
@@ -138,7 +139,7 @@ export default class Transactions extends Component {
 
             <TouchableOpacity style={styles.toolbarButton}>
               <Text style={styles.toolName}>FILTER</Text>
-              <Icon4 style={styles.filterIcon} name="filter-list" size={14} color="#ccc" />
+              <Icon2 style={styles.filterIcon} name="filter-list" size={14} color="#ccc" />
             </TouchableOpacity>
           </View>
 

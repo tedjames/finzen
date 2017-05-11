@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import { ListView, RefreshControl } from 'react-native';
+import { View, ListView, RefreshControl } from 'react-native';
 import { GradientView } from '../../Common';
 import TransactionCard from './TransactionCard';
 import Divider from './Divider';
 
 const styles = {
   transactionsCard: {
-    height: '85%'
+    height: '100%'
   },
+  emptyHeader: {
+    height: 175
+  }
 };
 
 export default class TransactionsList extends Component {
@@ -68,9 +71,11 @@ export default class TransactionsList extends Component {
       <Divider date={date} />
     );
   }
+
   render() {
     return (
-      <GradientView style={styles.transactionsCard} start={{ x: 0.00, y: 0.005 }} end={{ x: 0.5, y: 1.0 }} colors={['#F2F1F7', '#efedf6']}>
+      <GradientView style={styles.transactionsCard} colors={['#fff', '#EBEDF1']}>
+        <View style={styles.emptyHeader} />
         <ListView
           dataSource={this.state.dataSource}
           renderSectionHeader={this.renderSectionHeader}
