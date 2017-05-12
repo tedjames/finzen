@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Animated, ListView, RefreshControl } from 'react-native';
+import { Animated, ListView, RefreshControl, TouchableOpacity, Easing } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { GradientView } from '../../Common';
 import TransactionCard from './TransactionCard';
 import Divider from './Divider';
@@ -7,6 +8,21 @@ import Divider from './Divider';
 const styles = {
   transactionsCard: {
     height: '100%'
+  },
+  floatingButton: {
+    position: 'absolute',
+    bottom: 0,
+    right: 40,
+    height: 60,
+    width: 60,
+    borderRadius: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#333',
+    shadowColor: '#000',
+    shadowOffset: { width: 2, height: 6 },
+    shadowOpacity: 0.075,
+    shadowRadius: 7,
   }
 };
 
@@ -76,16 +92,37 @@ export default class TransactionsList extends Component {
       outputRange: [175, 85],
       extrapolate: 'clamp'
     });
+    const floatingButtonOpacity = this.props.scrollY.interpolate({
+      inputRange: [50, 200],
+      outputRange: [0, 0.95],
+      extrapolate: 'clamp',
+      easing: Easing.ease
+    });
+    const floatingButtonPosition = this.props.scrollY.interpolate({
+      inputRange: [50, 200],
+      outputRange: [-60, 20],
+      extrapolate: 'clamp',
+      easing: Easing.ease
+    });
     return (
       <GradientView style={styles.transactionsCard} colors={['#fff', '#EBEDF1']}>
         <Animated.View style={{ height: emptyHeaderHeight }} />
         <ListView
+          ref="listview"
           showsVerticalScrollIndicator={false}
           onScroll={this.props.onScroll}
           scrollEventThrottle={16}
           dataSource={this.state.dataSource}
           renderSectionHeader={this.renderSectionHeader}
-          renderRow={rowData => <TransactionCard merchant={rowData.merchant} amount={rowData.amount} time={rowData.time} location={rowData.location} neg={rowData.neg}/>}
+          renderRow={rowData =>
+            <TransactionCard
+              merchant={rowData.merchant}
+              amount={rowData.amount}
+              time={rowData.time}
+              location={rowData.location}
+              neg={rowData.neg}
+            />
+          }
           stickySectionHeadersEnabled={false}
           refreshControl={
             <RefreshControl
@@ -97,6 +134,15 @@ export default class TransactionsList extends Component {
             />
           }
         />
+        <Animated.View style={{ opacity: floatingButtonOpacity, bottom: floatingButtonPosition }}>
+          <TouchableOpacity
+            onPress={() => this.refs.listview.scrollTo({ x: 0, y: 0, animated: true })}
+            activeOpacity={0.45}
+            style={styles.floatingButton}
+          >
+            <Icon name="ios-arrow-up" size={20} color="#f5f5f5" />
+          </TouchableOpacity>
+        </Animated.View>
       </GradientView>
     );
   }

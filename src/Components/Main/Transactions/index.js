@@ -210,6 +210,7 @@ export default class Transactions extends Component {
           )}
           scrollY={this.state.scrollY}
         />
+
       </View>
     );
   }
