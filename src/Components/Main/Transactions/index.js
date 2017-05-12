@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TextInput, TouchableOpacity, Text } from 'react-native';
+import { StatusBar, View, TextInput, TouchableOpacity, Text, Animated, Easing } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/MaterialIcons';
 import Icon3 from 'react-native-vector-icons/Octicons';
@@ -7,13 +7,12 @@ import TransactionsList from './TransactionsList';
 
 const styles = {
   searchBar: {
-    width: '85%',
+    width: '91%'
   },
   header: {
     position: 'absolute',
     width: '100%',
     backgroundColor: 'transparent',
-    top: 55,
     zIndex: 1,
     alignItems: 'center',
   },
@@ -25,7 +24,7 @@ const styles = {
     width: '85%',
     color: '#333',
     alignSelf: 'center',
-    zIndex: 10,
+    zIndex: 2,
   },
   underline: {
     height: 1,
@@ -37,22 +36,22 @@ const styles = {
   searchButton: {
     left: 5,
     alignSelf: 'center',
-    marginRight: 27,
-    top: 1
+    marginRight: 25,
+    top: 2
   },
   toolbar: {
     flexDirection: 'row',
     alignItems: 'center',
     height: 60,
     position: 'absolute',
-    top: 60,
     width: '92%',
     backgroundColor: '#fff',
-    borderRadius: 12,
+    borderRadius: 10,
     shadowColor: '#000',
-    shadowOffset: { width: 2, height: 6 },
-    shadowOpacity: 0.1,
-    shadowRadius: 9,
+    shadowOffset: { width: 2, height: 10 },
+    shadowOpacity: 0.075,
+    shadowRadius: 7,
+    zIndex: -1
   },
   toolbarButton: {
     width: '50%',
@@ -67,7 +66,8 @@ const styles = {
     fontSize: 12,
     letterSpacing: 0.5,
     color: '#444',
-    marginRight: 15
+    marginRight: 15,
+    backgroundColor: 'transparent'
   },
   divider: {
     width: 1,
@@ -75,9 +75,11 @@ const styles = {
     backgroundColor: '#ddd',
   },
   sortIcon: {
-    top: 1
+    top: 1,
+    backgroundColor: 'transparent'
   },
   filterIcon: {
+    backgroundColor: 'transparent'
   }
 };
 
@@ -88,6 +90,7 @@ export default class Transactions extends Component {
 
     this.state = ({
       text: '',
+      scrollY: new Animated.Value(0),
     });
   }
 
@@ -102,14 +105,57 @@ export default class Transactions extends Component {
   }
 
   render() {
+    const fieldPosition = this.state.scrollY.interpolate({
+      // inputRange: [ starting scroll position , ending scroll position ]
+      inputRange: [0, 125],
+      // outputRange: [HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT],
+      outputRange: [60, 30],
+      extrapolate: 'clamp',
+    });
+    const toolbarPosition = this.state.scrollY.interpolate({
+      inputRange: [0, 125],
+      outputRange: [115, 10],
+      extrapolate: 'clamp'
+    });
+    const toolbarHeight = this.state.scrollY.interpolate({
+      inputRange: [25, 125],
+      outputRange: [60, 80],
+      extrapolate: 'clamp',
+      easing: Easing.ease
+    });
+    const toolbarWidth = this.state.scrollY.interpolate({
+      inputRange: [25, 125],
+      outputRange: ['92%', '100%'],
+      extrapolate: 'clamp',
+      easing: Easing.ease
+    });
+    const toolbarBorderRadius = this.state.scrollY.interpolate({
+      inputRange: [0, 125],
+      outputRange: [10, 0],
+      extrapolate: 'clamp',
+      easing: Easing.ease
+    });
+    const toolbarChildrenOpacity = this.state.scrollY.interpolate({
+      inputRange: [0, 70],
+      outputRange: [1, 0],
+      extrapolate: 'clamp',
+    });
+    const toolbarChildrenScale = this.state.scrollY.interpolate({
+      inputRange: [0, 90],
+      outputRange: [1, 0.9],
+      extrapolate: 'clamp',
+      easing: Easing.ease
+    });
+
     return (
       <View>
+        <StatusBar hidden={false} setTranslucent={0.5} />
         <View style={styles.header}>
-          <View style={styles.searchBar}>
+          <Animated.View style={[styles.searchBar, { top: fieldPosition }]}>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
               <View style={{ flexDirection: 'row' }}>
                 <TouchableOpacity style={styles.searchButton}>
-                  <Icon name="md-search" size={24} color="#C9D6E2" />
+                  <Icon name="md-search" size={20} color="#C9D6E2" />
                 </TouchableOpacity>
 
                 <TextInput
@@ -123,29 +169,47 @@ export default class Transactions extends Component {
                   keyboardAppearance="dark"
                   returnKeyType="done"
                 />
+
               </View>
               {this.renderCancel()}
             </View>
             <View style={styles.underline} />
-          </View>
+          </Animated.View>
 
-          <View style={styles.toolbar}>
-            <TouchableOpacity style={styles.toolbarButton}>
-              <Text style={styles.toolName}>SORT</Text>
-              <Icon3 style={styles.sortIcon} name="triangle-down" size={15} color="#ccc" />
-            </TouchableOpacity>
+          <Animated.View
+            style={[
+              styles.toolbar, {
+                top: toolbarPosition,
+                height: toolbarHeight,
+                width: toolbarWidth,
+                borderRadius: toolbarBorderRadius
+              }]}
+          >
+            <Animated.View style={{ opacity: toolbarChildrenOpacity, flexDirection: 'row', alignItems: 'center', transform: [{ scale: toolbarChildrenScale }] }}>
 
-            <View style={styles.divider} />
+              <TouchableOpacity style={styles.toolbarButton}>
+                <Text style={styles.toolName}>SORT</Text>
+                <Icon3 style={styles.sortIcon} name="triangle-down" size={15} color="#ccc" />
+              </TouchableOpacity>
 
-            <TouchableOpacity style={styles.toolbarButton}>
-              <Text style={styles.toolName}>FILTER</Text>
-              <Icon2 style={styles.filterIcon} name="filter-list" size={14} color="#ccc" />
-            </TouchableOpacity>
-          </View>
+              <View style={styles.divider} />
+
+              <TouchableOpacity style={styles.toolbarButton}>
+                <Text style={styles.toolName}>FILTER</Text>
+                <Icon2 style={styles.filterIcon} name="filter-list" size={14} color="#ccc" />
+              </TouchableOpacity>
+
+            </Animated.View>
+          </Animated.View>
 
         </View>
 
-        <TransactionsList />
+        <TransactionsList
+          onScroll={Animated.event(
+            [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }]
+          )}
+          scrollY={this.state.scrollY}
+        />
       </View>
     );
   }

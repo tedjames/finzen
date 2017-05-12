@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ListView, RefreshControl } from 'react-native';
+import { Animated, ListView, RefreshControl } from 'react-native';
 import { GradientView } from '../../Common';
 import TransactionCard from './TransactionCard';
 import Divider from './Divider';
@@ -7,9 +7,6 @@ import Divider from './Divider';
 const styles = {
   transactionsCard: {
     height: '100%'
-  },
-  emptyHeader: {
-    height: 175
   }
 };
 
@@ -39,6 +36,7 @@ export default class TransactionsList extends Component {
   };
 
   convertTransactions() {
+    // BUG: REFORMAT THE DATES TO RESOLVE SORTING BY DATE ISSUE
     const transactions = [
       { txid: 0, merchant: 'Amazon', amount: '29.54', date: 'January 28, 2017', time: '4:30pm', location: 'Online', neg: true },
       { txid: 1, merchant: 'Walgreens', amount: '12.41', date: 'January 28, 2017 ', time: '4:15pm', location: 'Edison, NJ', neg: true },
@@ -73,10 +71,18 @@ export default class TransactionsList extends Component {
   }
 
   render() {
+    const emptyHeaderHeight = this.props.scrollY.interpolate({
+      inputRange: [0, 100],
+      outputRange: [175, 85],
+      extrapolate: 'clamp'
+    });
     return (
       <GradientView style={styles.transactionsCard} colors={['#fff', '#EBEDF1']}>
-        <View style={styles.emptyHeader} />
+        <Animated.View style={{ height: emptyHeaderHeight }} />
         <ListView
+          showsVerticalScrollIndicator={false}
+          onScroll={this.props.onScroll}
+          scrollEventThrottle={16}
           dataSource={this.state.dataSource}
           renderSectionHeader={this.renderSectionHeader}
           renderRow={rowData => <TransactionCard merchant={rowData.merchant} amount={rowData.amount} time={rowData.time} location={rowData.location} neg={rowData.neg}/>}
