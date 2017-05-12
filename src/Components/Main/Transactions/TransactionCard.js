@@ -17,8 +17,8 @@ const styles = {
     borderColor: '#f5f5f5',
     shadowColor: '#000',
     shadowOffset: { width: 2, height: 6 },
-    shadowOpacity: 0.05,
-    shadowRadius: 3,
+    shadowOpacity: 0.075,
+    shadowRadius: 5,
     borderRadius: 12,
     marginBottom: 10,
   },
@@ -115,7 +115,7 @@ export default class extends Component {
     return (
       <TouchableOpacity
         style={styles.transactionCard}
-        activeOpacity={0.35}
+        activeOpacity={0.45}
         onPress={this.handlePress}
       >
         <View style={styles.iconCard}>
