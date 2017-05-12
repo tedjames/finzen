@@ -13,9 +13,9 @@ const styles = {
     position: 'absolute',
     bottom: 0,
     right: 40,
-    height: 60,
-    width: 60,
-    borderRadius: 30,
+    height: 65,
+    width: 65,
+    borderRadius: 50,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#333',
@@ -99,8 +99,8 @@ export default class TransactionsList extends Component {
       easing: Easing.ease
     });
     const floatingButtonPosition = this.props.scrollY.interpolate({
-      inputRange: [50, 200],
-      outputRange: [-60, 20],
+      inputRange: [50, 225],
+      outputRange: [-60, 15],
       extrapolate: 'clamp',
       easing: Easing.ease
     });
