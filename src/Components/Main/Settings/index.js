@@ -74,7 +74,7 @@ const styles = {
   footerText: {
     fontFamily: 'Montserrat',
     fontSize: 12,
-    letterSpacing: 6,
+    letterSpacing: 6.25,
     backgroundColor: 'transparent',
     color: '#eee',
   },
