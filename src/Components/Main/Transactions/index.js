@@ -114,12 +114,12 @@ export default class Transactions extends Component {
     });
     const toolbarPosition = this.state.scrollY.interpolate({
       inputRange: [0, 125],
-      outputRange: [115, 10],
+      outputRange: [115, 0],
       extrapolate: 'clamp'
     });
     const toolbarHeight = this.state.scrollY.interpolate({
       inputRange: [25, 125],
-      outputRange: [60, 80],
+      outputRange: [60, 90],
       extrapolate: 'clamp',
       easing: Easing.ease
     });
@@ -133,7 +133,6 @@ export default class Transactions extends Component {
       inputRange: [0, 125],
       outputRange: [10, 0],
       extrapolate: 'clamp',
-      easing: Easing.ease
     });
     const toolbarChildrenOpacity = this.state.scrollY.interpolate({
       inputRange: [0, 70],
@@ -164,7 +163,7 @@ export default class Transactions extends Component {
                   onChangeText={text => this.setState({ text })}
                   value={this.state.text}
                   placeholder="Search transactions..."
-                  placeholderTextColor="#888"
+                  placeholderTextColor="#aab2b9"
                   clearButtonMode="never"
                   keyboardAppearance="dark"
                   returnKeyType="done"
