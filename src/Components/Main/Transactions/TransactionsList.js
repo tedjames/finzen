@@ -12,17 +12,19 @@ const styles = {
   floatingButton: {
     position: 'absolute',
     bottom: 0,
-    right: 40,
+    right: 37.5,
     height: 65,
     width: 65,
     borderRadius: 50,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#333',
+    borderWidth: 0.5,
+    borderColor: '#ededed',
+    backgroundColor: '#fcfcfc',
     shadowColor: '#000',
     shadowOffset: { width: 2, height: 6 },
-    shadowOpacity: 0.075,
-    shadowRadius: 7,
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
   }
 };
 
@@ -93,14 +95,14 @@ export default class TransactionsList extends Component {
       extrapolate: 'clamp'
     });
     const floatingButtonOpacity = this.props.scrollY.interpolate({
-      inputRange: [50, 200],
-      outputRange: [0, 0.95],
+      inputRange: [0, 200],
+      outputRange: [0, 0.9],
       extrapolate: 'clamp',
       easing: Easing.ease
     });
     const floatingButtonPosition = this.props.scrollY.interpolate({
-      inputRange: [50, 225],
-      outputRange: [-60, 15],
+      inputRange: [0, 150],
+      outputRange: [-40, 7.5],
       extrapolate: 'clamp',
       easing: Easing.ease
     });
@@ -134,13 +136,18 @@ export default class TransactionsList extends Component {
             />
           }
         />
-        <Animated.View style={{ opacity: floatingButtonOpacity, bottom: floatingButtonPosition }}>
+        <Animated.View
+          style={{
+            opacity: floatingButtonOpacity,
+            bottom: floatingButtonPosition,
+          }}
+        >
           <TouchableOpacity
             onPress={() => this.refs.listview.scrollTo({ x: 0, y: 0, animated: true })}
             activeOpacity={0.45}
             style={styles.floatingButton}
           >
-            <Icon name="ios-arrow-up" size={20} color="#f5f5f5" />
+            <Icon name="ios-arrow-up" size={22} color="#222" />
           </TouchableOpacity>
         </Animated.View>
       </GradientView>

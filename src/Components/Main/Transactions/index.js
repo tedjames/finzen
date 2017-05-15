@@ -27,8 +27,9 @@ const styles = {
     zIndex: 2,
   },
   underline: {
-    height: 1,
-    backgroundColor: '#E2E7EB'
+    backgroundColor: '#fff',
+    borderWidth: 0.5,
+    borderColor: '#E2E7EB'
   },
   cancelButton: {
     right: 15,
@@ -45,11 +46,8 @@ const styles = {
     height: 60,
     position: 'absolute',
     width: '92%',
-    backgroundColor: '#fff',
-    borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: { width: 2, height: 10 },
-    shadowOpacity: 0.075,
     shadowRadius: 7,
     zIndex: -1
   },
@@ -65,7 +63,7 @@ const styles = {
     fontWeight: '400',
     fontSize: 12,
     letterSpacing: 0.5,
-    color: '#444',
+    color: '#364652',
     marginRight: 15,
     backgroundColor: 'transparent'
   },
@@ -109,7 +107,7 @@ export default class Transactions extends Component {
       // inputRange: [ starting scroll position , ending scroll position ]
       inputRange: [0, 125],
       // outputRange: [HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT],
-      outputRange: [60, 30],
+      outputRange: [60, 25],
       extrapolate: 'clamp',
     });
     const toolbarPosition = this.state.scrollY.interpolate({
@@ -119,7 +117,7 @@ export default class Transactions extends Component {
     });
     const toolbarHeight = this.state.scrollY.interpolate({
       inputRange: [25, 125],
-      outputRange: [60, 90],
+      outputRange: [60, 80],
       extrapolate: 'clamp',
       easing: Easing.ease
     });
@@ -145,10 +143,20 @@ export default class Transactions extends Component {
       extrapolate: 'clamp',
       easing: Easing.ease
     });
+    const toolbarColor = this.state.scrollY.interpolate({
+      inputRange: [0, 100],
+      outputRange: ['#fff', '#f5f5f5'],
+      extrapolate: 'clamp'
+    });
+    const toolbarShadowOpacity = this.state.scrollY.interpolate({
+      inputRange: [0, 100],
+      outputRange: [0.075, 0.125],
+      extrapolate: 'clamp'
+    });
 
     return (
       <View>
-        <StatusBar hidden={false} setTranslucent={0.5} />
+        <StatusBar hidden />
         <View style={styles.header}>
           <Animated.View style={[styles.searchBar, { top: fieldPosition }]}>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -163,7 +171,7 @@ export default class Transactions extends Component {
                   onChangeText={text => this.setState({ text })}
                   value={this.state.text}
                   placeholder="Search transactions..."
-                  placeholderTextColor="#aab2b9"
+                  placeholderTextColor="#475b6a"
                   clearButtonMode="never"
                   keyboardAppearance="dark"
                   returnKeyType="done"
@@ -181,10 +189,12 @@ export default class Transactions extends Component {
                 top: toolbarPosition,
                 height: toolbarHeight,
                 width: toolbarWidth,
-                borderRadius: toolbarBorderRadius
+                borderRadius: toolbarBorderRadius,
+                backgroundColor: toolbarColor,
+                shadowOpacity: toolbarShadowOpacity
               }]}
           >
-            <Animated.View style={{ opacity: toolbarChildrenOpacity, flexDirection: 'row', alignItems: 'center', transform: [{ scale: toolbarChildrenScale }] }}>
+            <Animated.View style={{ opacity: toolbarChildrenOpacity, flexDirection: 'row', alignItems: 'center', backgroundColor: 'transparent', transform: [{ scale: toolbarChildrenScale }] }}>
 
               <TouchableOpacity style={styles.toolbarButton}>
                 <Text style={styles.toolName}>SORT</Text>
