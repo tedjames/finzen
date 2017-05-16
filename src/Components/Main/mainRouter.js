@@ -15,6 +15,9 @@ const styles = {
   },
   tabbar: {
     backgroundColor: '#fff',
+    shadowOpacity: 0.1,
+    shadowColor: 'black',
+    shadowRadius: 12
   },
   tab: {
     padding: 0,
@@ -113,6 +116,7 @@ class MainRouter extends Component {
         renderIndicator={this.renderIndicator}
         style={styles.tabbar}
         tabStyle={styles.tab}
+        translucent
       />
     );
   };
@@ -138,6 +142,7 @@ class MainRouter extends Component {
             {...props}
             animationEnabled
             swipeEnabled
+            translucent
           />
         );
       case 'android':
@@ -167,6 +172,7 @@ class MainRouter extends Component {
         renderFooter={this.renderFooter}
         renderPager={this.renderPager}
         onRequestChangeTab={this.handleChangeTab}
+        translucent
       />
     );
   }
