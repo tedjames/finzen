@@ -18,8 +18,8 @@ const styles = {
     borderRadius: 50,
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 0.5,
-    borderColor: '#ededed',
+    borderWidth: 0.25,
+    borderColor: '#9BA2FF',
     backgroundColor: '#fcfcfc',
     shadowColor: '#000',
     shadowOffset: { width: 2, height: 6 },
@@ -90,8 +90,8 @@ export default class TransactionsList extends Component {
 
   render() {
     const emptyHeaderHeight = this.props.scrollY.interpolate({
-      inputRange: [0, 100],
-      outputRange: [175, 85],
+      inputRange: [0, 105],
+      outputRange: [175, 62.5],
       extrapolate: 'clamp'
     });
     const floatingButtonOpacity = this.props.scrollY.interpolate({
@@ -107,7 +107,7 @@ export default class TransactionsList extends Component {
       easing: Easing.ease
     });
     return (
-      <GradientView style={styles.transactionsCard} colors={['#fff', '#EBEDF1']}>
+      <GradientView style={styles.transactionsCard} colors={['#fff', '#eceff4']}>
         <Animated.View style={{ height: emptyHeaderHeight }} />
         <ListView
           ref="listview"
@@ -147,7 +147,7 @@ export default class TransactionsList extends Component {
             activeOpacity={0.45}
             style={styles.floatingButton}
           >
-            <Icon name="ios-arrow-up" size={22} color="#222" />
+            <Icon name="ios-arrow-up" size={23} color="#7178d9" />
           </TouchableOpacity>
         </Animated.View>
       </GradientView>
