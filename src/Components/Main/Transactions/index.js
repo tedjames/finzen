@@ -3,7 +3,6 @@ import { StatusBar, View, TextInput, TouchableOpacity, Text, Animated, Easing } 
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/MaterialIcons';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
-import Icon4 from 'react-native-vector-icons/FontAwesome';
 import TransactionsList from './TransactionsList';
 
 const styles = {
@@ -42,6 +41,7 @@ const styles = {
     left: 5,
     alignSelf: 'center',
     marginRight: 25,
+    top: 10
   },
   toolbar: {
     flexDirection: 'row',
@@ -77,10 +77,20 @@ const styles = {
   },
   sortIcon: {
     top: 1,
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    opacity: 0.9
   },
   filterIcon: {
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    opacity: 0.9
+  },
+  headerSortIcon: {
+    position: 'absolute',
+    top: 0
+  },
+  headerFilterIcon: {
+    position: 'absolute',
+    top: 30
   }
 };
 
@@ -108,7 +118,7 @@ export default class Transactions extends Component {
   render() {
     const fieldPosition = this.state.scrollY.interpolate({
       inputRange: [0, 125],
-      outputRange: [60, 25],
+      outputRange: [60, 13],
       extrapolate: 'clamp',
     });
     const fieldOpacity = this.state.scrollY.interpolate({
@@ -158,12 +168,6 @@ export default class Transactions extends Component {
       outputRange: [0.075, 0.1],
       extrapolate: 'clamp'
     });
-    const searchButtonTop = this.state.scrollY.interpolate({
-      inputRange: [0, 125],
-      outputRange: [11, 0],
-      extrapolate: 'clamp',
-      easing: Easing.ease.out
-    });
     const searchButtonLeft = this.state.scrollY.interpolate({
       inputRange: [0, 125],
       outputRange: [5, 8],
@@ -171,7 +175,7 @@ export default class Transactions extends Component {
     });
     const searchButtonScale = this.state.scrollY.interpolate({
       inputRange: [0, 125],
-      outputRange: [1, 1.15],
+      outputRange: [0.9, 1.15],
       extrapolate: 'clamp'
     });
     const searchButtonOpacity = this.state.scrollY.interpolate({
@@ -184,6 +188,19 @@ export default class Transactions extends Component {
       <View>
         <StatusBar hidden />
         <View style={styles.header}>
+
+          <TouchableOpacity style={styles.headerSortIcon}>
+            <Animated.View>
+              <Icon name="md-search" size={20} color="#A5ADFC" />
+            </Animated.View>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.headerFilterIcon}>
+            <Animated.View>
+              <Icon name="md-search" size={20} color="#A5ADFC" />
+            </Animated.View>
+          </TouchableOpacity>
+
           <Animated.View style={[styles.searchBar, { top: fieldPosition }]}>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
               <View style={{ flexDirection: 'row' }}>
@@ -191,7 +208,6 @@ export default class Transactions extends Component {
                   style={[
                     styles.searchButtonContainer,
                     {
-                      top: searchButtonTop,
                       left: searchButtonLeft,
                       transform: [{ scale: searchButtonScale }]
                     }
@@ -199,7 +215,7 @@ export default class Transactions extends Component {
                 >
                   <TouchableOpacity style={styles.searchButton}>
                     <Animated.View style={{ opacity: searchButtonOpacity }}>
-                      <Icon name="md-search" size={20} color="#A5ADFC" />
+                      <Icon name="md-search" size={20} color="#9BA2FF" />
                     </Animated.View>
                   </TouchableOpacity>
                 </Animated.View>
@@ -246,7 +262,7 @@ export default class Transactions extends Component {
 
               <TouchableOpacity style={styles.toolbarButton}>
                 <Text style={styles.toolName}>FILTER</Text>
-                <Icon4 style={styles.filterIcon} name="filter" size={16} color="#9BA2FF" />
+                <Icon3 style={styles.filterIcon} name="filter-variant" size={16} color="#9BA2FF" />
               </TouchableOpacity>
 
             </Animated.View>
