@@ -86,11 +86,13 @@ const styles = {
   },
   headerSortIcon: {
     position: 'absolute',
-    top: 0
+    top: 25,
+    right: 75
   },
   headerFilterIcon: {
     position: 'absolute',
-    top: 30
+    top: 24,
+    right: 25
   }
 };
 
@@ -118,7 +120,7 @@ export default class Transactions extends Component {
   render() {
     const fieldPosition = this.state.scrollY.interpolate({
       inputRange: [0, 125],
-      outputRange: [60, 13],
+      outputRange: [60, 15],
       extrapolate: 'clamp',
     });
     const fieldOpacity = this.state.scrollY.interpolate({
@@ -179,9 +181,21 @@ export default class Transactions extends Component {
       extrapolate: 'clamp'
     });
     const searchButtonOpacity = this.state.scrollY.interpolate({
-      inputRange: [0, 125],
-      outputRange: [0.4, 1],
+      inputRange: [0, 135],
+      outputRange: [0.4, 0.9],
       extrapolate: 'clamp'
+    });
+    const headerToolbarOpacity = this.state.scrollY.interpolate({
+      inputRange: [75, 135],
+      outputRange: [0, 1],
+      extrapolate: 'clamp',
+      easing: Easing.ease.out
+    });
+    const headerToolbarScale = this.state.scrollY.interpolate({
+      inputRange: [75, 125],
+      outputRange: [0.9, 1],
+      extrapolate: 'clamp',
+      easing: Easing.ease.out
     });
 
     return (
@@ -189,17 +203,15 @@ export default class Transactions extends Component {
         <StatusBar hidden />
         <View style={styles.header}>
 
-          <TouchableOpacity style={styles.headerSortIcon}>
-            <Animated.View>
-              <Icon name="md-search" size={20} color="#A5ADFC" />
-            </Animated.View>
-          </TouchableOpacity>
+          <Animated.View style={{ opacity: headerToolbarOpacity, transform: [{ scale: headerToolbarScale }], position: 'absolute', right: 0, zIndex: 5 }}>
+            <TouchableOpacity style={styles.headerSortIcon}>
+              <Icon3 name="sort" size={21} color="#A5ADFC" />
+            </TouchableOpacity>
 
-          <TouchableOpacity style={styles.headerFilterIcon}>
-            <Animated.View>
-              <Icon name="md-search" size={20} color="#A5ADFC" />
-            </Animated.View>
-          </TouchableOpacity>
+            <TouchableOpacity style={styles.headerFilterIcon}>
+              <Icon3 name="filter-variant" size={22.5} color="#A5ADFC" />
+            </TouchableOpacity>
+          </Animated.View>
 
           <Animated.View style={[styles.searchBar, { top: fieldPosition }]}>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
