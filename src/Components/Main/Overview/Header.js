@@ -41,11 +41,11 @@ export default class Header extends Component {
     return (
       <View style={styles.header}>
         <TouchableOpacity onPress={this.handleAdd} style={styles.iconContainer}>
-          <Icon name="plus" size={16} style={styles.icon} color="#a5abaf" />
+          <Icon name="plus" size={16} style={styles.icon} color="#a0a6ad" />
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => Actions.settings()} style={styles.iconContainer}>
-          <Icon2 name="cogs" size={16} style={styles.icon} color="#a5abaf" />
+          <Icon2 name="cogs" size={16} style={styles.icon} color="#a0a6ad" />
         </TouchableOpacity>
       </View>
     );

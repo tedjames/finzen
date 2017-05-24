@@ -185,6 +185,11 @@ export default class Transactions extends Component {
       outputRange: [0.4, 0.9],
       extrapolate: 'clamp'
     });
+    const searchButtonColor = this.state.scrollY.interpolate({
+      inputRange: [0, 100],
+      outputRange: ['#9BA2FF', '#a0a6ad'],
+      extrapolate: 'clamp'
+    });
     const headerToolbarOpacity = this.state.scrollY.interpolate({
       inputRange: [75, 135],
       outputRange: [0, 1],
@@ -205,11 +210,11 @@ export default class Transactions extends Component {
 
           <Animated.View style={{ opacity: headerToolbarOpacity, transform: [{ scale: headerToolbarScale }], position: 'absolute', right: 0, zIndex: 5 }}>
             <TouchableOpacity style={styles.headerSortIcon}>
-              <Icon3 name="sort" size={21} color="#A5ADFC" />
+              <Icon3 name="sort" size={21} color="#8f99a4" />
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.headerFilterIcon}>
-              <Icon3 name="filter-variant" size={22.5} color="#A5ADFC" />
+              <Icon3 name="filter-variant" size={22.5} color="#8f99a4" />
             </TouchableOpacity>
           </Animated.View>
 
@@ -227,7 +232,7 @@ export default class Transactions extends Component {
                 >
                   <TouchableOpacity style={styles.searchButton}>
                     <Animated.View style={{ opacity: searchButtonOpacity }}>
-                      <Icon name="md-search" size={20} color="#9BA2FF" />
+                      <Icon name="md-search" size={20} color="#8f99a4" />
                     </Animated.View>
                   </TouchableOpacity>
                 </Animated.View>
