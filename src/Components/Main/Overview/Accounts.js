@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import AccountCard from './AccountCard';
-import NewAccountCard from './NewAccountCard';
 
 const styles = {
   accountsCard: {
@@ -31,17 +30,14 @@ const styles = {
   },
 };
 
-const Accounts = (props) => {
+const Accounts = () => {
   return (
     <View>
       <Text style={styles.text}>Accounts</Text>
-      <NewAccountCard type="checking" amount="5127" name="Chase Checking" />
-      <View style={styles.accountsCard}>
-        <AccountCard type="checking" amount="5127" name="Chase Checking" />
-        <AccountCard type="savings" amount="271382" name="Well Fargo Savings" />
-        <AccountCard type="cash" amount="64" name="My Wallet" />
-        <AccountCard type="bitcoin" amount="2.748271" name="Coinbase" />
-      </View>
+      <AccountCard type="checking" amount={-5123} name="Chase Checking" />
+      <AccountCard type="savings" amount={271382} name="Well Fargo Savings" />
+      <AccountCard type="cash" amount={64} name="My Wallet" />
+      <AccountCard type="bitcoin" amount={2.748271} name="Coinbase" />
     </View>
 
   );

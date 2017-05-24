@@ -32,13 +32,13 @@ const styles = {
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 1,
+    borderWidth: 0,
     borderColor: '#ddd',
   },
   icon: {
     backgroundColor: 'transparent',
     color: '#959595',
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   transactionData: {
     flex: 1,
@@ -53,15 +53,16 @@ const styles = {
     letterSpacing: 0.25,
     color: '#000',
   },
-  location: {
+  subtitle: {
     fontFamily: 'Open Sans',
     fontSize: 12,
     fontWeight: '400',
     letterSpacing: 0.4,
     color: '#96979c',
   },
-  amountContainer: {
-    flexDirection: 'row'
+  iconContainer: {
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   amount: {
     fontFamily: 'Open Sans',
@@ -107,34 +108,69 @@ export default class NewAccountCard extends Component {
     Actions.tx();
   }
 
-  renderDollarSign(neg) {
-    if (neg) {
-      return <Text style={styles.negDollarIcon}>$</Text>;
-    } return <Text style={styles.dollarIcon}>$</Text>;
+  renderCircleIcon(type) {
+    switch (type) {
+      case 'checking':
+        return <Icon name={'credit-card'} size={16} style={[styles.icon]} />;
+      case 'savings':
+        return <Icon name={'bank'} size={16} style={[styles.icon, { left: 1 }]} />;
+      case 'cash':
+        return <Icon name={'money'} size={16} style={styles.icon} />;
+      case 'bitcoin':
+        return <Icon name={'bitcoin'} size={18} style={styles.icon} />;
+      case 'paypal':
+        return <Icon name={'bank'} size={20} style={styles.icon} />;
+      default:
+        return <Icon name={'bank'} size={18} style={styles.icon} />;
+    }
+  }
+
+  renderIcon(type) {
+    switch (type) {
+      case 'checking':
+        return <Icon name={'credit-card'} size={20} style={[styles.icon]} />;
+      case 'savings':
+        return <Icon name={'bank'} size={20} style={[styles.icon, { left: 1 }]} />;
+      case 'cash':
+        return <Icon name={'money'} size={20} style={styles.icon} />;
+      case 'bitcoin':
+        return <Icon name={'bitcoin'} size={22} style={styles.icon} />;
+      case 'paypal':
+        return <Icon name={'bank'} size={24} style={styles.icon} />;
+      default:
+        return <Icon name={'bank'} size={22} style={styles.icon} />;
+    }
+  }
+
+  renderAmount(type, amount) {
+    const newAmount = amount.toString().replace('-', '');
+    const negAmount = `-$${newAmount}`;
+    const posAmount = `$${newAmount}`;
+    if (type === 'bitcoin') {
+      return <Text style={styles.subtitle}>{amount} BTC</Text>;
+    } return <Text style={styles.subtitle}>{amount < 0 ? negAmount : posAmount }</Text>;
   }
 
   render() {
-    const { type, amount, name, neg } = this.props;
+    const { type, amount, name } = this.props;
     return (
       <TouchableOpacity
         style={styles.transactionCard}
         activeOpacity={0.45}
         onPress={this.handlePress}
       >
-        <View style={styles.iconCard}>
-          <Icon name="amazon" size={19} style={styles.icon} />
-        </View>
+        <View style={styles.iconCard}>{this.renderIcon(type)}</View>
 
         <View style={styles.transactionData}>
           <View>
             <Text style={styles.merchant}>{name}</Text>
             <View style={{ flexDirection: 'row', marginTop: 1.5 }}>
-              <Text style={styles.location}>{type}</Text>
+              {this.renderAmount(type, amount)}
             </View>
           </View>
 
-          <View style={styles.amountContainer}>
-            <Icon name="angle-right" size={20} style={styles.arrowIcon} />
+          <View style={styles.iconContainer}>
+            <Icon name="angle-right" color="#A5ABAF" size={20} style={styles.arrowIcon} />
           </View>
 
         </View>
