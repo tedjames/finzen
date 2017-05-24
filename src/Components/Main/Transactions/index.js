@@ -185,11 +185,6 @@ export default class Transactions extends Component {
       outputRange: [0.4, 0.9],
       extrapolate: 'clamp'
     });
-    const searchButtonColor = this.state.scrollY.interpolate({
-      inputRange: [0, 100],
-      outputRange: ['#9BA2FF', '#a0a6ad'],
-      extrapolate: 'clamp'
-    });
     const headerToolbarOpacity = this.state.scrollY.interpolate({
       inputRange: [75, 135],
       outputRange: [0, 1],
