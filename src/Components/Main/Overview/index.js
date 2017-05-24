@@ -35,7 +35,7 @@ export default class Overview extends Component {
 
   render() {
     return (
-      <GradientView>
+      <GradientView colors={['#fff', '#eceff4']}>
         <StatusBar translucent hidden />
 
         <ScrollView onScroll={this.handleScroll} scrollEventThrottle={16}>
