@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Animated, ListView, RefreshControl, TouchableOpacity, Easing } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { Animated, ListView, RefreshControl } from 'react-native';
 import { GradientView } from '../../Common';
 import TransactionCard from './TransactionCard';
 import Divider from './Divider';
@@ -94,18 +93,6 @@ export default class TransactionsList extends Component {
       outputRange: [175, 62.5],
       extrapolate: 'clamp'
     });
-    const floatingButtonOpacity = this.props.scrollY.interpolate({
-      inputRange: [0, 200],
-      outputRange: [0, 0.9],
-      extrapolate: 'clamp',
-      easing: Easing.ease
-    });
-    const floatingButtonPosition = this.props.scrollY.interpolate({
-      inputRange: [0, 150],
-      outputRange: [-40, 7.5],
-      extrapolate: 'clamp',
-      easing: Easing.ease
-    });
     return (
       <GradientView style={styles.transactionsCard} colors={['#fff', '#eceff4']}>
         <Animated.View style={{ height: emptyHeaderHeight }} />
@@ -136,20 +123,6 @@ export default class TransactionsList extends Component {
             />
           }
         />
-        <Animated.View
-          style={{
-            opacity: floatingButtonOpacity,
-            bottom: floatingButtonPosition,
-          }}
-        >
-          <TouchableOpacity
-            onPress={() => this.refs.listview.scrollTo({ x: 0, y: 0, animated: true })}
-            activeOpacity={0.45}
-            style={styles.floatingButton}
-          >
-            <Icon name="ios-arrow-up" size={23} color="#7178d9" />
-          </TouchableOpacity>
-        </Animated.View>
       </GradientView>
     );
   }
