@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Scene, Router } from 'react-native-router-flux';
 import MainRouter from './Components/Main/mainRouter';
 import TransactionScreen from './Components/Common/TransactionScreen';
-import AccountScreen from './Components/Main/Overview/AccountScreen';
 import UserAccount from './Components/Main/Settings/UserAccount';
 import Notifications from './Components/Main/Settings/Notifications';
 import Widgets from './Components/Main/Settings/Widgets';
@@ -22,7 +21,6 @@ export default class RouterComponent extends Component {
           <Scene key="settings" component={Settings} direction="vertical" />
           <Scene key="app" component={MainRouter} initial />
           <Scene key="tx" component={TransactionScreen} />
-          <Scene key="account" component={AccountScreen} />
           <Scene key="profile" component={UserAccount} />
           <Scene key="notifications" component={Notifications} />
           <Scene key="widgets" component={Widgets} />
