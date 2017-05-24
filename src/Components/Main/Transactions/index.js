@@ -50,7 +50,7 @@ const styles = {
     position: 'absolute',
     width: '92%',
     shadowColor: '#000',
-    shadowOffset: { width: 2, height: 9 },
+    shadowOffset: { width: 1, height: 9 },
     shadowRadius: 7,
     zIndex: -1
   },
