@@ -1,95 +1,133 @@
-import React, { Component } from 'react'
-import { Text, View, Dimensions, TouchableOpacity } from 'react-native'
-import { AnimatedCircularProgress } from 'react-native-circular-progress'
-import Carousel from 'react-native-snap-carousel'
-import * as Animatable from 'react-native-animatable'
+import React, { Component } from 'react';
+import { Text, View, Dimensions, TouchableOpacity } from 'react-native';
+import { AnimatedCircularProgress } from 'react-native-circular-progress';
+import Carousel from 'react-native-snap-carousel';
+import * as Animatable from 'react-native-animatable';
 
 const styles = {
-    circle: {
-      width: 250,
-      height: 250,
-      borderRadius: 500,
-      backgroundColor: "#fbfbfb",
-      borderWidth: 1,
-      borderColor: "#eaeaea",
-      shadowColor: '#000',
-      shadowOffset: { width: 0, height: 1 },
-      shadowOpacity: 0.05,
-      shadowRadius: 3,
-      elevation: 1,
-    },
-    amount: {
-      backgroundColor: 'transparent',
-      textAlign: 'center',
-      color: '#94c1f6',
-      fontSize: 50,
-      fontWeight: "100",
-    },
-    container: {
-      height: 80,
-      alignItems: "center",
-      position: "relative",
-      bottom: 170
-    },
-    amountContainer: {
-      flex: 1,
-      flexDirection: "row"
-    },
-    dollar: {
-      backgroundColor: 'transparent',
-      color: '#a5c2f9',
-      fontSize: 20,
-      marginTop: 8,
-      fontWeight: "200",
-    },
-    title: {
-      fontFamily: "Montserrat",
-      fontWeight: "400",
-      fontSize: 12,
-      letterSpacing: 4,
-      opacity: 0.65,
-      color: "#000"
-    },
-    slide: {
-      flexDirection: 'column',
-      width: 250,
-      paddingHorizontal: 5
-    },
+  circle: {
+    width: 230,
+    height: 230,
+    borderRadius: 500,
+    backgroundColor: '#fbfbfb',
+    borderWidth: 1,
+    borderColor: '#eaeaea',
+    shadowColor: '#000',
+    shadowOffset: { width: 1, height: 5 },
+    shadowRadius: 12,
+    shadowOpacity: 0.065,
+    elevation: 1,
+    alignSelf: 'center',
+    marginTop: 7
+  },
+  amount: {
+    backgroundColor: 'transparent',
+    textAlign: 'center',
+    color: '#77BDF5',
+    fontSize: 45,
+    fontWeight: '100',
+  },
+  container: {
+    height: 75,
+    alignItems: 'center',
+    position: 'relative',
+    bottom: 152.5
+  },
+  amountContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignSelf: 'center'
+  },
+  dollar: {
+    backgroundColor: 'transparent',
+    color: '#a5c2f9',
+    fontSize: 20,
+    marginTop: 8,
+    fontWeight: '200',
+  },
+  title: {
+    fontFamily: 'Montserrat',
+    fontWeight: '300',
+    fontSize: 11,
+    letterSpacing: 2.75,
+    color: '#96939B'
+  },
+  slide: {
+    flexDirection: 'column',
+    width: 250,
+  },
 };
 
 export default class CardCarousel extends Component {
   constructor(props) {
     super(props);
+    this.renderItem = this.renderItem.bind(this);
 
     this.state = ({
       flexSpendRemaining: 200,
       flexSpendMonthly: 300,
       headerData: [
         {
-          amount: "200",
-          title: "FLEX SPENDING"
+          amount: '200',
+          title: 'FLEX SPENDING'
         },
         {
-          amount: "8000",
-          title: "AVAILABLE FUNDS"
+          amount: '8,000',
+          title: 'AVAILABLE FUNDS'
         },
         {
-          amount: "12000",
-          title: "TOTAL SAVINGS"
+          amount: '12,000',
+          title: 'PENDING FUNDS'
+        },
+        {
+          amount: '120,000',
+          title: 'CHASE SAVINGS'
+        },
+        {
+          amount: '32,313,710',
+          title: 'WELLS FARGO SAVINGS'
+        },
+        {
+          amount: '1,522,248',
+          title: 'TOTAL SAVINGS'
+        },
+        {
+          amount: '200',
+          title: 'FLEX SPENDING'
+        },
+        {
+          amount: '8.17k',
+          title: 'AVAILABLE FUNDS'
+        },
+        {
+          amount: '12.28k',
+          title: 'PENDING FUNDS'
+        },
+        {
+          amount: '120.42k',
+          title: 'CHASE SAVINGS'
+        },
+        {
+          amount: '1.34mil',
+          title: 'WELLS FARGO SAVINGS'
+        },
+        {
+          amount: '1.52mil',
+          title: 'TOTAL SAVINGS'
         }
       ]
     });
   }
-  _renderItem (data) {
+  renderItem (data) {
     const fill = this.state.flexSpendRemaining / this.state.flexSpendMonthly * 100;
 
     return (
       <TouchableOpacity activeOpacity={0.6}>
         <View style={styles.circle}>
           <AnimatedCircularProgress
-            style={{ borderRadius: 300, flex: 1, alignSelf: "center", backgroundColor: "transparent" }}
-            size={250}
-            width={2}
+            style={{ borderRadius: 300, flex: 1, alignSelf: 'center', backgroundColor: 'transparent' }}
+            size={230}
+            width={1}
             fill={fill}
             tintColor="#cecefa"
             backgroundColor="#ddd"
@@ -119,8 +157,9 @@ export default class CardCarousel extends Component {
         <Carousel
           ref={'carousel'}
           items={this.state.headerData}
-          renderItem={this._renderItem.bind(this)}
+          renderItem={this.renderItem}
           sliderWidth={viewportWidth}
+          sliderHeight={viewportHeight}
           slideStyle={styles.slide}
           itemWidth={250}
           firstItem={1}
