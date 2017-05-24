@@ -9,6 +9,9 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    backgroundColor: 'transparent',
+    marginBottom: -10,
+    marginTop: 6
   },
   icon: {
     backgroundColor: 'transparent',
@@ -38,11 +41,11 @@ export default class Header extends Component {
     return (
       <View style={styles.header}>
         <TouchableOpacity onPress={this.handleAdd} style={styles.iconContainer}>
-          <Icon name="plus" size={16} style={styles.icon} color="#777" />
+          <Icon name="plus" size={16} style={styles.icon} color="#a5abaf" />
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => Actions.settings()} style={styles.iconContainer}>
-          <Icon2 name="cogs" size={16} style={styles.icon} color="#777" />
+          <Icon2 name="cogs" size={16} style={styles.icon} color="#a5abaf" />
         </TouchableOpacity>
       </View>
     );
