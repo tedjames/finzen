@@ -3,6 +3,7 @@ import { ActionSheetIOS, StatusBar, ScrollView, Animated } from 'react-native';
 
 import { GradientView } from '../../Common';
 import CardCarousel from './CardCarousel';
+import Toolbar from './Toolbar';
 import RecentTransactions from './RecentTransactions';
 import Planner from './Planner';
 import Accounts from './Accounts';
@@ -45,6 +46,7 @@ export default class Overview extends Component {
         >
           <Header />
           <CardCarousel />
+          <Toolbar />
           <Accounts />
           <RecentTransactions />
           <Planner />
