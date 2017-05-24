@@ -1,7 +1,7 @@
-import React, { PropTypes } from 'react'
-import { View, Text } from 'react-native'
-import AccountCard from './AccountCard'
-import { Header } from '../../Common'
+import React from 'react';
+import { View, Text } from 'react-native';
+import AccountCard from './AccountCard';
+import NewAccountCard from './NewAccountCard';
 
 const styles = {
   accountsCard: {
@@ -35,6 +35,7 @@ const Accounts = (props) => {
   return (
     <View>
       <Text style={styles.text}>Accounts</Text>
+      <NewAccountCard type="checking" amount="5127" name="Chase Checking" />
       <View style={styles.accountsCard}>
         <AccountCard type="checking" amount="5127" name="Chase Checking" />
         <AccountCard type="savings" amount="271382" name="Well Fargo Savings" />
