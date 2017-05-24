@@ -38,7 +38,11 @@ export default class Overview extends Component {
       <GradientView colors={['#fff', '#eceff4']}>
         <StatusBar translucent hidden />
 
-        <ScrollView onScroll={this.handleScroll} scrollEventThrottle={16}>
+        <ScrollView
+          onScroll={this.handleScroll}
+          scrollEventThrottle={16}
+          showsVerticalScrollIndicator={false}
+        >
           <Header />
           <CardCarousel />
           <Accounts />
