@@ -38,6 +38,7 @@ const Accounts = () => {
       <AccountCard type="savings" amount={271382} name="Well Fargo Savings" />
       <AccountCard type="cash" amount={64} name="My Wallet" />
       <AccountCard type="bitcoin" amount={2.748271} name="Coinbase" />
+      <AccountCard type="paypal" amount={3195} name="Paypal" />
     </View>
 
   );

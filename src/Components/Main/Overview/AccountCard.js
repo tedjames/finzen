@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon2 from 'react-native-vector-icons/Foundation';
 import { Actions } from 'react-native-router-flux';
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
@@ -37,7 +38,6 @@ const styles = {
   },
   icon: {
     backgroundColor: 'transparent',
-    color: '#959595',
     alignSelf: 'center',
   },
   transactionData: {
@@ -72,16 +72,6 @@ const styles = {
     alignSelf: 'center',
     fontWeight: '400'
   },
-  dollarIcon: {
-    fontFamily: 'Open Sans',
-    color: '#0dc381',
-    fontSize: 14.5,
-    fontWeight: '500',
-    alignSelf: 'center',
-    opacity: 0.75,
-    marginRight: 0.5,
-    top: 1
-  },
   negAmount: {
     fontFamily: 'Open Sans',
     color: '#f95757',
@@ -90,16 +80,6 @@ const styles = {
     alignSelf: 'center',
     fontWeight: '400'
   },
-  negDollarIcon: {
-    fontFamily: 'Open Sans',
-    color: '#f95757',
-    fontSize: 14.5,
-    fontWeight: '500',
-    alignSelf: 'center',
-    opacity: 0.75,
-    marginRight: 0.5,
-    top: 1
-  }
 };
 
 export default class NewAccountCard extends Component {
@@ -128,17 +108,17 @@ export default class NewAccountCard extends Component {
   renderIcon(type) {
     switch (type) {
       case 'checking':
-        return <Icon name={'credit-card'} size={20} style={[styles.icon]} />;
+        return <Icon name={'credit-card'} size={21} style={[styles.icon]} color="#CECFF8" />;
       case 'savings':
-        return <Icon name={'bank'} size={20} style={[styles.icon, { left: 1 }]} />;
+        return <Icon name={'bank'} size={21} color="#a2ceed" style={[styles.icon, { left: 1 }]} />;
       case 'cash':
-        return <Icon name={'money'} size={20} style={styles.icon} />;
+        return <Icon name={'money'} size={21} color="#77ddbb" style={styles.icon} />;
       case 'bitcoin':
-        return <Icon name={'bitcoin'} size={22} style={styles.icon} />;
+        return <Icon name={'bitcoin'} size={23} color="#fcc97d" style={styles.icon} />;
       case 'paypal':
-        return <Icon name={'bank'} size={24} style={styles.icon} />;
+        return <Icon2 name={'paypal'} size={31} color="#a2ceed" style={styles.icon} />;
       default:
-        return <Icon name={'bank'} size={22} style={styles.icon} />;
+        return <Icon name={'bank'} size={23} style={styles.icon} />;
     }
   }
 
