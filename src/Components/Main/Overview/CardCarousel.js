@@ -122,7 +122,7 @@ export default class CardCarousel extends Component {
     const fill = this.state.flexSpendRemaining / this.state.flexSpendMonthly * 100;
 
     return (
-      <TouchableOpacity activeOpacity={0.6}>
+      <TouchableOpacity activeOpacity={1}>
         <View style={styles.circle}>
           <AnimatedCircularProgress
             style={{ borderRadius: 300, flex: 1, alignSelf: 'center', backgroundColor: 'transparent' }}
