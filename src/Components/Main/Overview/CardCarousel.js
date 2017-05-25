@@ -33,7 +33,7 @@ const styles = {
     height: 72.5,
     alignItems: 'center',
     position: 'relative',
-    bottom: width / 2.5
+    bottom: width / 2.45
   },
   amountContainer: {
     flex: 1,
