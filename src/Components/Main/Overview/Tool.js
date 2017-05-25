@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, Text } from 'react-native';
+import { View, TouchableOpacity, Text, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default class Tool extends Component {
+  constructor(props) {
+    super(props);
+    this.renderBadge = this.renderBadge.bind(this);
+  }
   getIconName(name) {
     switch (name) {
       case 'Bills':
@@ -18,6 +22,37 @@ export default class Tool extends Component {
       default:
         return 'rocket';
     }
+  }
+  renderBadge() {
+    const styles = {
+      badgeCount: {
+        fontFamily: 'Open Sans',
+        fontSize: 11,
+        color: 'white',
+        fontWeight: '700',
+        backgroundColor: 'transparent',
+        bottom: 1
+      },
+      badge: {
+        left: 35,
+        bottom: 34,
+        borderRadius: 80,
+        height: 19,
+        width: 19,
+        backgroundColor: 'red',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: -19
+      }
+    };
+    const { badgeCount } = this.props;
+    if (badgeCount > 0) {
+      return (
+        <View style={styles.badge}>
+          <Text style={styles.badgeCount}>{badgeCount}</Text>
+        </View>
+      );
+    } return null;
   }
   render() {
     const { name, white } = this.props;
@@ -51,6 +86,7 @@ export default class Tool extends Component {
       <TouchableOpacity activeOpacity={white ? 0.4 : 0.7} style={styles.button}>
         <Icon style={styles.icon} name={this.getIconName(name)} size={20} />
         <Text style={styles.text}>{name}</Text>
+        {this.renderBadge()}
       </TouchableOpacity>
     );
   }
