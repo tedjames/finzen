@@ -6,8 +6,8 @@ import * as Animatable from 'react-native-animatable';
 
 const styles = {
   circle: {
-    width: 230,
-    height: 230,
+    width: 245,
+    height: 245,
     borderRadius: 500,
     backgroundColor: '#fbfbfb',
     borderWidth: 1,
@@ -18,7 +18,7 @@ const styles = {
     shadowOpacity: 0.065,
     elevation: 1,
     alignSelf: 'center',
-    marginTop: 7
+    marginTop: 5,
   },
   amount: {
     backgroundColor: 'transparent',
@@ -126,7 +126,7 @@ export default class CardCarousel extends Component {
         <View style={styles.circle}>
           <AnimatedCircularProgress
             style={{ borderRadius: 300, flex: 1, alignSelf: 'center', backgroundColor: 'transparent' }}
-            size={230}
+            size={245}
             width={1}
             fill={fill}
             tintColor="#cecefa"
@@ -163,7 +163,7 @@ export default class CardCarousel extends Component {
           slideStyle={styles.slide}
           itemWidth={250}
           firstItem={1}
-          style={{ height: 255, paddingLeft: 58, marginBottom: -10 }}
+          style={{ height: 270, paddingLeft: 58, marginBottom: -10 }}
           inactiveSlideScale={0.75}
           inactiveSlideOpacity={0.3}
           showsHorizontalScrollIndicator={false}
