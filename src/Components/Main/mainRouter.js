@@ -30,7 +30,7 @@ const styles = {
   },
   indicator: {
     flexGrow: 1,
-    backgroundColor: '#a185df',
+    backgroundColor: '#3D3BEE',
     marginTop: 50,
     borderRadius: 2,
     marginRight: 3,
