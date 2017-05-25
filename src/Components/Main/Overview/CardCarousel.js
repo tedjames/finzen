@@ -28,10 +28,10 @@ const styles = {
     fontWeight: '100',
   },
   container: {
-    height: 75,
+    height: 72.5,
     alignItems: 'center',
     position: 'relative',
-    bottom: 152.5
+    bottom: 155
   },
   amountContainer: {
     flex: 1,
