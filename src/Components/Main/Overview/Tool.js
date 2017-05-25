@@ -41,14 +41,14 @@ export default class Tool extends Component {
         width: 100,
         borderRadius: 5,
         shadowColor: white ? '#777783' : '#4b37f2',
-        shadowOffset: { width: 2, height: 8 },
+        shadowOffset: { width: 2, height: 6 },
         shadowOpacity: white ? 0.3 : 0.4,
-        shadowRadius: 8,
+        shadowRadius: 9,
         marginLeft: 12
       }
     };
     return (
-      <TouchableOpacity activeOpacity={white ? 0.6 : 0.8} style={styles.button}>
+      <TouchableOpacity activeOpacity={white ? 0.4 : 0.7} style={styles.button}>
         <Icon style={styles.icon} name={this.getIconName(name)} size={20} />
         <Text style={styles.text}>{name}</Text>
       </TouchableOpacity>
