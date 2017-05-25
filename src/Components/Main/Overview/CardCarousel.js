@@ -4,10 +4,12 @@ import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import Carousel from 'react-native-snap-carousel';
 import * as Animatable from 'react-native-animatable';
 
+const { width } = Dimensions.get('window');
+const circleSize = width / 1.52;
 const styles = {
   circle: {
-    width: 245,
-    height: 245,
+    width: circleSize,
+    height: circleSize,
     borderRadius: 500,
     backgroundColor: '#fbfbfb',
     borderWidth: 1,
@@ -18,7 +20,7 @@ const styles = {
     shadowOpacity: 0.065,
     elevation: 1,
     alignSelf: 'center',
-    marginTop: 5,
+    marginTop: 10,
   },
   amount: {
     backgroundColor: 'transparent',
@@ -31,7 +33,7 @@ const styles = {
     height: 72.5,
     alignItems: 'center',
     position: 'relative',
-    bottom: 155
+    bottom: width / 2.5
   },
   amountContainer: {
     flex: 1,
@@ -126,7 +128,7 @@ export default class CardCarousel extends Component {
         <View style={styles.circle}>
           <AnimatedCircularProgress
             style={{ borderRadius: 300, flex: 1, alignSelf: 'center', backgroundColor: 'transparent' }}
-            size={245}
+            size={circleSize}
             width={1}
             fill={fill}
             tintColor="#cecefa"
@@ -163,7 +165,7 @@ export default class CardCarousel extends Component {
           slideStyle={styles.slide}
           itemWidth={250}
           firstItem={1}
-          style={{ height: 270, paddingLeft: 58, marginBottom: -10 }}
+          style={{ height: viewportWidth / 1.375, paddingLeft: 58, marginBottom: -10 }}
           inactiveSlideScale={0.75}
           inactiveSlideOpacity={0.3}
           showsHorizontalScrollIndicator={false}
