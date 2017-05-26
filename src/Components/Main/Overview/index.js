@@ -27,9 +27,7 @@ export default class Overview extends Component {
   }
 
   handleScroll() {
-    Animated.event(
-      [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }]
-    );
+    return Animated.event([{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }]);
   }
 
   render() {
@@ -38,13 +36,13 @@ export default class Overview extends Component {
         <StatusBar translucent hidden />
 
         <ScrollView
-          onScroll={this.handleScroll}
+          onScroll={this.handleScroll()}
           scrollEventThrottle={16}
           showsVerticalScrollIndicator={false}
         >
           <Header />
           <CardCarousel />
-          <Toolbar />
+          <Toolbar scrollY={this.state.scrollY} />
           <Accounts />
         </ScrollView>
 
