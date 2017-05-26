@@ -6,7 +6,7 @@ export default class Toolbar extends Component {
   render() {
     return (
       <ScrollView
-        style={{ height: 95, marginTop: 35, marginBottom: -10 }}
+        style={{ height: 100, marginTop: 35, marginBottom: -10 }}
         showsHorizontalScrollIndicator={false}
         horizontal
       >

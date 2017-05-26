@@ -78,7 +78,7 @@ export default class Tool extends Component {
         shadowColor: white ? '#777783' : '#4b37f2',
         shadowOffset: { width: 2, height: 6 },
         shadowOpacity: white ? 0.3 : 0.4,
-        shadowRadius: 9,
+        shadowRadius: 10,
         marginLeft: 12
       }
     };
