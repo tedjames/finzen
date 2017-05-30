@@ -40,12 +40,11 @@ export default class Overview extends Component {
           scrollEventThrottle={16}
           showsVerticalScrollIndicator={false}
         >
-          <Header />
-          <CardCarousel />
+          <Header scrollY={this.state.scrollY} />
+          <CardCarousel scrollY={this.state.scrollY} />
           <Toolbar scrollY={this.state.scrollY} />
           <Accounts />
         </ScrollView>
-
       </GradientView>
     );
   }

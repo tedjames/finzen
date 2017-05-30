@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TouchableOpacity, ActionSheetIOS } from 'react-native';
+import { Animated, TouchableOpacity, ActionSheetIOS } from 'react-native';
 import Icon from 'react-native-vector-icons/Octicons';
 import Icon2 from 'react-native-vector-icons/FontAwesome';
 import { Actions } from 'react-native-router-flux';
@@ -18,7 +18,8 @@ const styles = {
     alignSelf: 'center'
   },
   iconContainer: {
-    padding: 20
+    padding: 20,
+    backgroundColor: 'transparent'
   },
 };
 
@@ -38,8 +39,13 @@ export default class Header extends Component {
   }
 
   render() {
+    const headerOpacity = this.props.scrollY.interpolate({
+      inputRange: [-10, 75],
+      outputRange: [1, 0],
+      extrapolate: 'clamp'
+    });
     return (
-      <View style={styles.header}>
+      <Animated.View style={[styles.header, { opacity: headerOpacity }]}>
         <TouchableOpacity onPress={this.handleAdd} style={styles.iconContainer}>
           <Icon name="plus" size={16} style={styles.icon} color="#a0a6ad" />
         </TouchableOpacity>
@@ -47,7 +53,7 @@ export default class Header extends Component {
         <TouchableOpacity onPress={() => Actions.settings()} style={styles.iconContainer}>
           <Icon2 name="cogs" size={16} style={styles.icon} color="#a0a6ad" />
         </TouchableOpacity>
-      </View>
+      </Animated.View>
     );
   }
 }

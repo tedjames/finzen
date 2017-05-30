@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Dimensions, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity, Dimensions, Animated } from 'react-native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import Carousel from 'react-native-snap-carousel';
 import * as Animatable from 'react-native-animatable';
@@ -20,7 +20,7 @@ const styles = {
     shadowOpacity: 0.065,
     elevation: 1,
     alignSelf: 'center',
-    marginTop: 10,
+    marginTop: 12.5,
   },
   amount: {
     backgroundColor: 'transparent',
@@ -120,11 +120,25 @@ export default class CardCarousel extends Component {
       ]
     });
   }
-  renderItem (data) {
+  renderItem(data) {
+    const cardPosition = this.props.scrollY.interpolate({
+      inputRange: [0, 175],
+      outputRange: [0, 15]
+    });
+    const cardOpacity = this.props.scrollY.interpolate({
+      inputRange: [0, 370],
+      outputRange: [1, 0],
+      extrapolate: 'clamp'
+    });
+    const cardScale = this.props.scrollY.interpolate({
+      inputRange: [0, 350],
+      outputRange: [1, 0.9],
+      extrapolate: 'clamp'
+    });
     const fill = this.state.flexSpendRemaining / this.state.flexSpendMonthly * 100;
 
     return (
-      <TouchableOpacity activeOpacity={1}>
+      <Animated.View style={{ top: cardPosition, opacity: cardOpacity, transform: [{ scale: cardScale }] }}>
         <View style={styles.circle}>
           <AnimatedCircularProgress
             style={{ borderRadius: 300, flex: 1, alignSelf: 'center', backgroundColor: 'transparent' }}
@@ -149,13 +163,18 @@ export default class CardCarousel extends Component {
             }
           </AnimatedCircularProgress>
         </View>
-      </TouchableOpacity>
+      </Animated.View>
     );
   }
   render() {
+    const carouselPosition = this.props.scrollY.interpolate({
+      inputRange: [0, 175],
+      outputRange: [0, 15]
+    });
     const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
+
     return (
-      <Animatable.View animation="fadeInUp" >
+      <Animated.View style={{ top: carouselPosition }} >
         <Carousel
           ref={'carousel'}
           items={this.state.headerData}
@@ -170,7 +189,7 @@ export default class CardCarousel extends Component {
           inactiveSlideOpacity={0.3}
           showsHorizontalScrollIndicator={false}
         />
-      </Animatable.View>
+      </Animated.View>
     );
   }
 }

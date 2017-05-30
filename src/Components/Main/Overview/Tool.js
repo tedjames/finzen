@@ -72,7 +72,7 @@ export default class Tool extends Component {
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: white ? 'white' : '#3D3BEE',
-        height: 74,
+        height: 75,
         width: 100,
         borderRadius: 5,
         shadowColor: white ? '#777783' : '#4b37f2',
