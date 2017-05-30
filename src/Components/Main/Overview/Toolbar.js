@@ -6,15 +6,10 @@ export default class Toolbar extends Component {
   render() {
     const toolbarPosition = this.props.scrollY.interpolate({
       inputRange: [-50, 250],
-      outputRange: [6, 10]
-    });
-    const toolbarScale = this.props.scrollY.interpolate({
-      inputRange: [0, 300],
-      outputRange: [1, 1.04],
-      extrapolate: 'clamp'
+      outputRange: [5, 10]
     });
     return (
-      <Animated.View style={{ top: toolbarPosition, transform: [{ scale: toolbarScale }] }}>
+      <Animated.View style={{ top: toolbarPosition }}>
         <ScrollView
           style={{ height: 150, paddingTop: 45, marginTop: -25, marginBottom: -20 }}
           showsHorizontalScrollIndicator={false}

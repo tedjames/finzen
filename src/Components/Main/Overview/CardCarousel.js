@@ -122,23 +122,28 @@ export default class CardCarousel extends Component {
   }
   renderItem(data) {
     const cardPosition = this.props.scrollY.interpolate({
-      inputRange: [0, 175],
-      outputRange: [0, 15]
+      inputRange: [0, 300],
+      outputRange: [0, 10]
     });
     const cardOpacity = this.props.scrollY.interpolate({
-      inputRange: [0, 370],
+      inputRange: [0, 325],
       outputRange: [1, 0],
       extrapolate: 'clamp'
     });
     const cardScale = this.props.scrollY.interpolate({
-      inputRange: [0, 350],
-      outputRange: [1, 0.9],
+      inputRange: [-50, 400],
+      outputRange: [1.01, 0.85],
+      extrapolate: 'clamp'
+    });
+    const cardMarginBottom = this.props.scrollY.interpolate({
+      inputRange: [150, 375],
+      outputRange: [0, -20],
       extrapolate: 'clamp'
     });
     const fill = this.state.flexSpendRemaining / this.state.flexSpendMonthly * 100;
 
     return (
-      <Animated.View style={{ top: cardPosition, opacity: cardOpacity, transform: [{ scale: cardScale }] }}>
+      <Animated.View style={{ bottom: cardPosition, opacity: cardOpacity, marginBottom: cardMarginBottom, transform: [{ scale: cardScale }] }}>
         <View style={styles.circle}>
           <AnimatedCircularProgress
             style={{ borderRadius: 300, flex: 1, alignSelf: 'center', backgroundColor: 'transparent' }}

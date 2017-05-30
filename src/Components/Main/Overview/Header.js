@@ -40,12 +40,17 @@ export default class Header extends Component {
 
   render() {
     const headerOpacity = this.props.scrollY.interpolate({
-      inputRange: [-10, 75],
-      outputRange: [1, 0],
+      inputRange: [-75, 0, 75],
+      outputRange: [0.6, 1, 0],
+      extrapolate: 'clamp'
+    });
+    const headerScale = this.props.scrollY.interpolate({
+      inputRange: [-50, 0],
+      outputRange: [0.99, 1],
       extrapolate: 'clamp'
     });
     return (
-      <Animated.View style={[styles.header, { opacity: headerOpacity }]}>
+      <Animated.View style={[styles.header, { opacity: headerOpacity, transform: [{ scale: headerScale }] }]}>
         <TouchableOpacity onPress={this.handleAdd} style={styles.iconContainer}>
           <Icon name="plus" size={16} style={styles.icon} color="#a0a6ad" />
         </TouchableOpacity>
