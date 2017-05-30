@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, Dimensions, Animated } from 'react-native';
+import { Text, View, Dimensions, Animated } from 'react-native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import Carousel from 'react-native-snap-carousel';
-import * as Animatable from 'react-native-animatable';
 
 const { width } = Dimensions.get('window');
 const circleSize = width / 1.52;
@@ -135,10 +134,13 @@ export default class CardCarousel extends Component {
       outputRange: [1.01, 0.85],
       extrapolate: 'clamp'
     });
-    const fill = this.state.flexSpendRemaining / this.state.flexSpendMonthly * 100;
+    const flexSpendMonthly = this.state.flexSpendMonthly * 100;
+    const fill = this.state.flexSpendRemaining / flexSpendMonthly;
 
     return (
-      <Animated.View style={{ top: cardPosition, opacity: cardOpacity, transform: [{ scale: cardScale }] }}>
+      <Animated.View
+        style={{ top: cardPosition, opacity: cardOpacity, transform: [{ scale: cardScale }] }}
+      >
         <View style={styles.circle}>
           <AnimatedCircularProgress
             style={{ borderRadius: 300, flex: 1, alignSelf: 'center', backgroundColor: 'transparent' }}
