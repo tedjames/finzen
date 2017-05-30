@@ -135,15 +135,10 @@ export default class CardCarousel extends Component {
       outputRange: [1.01, 0.85],
       extrapolate: 'clamp'
     });
-    const cardMarginBottom = this.props.scrollY.interpolate({
-      inputRange: [150, 375],
-      outputRange: [0, -20],
-      extrapolate: 'clamp'
-    });
     const fill = this.state.flexSpendRemaining / this.state.flexSpendMonthly * 100;
 
     return (
-      <Animated.View style={{ bottom: cardPosition, opacity: cardOpacity, marginBottom: cardMarginBottom, transform: [{ scale: cardScale }] }}>
+      <Animated.View style={{ top: cardPosition, opacity: cardOpacity, transform: [{ scale: cardScale }] }}>
         <View style={styles.circle}>
           <AnimatedCircularProgress
             style={{ borderRadius: 300, flex: 1, alignSelf: 'center', backgroundColor: 'transparent' }}
@@ -153,9 +148,9 @@ export default class CardCarousel extends Component {
             tintColor="#cecefa"
             backgroundColor="#ddd"
             linecap="round"
-            >
+          >
             {
-              (fill) => (
+              () => (
                 <View style={styles.container}>
                   <View style={styles.amountContainer}>
                     <Text style={styles.dollar}>$</Text>
